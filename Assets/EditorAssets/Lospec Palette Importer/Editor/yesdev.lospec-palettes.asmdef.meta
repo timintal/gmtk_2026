@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: e31addebd3bf76649b574c4d940c0229
+AssemblyDefinitionImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 244575
+  packageName: Lospec Palette Importer
+  packageVersion: 1.0.0
+  assetPath: Assets/Lospec Palette Importer/Editor/yesdev.lospec-palettes.asmdef
+  uploadId: 570438

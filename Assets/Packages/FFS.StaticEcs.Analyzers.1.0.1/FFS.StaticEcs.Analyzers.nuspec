@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>FFS.StaticEcs.Analyzers</id>
+    <version>1.0.1</version>
+    <authors>Felid-Force-Studios</authors>
+    <developmentDependency>true</developmentDependency>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <readme>README.md</readme>
+    <description>Roslyn analyzers and code fixes for FFS.StaticEcs — compile-time checks for ECS misuse, ref-return safety, query filter contradictions, and more.</description>
+    <copyright>Felid-Force-Studios</copyright>
+    <tags>ecs analyzer roslyn codefix staticecs</tags>
+    <repository type="git" url="https://github.com/Felid-Force-Studios/StaticEcs-Analyzer" commit="bb50eab88bfe82281ee50d58ca2fb57eff8e4017" />
+  </metadata>
+</package>

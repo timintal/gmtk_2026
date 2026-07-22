@@ -1,0 +1,35 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <ui:Foldout text="How To[?]:" value="false" style="flex-grow: 0; flex-direction: column; justify-content: flex-start; align-items: flex-start; max-height: 500px;">
+        <ui:GroupBox style="flex-grow: 1; max-height: 200px;">
+            <ui:TextField picking-mode="Ignore" text="1. To add new point to the spline just hold shift and click to desired position in the scene view&#10;2. To change intermediate points mode click on the point and while holding press:&#10;    - M key to set mirrored mode&#10;    - A key to set aligned mode&#10;    - F key to set free mode&#10;3. To remove control point(big blue square) click on it and while holding press D key&#10;4. If there is no Lock on any axis new point will try to snap to visible geometry on the scene&#10;" readonly="true" multiline="true" is-delayed="false" focusable="false" style="flex-grow: 1; flex-wrap: wrap; max-height: 200%;" />
+        </ui:GroupBox>
+    </ui:Foldout>
+    <ui:Toggle label="Loop Spline" name="LoopToggle" />
+    <ui:VisualElement name="LockAxisRoot" style="flex-direction: row; justify-content: flex-start;">
+        <ui:Label text="Lock Axis:" display-tooltip-when-elided="true" style="-unity-font-style: bold; margin-right: 20px; margin-left: 2px; margin-top: 2px; margin-bottom: 2px;" />
+        <ui:VisualElement style="flex-direction: row; justify-content: space-around; margin-left: 2px; margin-right: 5px; margin-top: 2px; margin-bottom: 2px;">
+            <ui:Label text="X:" display-tooltip-when-elided="true" />
+            <ui:Toggle name="LockX" binding-path="lockXAxis" />
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-direction: row; justify-content: space-around; margin-left: 2px; margin-right: 5px; margin-top: 2px; margin-bottom: 2px;">
+            <ui:Label text="Y:" display-tooltip-when-elided="true" />
+            <ui:Toggle name="LockY" binding-path="lockYAxis" />
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-direction: row; justify-content: space-around; margin-left: 2px; margin-right: 8px; margin-top: 2px; margin-bottom: 2px;">
+            <ui:Label text="Z:" display-tooltip-when-elided="true" />
+            <ui:Toggle name="LockZ" binding-path="lockZAxis" />
+        </ui:VisualElement>
+        <ui:Button text="Reset X coord" display-tooltip-when-elided="true" name="ResetSelectedAxis" />
+    </ui:VisualElement>
+    <uie:FloatField label="Length Precision" value="0.05" name="Precision" binding-path="lengthCalculationEpsilon" />
+    <ui:Foldout text="Gizmos" value="false" style="flex-direction: column; align-items: flex-start; justify-content: center; flex-grow: 0; flex-shrink: 0;">
+        <ui:Toggle label="Draw unselected:" value="true" binding-path="DrawGizmosUnselected" style="flex-grow: 1;" />
+        <uie:FloatField label="Width" value="5" binding-path="GizmoWidth" style="flex-grow: 1;" />
+        <uie:ColorField value="#FFFFFFFF" binding-path="GizmoColor" label="Color" style="flex-direction: row; flex-grow: 1;" />
+    </ui:Foldout>
+    <ui:Label text="Curves" display-tooltip-when-elided="true" style="-unity-text-align: upper-center; -unity-font-style: bold; font-size: 14px;" />
+    <ui:VisualElement style="flex-direction: column;">
+        <ui:ScrollView name="CurvesContainer" style="flex-shrink: 0; max-height: 400px; padding-left: 3px; padding-right: 3px; padding-top: 3px; padding-bottom: 3px;" />
+    </ui:VisualElement>
+    <ui:Button text="Force Update Curve Length" display-tooltip-when-elided="true" name="LengthUpdate" />
+</ui:UXML>

@@ -1,0 +1,10 @@
+{
+    "name": "com.timintal.easy-tweens",
+    "displayName": "Easy Tweens",
+    "description": "Package to create tween animations in Unity Editor",
+    "version": "1.0.0",
+    "unity": "2021.3",
+    "license": "MIT",
+    "dependencies": {
+     }
+    }

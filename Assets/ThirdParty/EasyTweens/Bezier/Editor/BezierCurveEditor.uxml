@@ -1,0 +1,29 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <ui:VisualElement style="flex-direction: row; justify-content: space-between;">
+        <ui:Foldout text="Curve" name="MainFoldout" value="false" view-data-key="CFoldout" style="flex-direction: column; flex-grow: 1; flex-shrink: 0;">
+            <ui:VisualElement style="flex-direction: row;">
+                <ui:VisualElement style="justify-content: space-between; align-items: stretch; flex-grow: 1;">
+                    <ui:VisualElement style="flex-direction: row;">
+                        <uie:Vector3Field name="Point0" style="flex-grow: 1;" />
+                        <uie:EnumField name="ControlPointMode0" style="flex-shrink: 1;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-direction: row;">
+                        <uie:Vector3Field name="Point1" style="flex-grow: 1;" />
+                        <uie:EnumField name="ControlPointMode1" style="visibility: hidden;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-direction: row;">
+                        <uie:Vector3Field name="Point2" style="flex-grow: 1;" />
+                        <uie:EnumField name="ControlPointMode2" style="visibility: hidden;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-direction: row;">
+                        <uie:Vector3Field name="Point3" style="flex-grow: 1;" />
+                        <uie:EnumField name="ControlPointMode3" style="flex-shrink: 1;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:Foldout>
+        <ui:VisualElement>
+            <ui:Button text="x" display-tooltip-when-elided="true" name="RemoveCurve" style="color: rgb(255, 255, 255); background-color: rgb(255, 61, 61); padding-right: 3px; padding-left: 3px;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

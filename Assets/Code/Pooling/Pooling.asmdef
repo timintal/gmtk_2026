@@ -1,0 +1,18 @@
+{
+    "name": "Pooling",
+    "rootNamespace": "",
+    "references": [
+        "GUID:4f25757d9bcdb4e81a3f71140998e8e2",
+        "GUID:b0214a6008ed146ff8f122a6a9c2f6cc",
+        "GUID:69f70c24dedc41f49aaf4befce6fc0b8"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

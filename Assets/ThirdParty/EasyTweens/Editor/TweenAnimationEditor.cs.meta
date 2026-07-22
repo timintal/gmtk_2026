@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 1a6bd9f9c700945b8a3f8789feca4095
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - MainVisualTreeAsset: {fileID: 9197481963319205126, guid: e251fb860c34443d8854c8931fa6b25a,
+      type: 3}
+  - MainStylesheet: {fileID: 7433441132597879392, guid: e66e272a6638f41028bac46697642f5b,
+      type: 3}
+  - TweenVisualTreeAsset: {fileID: 9197481963319205126, guid: 8fcb334e96f9142b89d911561daeb1e8,
+      type: 3}
+  - TweenStylesheet: {fileID: 7433441132597879392, guid: 750009adff2794291a20fbf4f09d113e,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 9e91f5a9ebb2a374a96a7a6325577dc5
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 244575
+  packageName: Lospec Palette Importer
+  packageVersion: 1.0.0
+  assetPath: Assets/Lospec Palette Importer/Editor/ColorLibrary.cs
+  uploadId: 570438

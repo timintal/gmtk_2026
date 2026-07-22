@@ -1,0 +1,51 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <Style src="TweenEditor.uss" />
+    <ui:VisualElement name="Root" style="justify-content: space-around; align-items: stretch; flex-direction: row; margin-left: 0; margin-bottom: 5px; padding-bottom: 5px; border-bottom-width: 1px; border-bottom-color: rgb(111, 111, 111); flex-wrap: nowrap;">
+        <ui:VisualElement style="flex-shrink: 0; flex-direction: column; margin-top: 15px;">
+            <ui:Toggle name="TweenSelection" value="false" style="flex-direction: row-reverse; margin-top: 1px; margin-left: 3px; margin-right: 0; margin-bottom: 1px; align-items: flex-end;" />
+            <ui:VisualElement name="LinkDragger" tooltip="Drag to link to another tween" class="unity-text-element unity-button unity-toggle__checkmark" style="flex-shrink: 0; width: 17px; height: 17px; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; margin-left: 2px; margin-right: 2px; margin-top: 1px; margin-bottom: 1px; background-image: none; background-color: rgb(164, 164, 164);">
+                <ui:VisualElement class="icon-link" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement focusable="false" style="align-items: stretch; flex-grow: 1; flex-shrink: 0; justify-content: space-between; flex-direction: column; flex-basis: 90%;">
+            <ui:Foldout text="Tween" name="MainFoldout" value="true" class="tween-property" style="border-left-color: rgb(63, 111, 140); border-right-color: rgb(63, 111, 140); border-top-color: rgb(63, 111, 140); border-bottom-color: rgb(63, 111, 140); border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; align-items: stretch; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; flex-direction: column; flex-grow: 0; -unity-font-style: bold; flex-shrink: 0; justify-content: flex-start; flex-basis: auto; -unity-background-image-tint-color: rgb(0, 0, 0);">
+                <uie:PropertyField name="TargetField" label="Target" style="flex-shrink: 0; flex-grow: 1; -unity-font-style: normal; flex-basis: auto;" />
+                <ui:VisualElement name="StartValueRoot" style="flex-direction: row; justify-content: space-between; flex-wrap: nowrap; flex-grow: 1; align-items: flex-end; width: 100%;">
+                    <uie:PropertyField name="StartValue" label="Start" class="small-label" style="flex-direction: column; flex-shrink: 1; flex-grow: 10; justify-content: flex-start; -unity-font-style: normal; margin-right: 1px;" />
+                    <ui:Button text="↑" display-tooltip-when-elided="false" focusable="false" enable-rich-text="false" class="set-current-button" style="margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 7px; padding-right: 7px; padding-top: 0; padding-bottom: 0; display: flex; visibility: hidden; width: 0;" />
+                    <ui:Button text="←" display-tooltip-when-elided="true" name="SetCurrentToStart" tooltip="Set current value as start" class="set-current-button" style="margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 4px; padding-right: 4px; padding-top: 0; padding-bottom: 0;" />
+                </ui:VisualElement>
+                <ui:VisualElement name="EndValueRoot" style="flex-direction: row; justify-content: space-around; flex-wrap: nowrap; flex-grow: 0; align-items: center;">
+                    <uie:PropertyField name="EndValue" label="End" class="small-label" style="flex-direction: column; flex-shrink: 1; flex-grow: 10; justify-content: flex-start; -unity-font-style: normal; margin-right: 1px;" />
+                    <ui:Button text="↕" display-tooltip-when-elided="true" name="SwapValues" tooltip="Swap values" class="set-current-button" style="margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 7px; padding-right: 7px; padding-top: 0; padding-bottom: 0; left: 0; bottom: 10px; height: 25px; width: 0; max-height: 25px; flex-direction: row; align-items: center; justify-content: flex-end; flex-shrink: 1; min-height: 0;" />
+                    <ui:Button text="←" display-tooltip-when-elided="true" name="SetCurrentToEnd" tooltip="Set current value as end." class="set-current-button" style="margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 4px; padding-right: 4px; padding-top: 0; padding-bottom: 0;" />
+                </ui:VisualElement>
+                <ui:VisualElement name="AdditionalProperties" style="flex-shrink: 1; -unity-font-style: normal; flex-grow: 1;" />
+                <ui:VisualElement name="CurveRoot" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: row; align-items: stretch; justify-content: flex-start; align-self: stretch;">
+                    <ui:Label tabindex="-1" text="Curve" display-tooltip-when-elided="true" style="-unity-font-style: normal; margin-right: 20px;" />
+                    <uie:CurveField name="Curve" class="small-label" style="height: auto; width: auto; align-items: center; justify-content: space-between; flex-direction: row; -unity-font-style: normal; flex-shrink: 1; flex-grow: 1; padding-right: 10px;" />
+                    <ui:Label tabindex="-1" text="Repeats:" display-tooltip-when-elided="true" style="-unity-font-style: normal;" />
+                    <uie:IntegerField value="1" name="CurveRepeats" style="flex-shrink: 1; flex-grow: 0.1;" />
+                </ui:VisualElement>
+                <ui:VisualElement style="flex-direction: row; justify-content: space-between;">
+                    <uie:FloatField label="Delay" value="0" name="Delay" class="small-label" style="-unity-font-style: normal; flex-shrink: 0; flex-basis: initial; flex-grow: 1;" />
+                    <ui:Button text="←" display-tooltip-when-elided="true" name="SetCurrentToDelay" tooltip="Set current time as delay" class="set-current-button" style="margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 4px; padding-right: 4px; padding-top: 0; padding-bottom: 0;" />
+                </ui:VisualElement>
+                <uie:FloatField label="Duration" value="0" name="Duration" class="small-label" style="-unity-font-style: normal; flex-shrink: 1; flex-basis: initial;" />
+            </ui:Foldout>
+            <ui:TextField picking-mode="Ignore" name="OverrideNameField" style="position: absolute; right: 10%; flex-grow: 1; width: 50%;" />
+            <ui:Button display-tooltip-when-elided="true" name="EditNameButton" tooltip="Edit tween name" class="icon-edit" style="position: absolute; flex-direction: column; left: 90%; width: 7px; height: 15px; margin-left: 3px; margin-right: 3px; padding-left: 7px; padding-right: 6px; background-color: rgb(164, 164, 164);" />
+            <ui:VisualElement style="height: 5px; margin-left: 10px; margin-right: 10px; margin-top: 5px; margin-bottom: 4px; align-items: flex-start; flex-direction: column; justify-content: space-around; background-color: rgb(42, 42, 42);">
+                <ui:VisualElement name="DelayDurationVisualization" style="flex-grow: 1; background-color: rgb(255, 255, 255); margin-left: 0; width: 100%; left: 0; align-items: auto; flex-direction: column;" />
+                <ui:VisualElement name="CurrentActivePhase" style="flex-grow: 1; width: 50%; height: auto; border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; border-top-left-radius: 0; border-bottom-left-radius: 0; border-top-right-radius: 0; border-bottom-right-radius: 0; flex-shrink: 1; align-items: center; justify-content: center; position: absolute; left: 0; bottom: 0; top: 0; background-color: rgb(96, 233, 96); scale: 1 1; transform-origin: left;" />
+                <ui:VisualElement name="LinkedDelay" style="flex-grow: 1; width: 50%; height: auto; border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; border-top-left-radius: 0; border-bottom-left-radius: 0; border-top-right-radius: 0; border-bottom-right-radius: 0; flex-shrink: 1; align-items: center; justify-content: center; position: absolute; left: 0; bottom: 0; top: 0; background-color: rgb(233, 132, 58); scale: 1 1; transform-origin: left;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-basis: 20px; flex-direction: column; align-items: flex-end; flex-shrink: 0;">
+            <ui:Button text="X" display-tooltip-when-elided="true" tooltip="Remove Tween" name="RemoveTween" class="small-buttons" style="background-color: rgb(255, 73, 73); margin-left: 0; margin-right: 2px; margin-top: 0; margin-bottom: 0; padding-left: 5px; padding-right: 5px; padding-top: 0; padding-bottom: 0; width: 13px; height: 13px; font-size: 9px; -unity-font-style: bold;" />
+            <ui:VisualElement name="Dragger" tooltip="Drag to reorder tweens" class="icon-drag" style="width: 17px; height: 17px;" />
+            <ui:Button text="D" display-tooltip-when-elided="true" tooltip="Duplicate Tween" name="DuplicateTween" class="small-buttons" style="margin-left: 0; margin-right: 2px; margin-top: 0; margin-bottom: 0; padding-left: 4px; padding-right: 4px; padding-top: 0; padding-bottom: 0; width: 13px; height: 13px; font-size: 9px; -unity-font-style: bold;" />
+        </ui:VisualElement>
+        <ui:Label text="25" display-tooltip-when-elided="true" name="IndexLabel" style="position: absolute; top: 3px; left: -6px; -unity-font-style: bold; font-size: 9px; -unity-text-align: upper-right; flex-shrink: 1;" />
+    </ui:VisualElement>
+</ui:UXML>

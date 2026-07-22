@@ -1,0 +1,96 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Atlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 4
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 4
+      m_TextureCompression: 2
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_IgnorePlatformSupport: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 8
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 2e3fadbc014ec49c49d12b0a49e1cd31, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+    packedSpriteRenderDataKeys:
+    - e06b3031fc1b4435ea1aa28f390f9b56: 21300000
+    - 1b3bd512b47b4476aa8368c315403834: 21300000
+    - 241358325bc2b49d38fac7ac5b939ff1: 21300000
+    - b0588943a327c4f92b44f32c0c35eef5: 21300000
+    - 4bc261e4a90434fdb8bee7d310f503c6: 21300000
+    - 8f9cddc515a3f4c9baa6f96494b48c38: 21300000
+    - b2ab4a479133b4f95a3fe92540b87b2b: 21300000
+    - 28da66083cbc44a36af14915f9d2902a: 21300000
+    - 5b738138473c94931b6e8ecb3934215b: 21300000
+    - f25d0959010f745f0a542c63736df931: 21300000
+    - 800dc3aa5245a46dd89f25336c8924c2: 21300000
+    - d92b094bda0ec439299a2dab85411e35: 21300000
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: e06b3031fc1b4435ea1aa28f390f9b56, type: 3}
+  - {fileID: 21300000, guid: 1b3bd512b47b4476aa8368c315403834, type: 3}
+  - {fileID: 21300000, guid: 241358325bc2b49d38fac7ac5b939ff1, type: 3}
+  - {fileID: 21300000, guid: b0588943a327c4f92b44f32c0c35eef5, type: 3}
+  - {fileID: 21300000, guid: 4bc261e4a90434fdb8bee7d310f503c6, type: 3}
+  - {fileID: 21300000, guid: 8f9cddc515a3f4c9baa6f96494b48c38, type: 3}
+  - {fileID: 21300000, guid: b2ab4a479133b4f95a3fe92540b87b2b, type: 3}
+  - {fileID: 21300000, guid: 28da66083cbc44a36af14915f9d2902a, type: 3}
+  - {fileID: 21300000, guid: 5b738138473c94931b6e8ecb3934215b, type: 3}
+  - {fileID: 21300000, guid: f25d0959010f745f0a542c63736df931, type: 3}
+  - {fileID: 21300000, guid: 800dc3aa5245a46dd89f25336c8924c2, type: 3}
+  - {fileID: 21300000, guid: d92b094bda0ec439299a2dab85411e35, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Title
+  - Image Layer
+  - Gear
+  - PlayButton
+  - Daily
+  - Rays
+  - Rhombus
+  - PlayButton copy
+  - light
+  - Reward
+  - Armor
+  - Notification
+  m_RenderDataMap: {}
+  m_Tag: Atlas
+  m_IsVariant: 0
+  m_Guid: 7d3cc2b2c12724f36b36ac6a322871c1

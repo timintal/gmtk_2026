@@ -1,0 +1,22 @@
+{
+    "name": "Game.DragAndDrop.Tests",
+    "rootNamespace": "",
+    "references": [
+        "Game.Runtime",
+        "GUID:69f70c24dedc41f49aaf4befce6fc0b8"
+    ],
+    "optionalUnityReferences": [
+        "TestAssemblies"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

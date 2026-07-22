@@ -1,0 +1,7 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+        <uie:PropertyField data-source-type="UnityEngine.SpriteRenderer, UnityEngine.CoreModule" name="Target" class="unity-base-field" style="flex-direction: row; flex-grow: 1; flex-shrink: 0; overflow: visible; right: 0; left: 0;" />
+        <ui:FloatField value="42.2" name="Value" style="flex-grow: 0.2;" />
+        <ui:Button text="X" name="Remove" style="background-color: rgb(173, 42, 42); display: none;" />
+    </ui:VisualElement>
+</ui:UXML>
