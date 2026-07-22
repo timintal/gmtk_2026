@@ -1,0 +1,12 @@
+{
+    "name": "StompyRobot.SRF.Editor",
+    "references": [
+        "StompyRobot.SRF",
+        "UnityEditor.UI",
+        "UnityEngine.UI"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": []
+}

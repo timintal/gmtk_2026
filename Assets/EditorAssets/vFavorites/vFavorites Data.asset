@@ -1,0 +1,199 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 066cf82f8f80d408c856e48fc8f1127b, type: 3}
+  m_Name: vFavorites Data
+  m_EditorClassIdentifier: 
+  pages:
+  - items:
+    - globalId:
+        globalObjectIdString: GlobalObjectId_V1-3-e9416785f814cf24894a27b548696793-11400000-0
+      _typeString: Paper2.Features.Party.Config.QuantumSnapshotService, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      _obj: {fileID: 11400000, guid: e9416785f814cf24894a27b548696793, type: 2}
+      isSceneGameObject: 0
+      isFolder: 0
+      isAsset: 1
+      _id: 1051526873
+    - globalId:
+        globalObjectIdString: GlobalObjectId_V1-3-8000cd57eaa8e8247b9c1522d16e9ad6-11400000-0
+      _typeString: Paper2.Features.Party.Config.QuantumReplayService, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      _obj: {fileID: 11400000, guid: 8000cd57eaa8e8247b9c1522d16e9ad6, type: 2}
+      isSceneGameObject: 0
+      isFolder: 0
+      isAsset: 1
+      _id: 1063945302
+    - globalId:
+        globalObjectIdString: GlobalObjectId_V1-1-3dfa724dadcc44707a970a5ee2054d31-102900000-0
+      _typeString: UnityEditor.DefaultAsset, UnityEditor.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      _obj: {fileID: 102900000, guid: 3dfa724dadcc44707a970a5ee2054d31, type: 3}
+      isSceneGameObject: 0
+      isFolder: 1
+      isAsset: 0
+      _id: 1023096066
+    name: Shared
+    _id: 1048807065
+  - items: []
+    name: Ruslan
+    _id: 1035034193
+  - items: []
+    name: Juan
+    _id: 1061227250
+  - items: []
+    name: UI
+    _id: 1052538609
+  - items: []
+    name: UI
+    _id: 1044614258
+  - items: []
+    name: Tom
+    _id: 1048833301
+  - items: []
+    name: Page 7
+    _id: 1062390778
+  - items: []
+    name: Page 8
+    _id: 1059230913
+  - items: []
+    name: Page 9
+    _id: 1032992753
+  - items: []
+    name: Page 10
+    _id: 1063084912
+  - items: []
+    name: Page 11
+    _id: 1056325218
+  - items: []
+    name: Page 12
+    _id: 1051199933
+  - items: []
+    name: Page 13
+    _id: 1035781041
+  - items: []
+    name: Page 14
+    _id: 1054850694
+  - items: []
+    name: Page 15
+    _id: 996128258
+  - items: []
+    name: Page 16
+    _id: 1043235857
+  - items: []
+    name: Page 17
+    _id: 1064387232
+  - items: []
+    name: Page 18
+    _id: 1027629250
+  - items: []
+    name: Page 19
+    _id: 1060218869
+  - items: []
+    name: Page 20
+    _id: 1044674970
+  - items: []
+    name: Page 21
+    _id: 1060005389
+  - items: []
+    name: Page 22
+    _id: 1054242982
+  - items: []
+    name: Page 23
+    _id: 1060145805
+  - items: []
+    name: Page 24
+    _id: 1056994163
+  - items: []
+    name: Page 25
+    _id: 1054458130
+  - items: []
+    name: Page 26
+    _id: 1049346549
+  - items: []
+    name: Page 27
+    _id: 1057546005
+  - items: []
+    name: Page 28
+    _id: 1062155030
+  - items: []
+    name: Page 29
+    _id: 1064100902
+  - items: []
+    name: Page 30
+    _id: 1029179682
+  - items: []
+    name: Page 31
+    _id: 1059040729
+  - items: []
+    name: Page 32
+    _id: 1049800281
+  - items: []
+    name: Page 33
+    _id: 1050730761
+  - items: []
+    name: Page 34
+    _id: 1041364913
+  - items: []
+    name: Page 35
+    _id: 1062984254
+  - items: []
+    name: Page 36
+    _id: 1033387489
+  - items: []
+    name: Page 37
+    _id: 1063501516
+  - items: []
+    name: Page 38
+    _id: 1062228232
+  - items: []
+    name: Page 39
+    _id: 1062225724
+  - items: []
+    name: Page 40
+    _id: 1057728795
+  - items: []
+    name: Page 41
+    _id: 1049933725
+  - items: []
+    name: Page 42
+    _id: 1059156417
+  - items: []
+    name: Page 43
+    _id: 1064381018
+  - items: []
+    name: Page 44
+    _id: 1040320529
+  - items: []
+    name: Page 45
+    _id: 1056594698
+  - items: []
+    name: Page 46
+    _id: 1054930166
+  - items: []
+    name: Page 47
+    _id: 1061895880
+  - items: []
+    name: Page 48
+    _id: 1056507058
+  - items: []
+    name: Page 49
+    _id: 1062109248
+  - items: []
+    name: Page 50
+    _id: 1057399639
+  - items: []
+    name: Page 51
+    _id: 1058244463
+  - items: []
+    name: Page 52
+    _id: 0
+  rowScale: 1
