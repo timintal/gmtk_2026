@@ -55,4 +55,3 @@ launch_worker_detached || {
 
 printf 'Queued %s%s. Worker output: %s/launcher.log\n' \
     "$commit_sha" "$([[ "$build_only" == "1" ]] && printf ' (build only)')" "$LOG_DIR"
-
