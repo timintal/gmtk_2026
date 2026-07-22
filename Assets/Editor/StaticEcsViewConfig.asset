@@ -21,8 +21,7 @@ MonoBehaviour:
     entities:
       componentColumns:
       - Code/Common/ParentTransform
-      tagColumns:
-      - _Game/Features/Balls/Ball
+      tagColumns: []
       showTableDataTypes: []
       sortByType: 
       maxEntityResult: 100
@@ -30,8 +29,7 @@ MonoBehaviour:
       filterActive: 1
       gidFilterActive: 0
       gidFilterValue: 0
-      filterAll:
-      - _Game/Features/Balls/Ball
+      filterAll: []
       filterAllOnlyDisabled: []
       filterAllWithDisabled: []
       filterNone: []
