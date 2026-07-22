@@ -176,6 +176,7 @@ perform_job() {
     local unity_exit_code
     local butler_exit_code
     local butler_version
+    local butler_executable
 
     prepare_worktree_for_commit "$commit_sha" || {
         printf 'error: failed to prepare detached build worktree.\n'
@@ -247,7 +248,8 @@ perform_job() {
     fi
 
     validate_upload_config || return 1
-    command -v butler >/dev/null 2>&1 || {
+    butler_executable="$(find_butler_executable 2>/dev/null || true)"
+    [[ -n "$butler_executable" ]] || {
         printf 'error: upload is enabled but Butler is not installed.\n'
         return 1
     }
@@ -260,17 +262,18 @@ perform_job() {
         return 1
     }
 
-    butler_version="$(butler -V 2>&1 || true)"
+    butler_version="$("$butler_executable" -V 2>&1 || true)"
+    printf 'Butler executable: %s\n' "$butler_executable"
     printf 'Butler version: %s\n' "$butler_version"
     printf 'Uploading %s to %s:%s with version %s\n' \
         "$UPLOAD_PATH" "$ITCH_TARGET" "$ITCH_CHANNEL" "$short_sha"
-    butler push "$UPLOAD_PATH" "$ITCH_TARGET:$ITCH_CHANNEL" --userversion "$short_sha"
+    "$butler_executable" push "$UPLOAD_PATH" "$ITCH_TARGET:$ITCH_CHANNEL" --userversion "$short_sha"
     butler_exit_code=$?
     printf 'Butler exit code: %s\n' "$butler_exit_code"
     [[ "$butler_exit_code" -eq 0 ]] || return 1
 
     printf 'Verifying uploaded channel state with Butler.\n'
-    butler status "$ITCH_TARGET:$ITCH_CHANNEL" --context-timeout=15
+    "$butler_executable" status "$ITCH_TARGET:$ITCH_CHANNEL" --context-timeout=15
     butler_exit_code=$?
     printf 'Butler status exit code: %s\n' "$butler_exit_code"
     [[ "$butler_exit_code" -eq 0 ]] || return 1

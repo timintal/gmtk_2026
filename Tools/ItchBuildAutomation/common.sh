@@ -164,6 +164,32 @@ validate_upload_config() {
     fi
 }
 
+find_butler_executable() {
+    local discovered=""
+    local candidate
+
+    discovered="$(command -v butler 2>/dev/null || true)"
+    if [[ -n "$discovered" && -x "$discovered" ]]; then
+        printf '%s\n' "$discovered"
+        return 0
+    fi
+
+    # GUI applications and Git hooks commonly start with a minimal PATH that
+    # excludes user-local and Homebrew binaries. Resolve standard macOS install
+    # locations explicitly instead of depending on interactive shell startup.
+    for candidate in \
+        "$HOME/.local/bin/butler" \
+        /opt/homebrew/bin/butler \
+        /usr/local/bin/butler; do
+        if [[ -x "$candidate" ]]; then
+            printf '%s\n' "$candidate"
+            return 0
+        fi
+    done
+
+    return 1
+}
+
 unity_version_from_project() {
     local project_path="$1"
     local version_file="$project_path/ProjectSettings/ProjectVersion.txt"

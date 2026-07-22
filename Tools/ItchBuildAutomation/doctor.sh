@@ -152,9 +152,10 @@ else
     warn 'could not determine available disk space'
 fi
 
-if command -v butler >/dev/null 2>&1; then
-    butler_version="$(butler -V 2>&1 || true)"
-    ok "Butler is installed: $butler_version"
+butler_executable="$(find_butler_executable 2>/dev/null || true)"
+if [[ -n "$butler_executable" ]]; then
+    butler_version="$("$butler_executable" -V 2>&1 || true)"
+    ok "Butler is installed: $butler_version ($butler_executable)"
     butler_credentials="$HOME/Library/Application Support/itch/butler_creds"
     if [[ -s "$butler_credentials" || -n "${BUTLER_API_KEY:-}" ]]; then
         ok 'Butler authentication material appears to be available (not displayed)'

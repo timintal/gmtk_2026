@@ -31,6 +31,7 @@ butler login
 ```
 
 Do not place `BUTLER_API_KEY` in the config file. If a secure environment already provides it, the worker inherits it without printing the environment or token.
+The worker resolves Butler from `PATH` and standard macOS locations such as `~/.local/bin/butler`, so Git hooks launched without interactive shell startup can still upload.
 
 Run diagnostics at any time:
 
