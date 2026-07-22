@@ -19,8 +19,15 @@ namespace EasyTweens
             {
                 return;
             }
-            int textInfoCharacterCount = target.textInfo.characterCount;
-            target.maxVisibleCharacters = Mathf.RoundToInt(Property * textInfoCharacterCount);
+            if (f > 0.999999f)
+            {
+                target.maxVisibleCharacters = 999999;
+            }
+            else
+            {
+                int textInfoCharacterCount = target.textInfo.characterCount;
+                target.maxVisibleCharacters = Mathf.RoundToInt(Property * textInfoCharacterCount);
+            }
 #if UNITY_EDITOR
 
             if (!Application.isPlaying)
@@ -28,11 +35,6 @@ namespace EasyTweens
                 EditorUtility.SetDirty(target);
             }
 #endif
-        }
-
-        public override void UpdateTween(float time, float deltaTime)
-        {
-            base.UpdateTween(time, deltaTime);
         }
     }
 }

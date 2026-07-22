@@ -24,9 +24,13 @@ namespace Code.UI
         const string OpenTag = "<invert>";
         const string CloseTag = "</invert>";
         const string LinkId = "invert";
-        const string BackgroundName = "InvertBackground(temp)";
+        const string BackgroundNamePrefix = "InvertBackground(temp)_";
 
         [SerializeField] TMP_Text _text;
+
+        // Must be unique per component: multiple invert labels often share a parent, and a
+        // shared background means a sibling with no <invert> span will Clear() ours.
+        string BackgroundName => BackgroundNamePrefix + GetEntityId();
 
         [Tooltip("Color the glyphs are painted inside an <invert> span (the flat surface color the letters sit on).")]
         [SerializeField] Color _backgroundColor = Color.black;
@@ -215,11 +219,12 @@ namespace Code.UI
                 return true;
 
             var parent = _text.transform.parent != null ? _text.transform.parent : _text.transform;
+            var backgroundName = BackgroundName;
 
             for (var i = 0; i < parent.childCount; i++)
             {
                 var child = parent.GetChild(i);
-                if (child.name == BackgroundName && child.TryGetComponent(out TMPInvertBackground existing))
+                if (child.name == backgroundName && child.TryGetComponent(out TMPInvertBackground existing))
                 {
                     _background = existing;
                     return true;
@@ -230,7 +235,7 @@ namespace Code.UI
             if (CanvasUpdateRegistry.IsRebuildingGraphics())
                 return false;
 
-            var go = new GameObject(BackgroundName, typeof(RectTransform));
+            var go = new GameObject(backgroundName, typeof(RectTransform));
             go.transform.SetParent(parent, false);
             _background = go.AddComponent<TMPInvertBackground>();
             _background.raycastTarget = false;

@@ -504,16 +504,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: EasyTweens::EasyTweens.TweenAnimation
   tweens:
   - rid: 6297997552227975437
-  - rid: 6297997552227975438
+  - rid: 6297997621016396034
   - rid: 6297997553788518551
-  duration: 1.6000001
+  duration: 1.8
   timeSpeedMultiplier: 1
-  playOnAwake: 1
+  playOnAwake: 0
   restartOnEnable: 0
   lootType: 0
   ignoreTimeScale: 0
-  currentTime: 0
-  directionMultiplier: -1
+  currentTime: 1.8
+  directionMultiplier: 1
   muteNonSelectedTweens: 0
   allowCustomAnimationDuration: 0
   serializationVersion: 2
@@ -524,7 +524,7 @@ MonoBehaviour:
       type: {class: TypewriterTween, ns: EasyTweens, asm: EasyTweens}
       data:
         delay: 0.3
-        duration: 0.2
+        duration: 0.5
         curve:
           serializedVersion: 2
           m_Curve:
@@ -560,47 +560,6 @@ MonoBehaviour:
         isHidden: 0
         target: {fileID: 1981462647}
         startValue: 0
-        endValue: 0.5
-    - rid: 6297997552227975438
-      type: {class: TypewriterTween, ns: EasyTweens, asm: EasyTweens}
-      data:
-        delay: 0.4
-        duration: 0.2
-        curve:
-          serializedVersion: 2
-          m_Curve:
-          - serializedVersion: 3
-            time: 0
-            value: 0
-            inSlope: 0
-            outSlope: 1
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          - serializedVersion: 3
-            time: 1
-            value: 1
-            inSlope: 1
-            outSlope: 0
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          m_PreInfinity: 2
-          m_PostInfinity: 2
-          m_RotationOrder: 4
-        curveRepeats: 1
-        isSelected: 0
-        tweenGuid: 78f450c9-144c-4153-af7d-663afd7888b0
-        LinkedTweenGuid: 5a7e913e-82e2-4e62-bcfe-2791588a2480
-        LinkedTweenDelay: 0.5
-        IsDirty: 0
-        NameOverride: 
-        isUnfolded: 0
-        isHidden: 0
-        target: {fileID: 1981462647}
-        startValue: 0.5
         endValue: 1
     - rid: 6297997553788518551
       type: {class: TweenColorProperty, ns: EasyTweens, asm: EasyTweens}
@@ -634,8 +593,8 @@ MonoBehaviour:
         curveRepeats: 1
         isSelected: 0
         tweenGuid: fffdf653-5b59-4726-a55b-4ea71caf5784
-        LinkedTweenGuid: 78f450c9-144c-4153-af7d-663afd7888b0
-        LinkedTweenDelay: 1.1
+        LinkedTweenGuid: dd39fac4-26a1-47d5-8a17-7403a18d1378
+        LinkedTweenDelay: 1.3
         IsDirty: 0
         NameOverride: 
         isUnfolded: 0
@@ -675,6 +634,47 @@ MonoBehaviour:
           m_ColorSpace: -1
           m_NumColorKeys: 2
           m_NumAlphaKeys: 2
+    - rid: 6297997621016396034
+      type: {class: TypewriterTween, ns: EasyTweens, asm: EasyTweens}
+      data:
+        delay: 0
+        duration: 0.5
+        curve:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 0
+            inSlope: 0
+            outSlope: 1
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 1
+            value: 1
+            inSlope: 1
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        curveRepeats: 1
+        isSelected: 0
+        tweenGuid: dd39fac4-26a1-47d5-8a17-7403a18d1378
+        LinkedTweenGuid: 5a7e913e-82e2-4e62-bcfe-2791588a2480
+        LinkedTweenDelay: 0.8
+        IsDirty: 0
+        NameOverride: 
+        isUnfolded: 0
+        isHidden: 0
+        target: {fileID: 1507757552}
+        startValue: 0
+        endValue: 1
 --- !u!1 &562717394
 GameObject:
   m_ObjectHideFlags: 0
@@ -707,6 +707,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1981462644}
+  - {fileID: 1507757549}
   - {fileID: 680891879}
   m_Father: {fileID: 997714995}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -960,14 +961,14 @@ RectTransform:
   m_GameObject: {fileID: 680891878}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.0011303, y: 1.0011303, z: 1}
+  m_LocalScale: {x: 1.0436387, y: 1.0436387, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 562717395}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 200}
+  m_AnchoredPosition: {x: 0, y: 162}
   m_SizeDelta: {x: -40, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &680891880
@@ -990,7 +991,7 @@ MonoBehaviour:
   restartOnEnable: 0
   lootType: 2
   ignoreTimeScale: 0
-  currentTime: 0.035808116
+  currentTime: 0.3107165
   directionMultiplier: -1
   muteNonSelectedTweens: 0
   allowCustomAnimationDuration: 0
@@ -1071,8 +1072,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 14745599
-  m_fontColor: {r: 1, g: 1, b: 0.8784314, a: 0}
+    rgba: 4292935679
+  m_fontColor: {r: 1, g: 1, b: 0.8784314, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1365,6 +1366,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 997714995}
+  - component: {fileID: 997714998}
   - component: {fileID: 997714994}
   - component: {fileID: 997714993}
   - component: {fileID: 997714992}
@@ -1455,6 +1457,7 @@ RectTransform:
   m_Children:
   - {fileID: 562717395}
   - {fileID: 533797131}
+  - {fileID: 1206188620}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1493,6 +1496,139 @@ MonoBehaviour:
   _onTriggered:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &997714998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 997714990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 971cc4a72fd4c496a9abef053813635d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game.Runtime::Greetings
+  _countdownText: {fileID: 1507757552}
+  startCountdown: 2026
+  _tweenAnimation: {fileID: 533797132}
+  _bounceAnimation: {fileID: 1206188619}
+--- !u!1 &1206188618
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1206188620}
+  - component: {fileID: 1206188619}
+  m_Layer: 5
+  m_Name: BounceAnimation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1206188619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1206188618}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec426247209554dd582d0e35cdd2c540, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: EasyTweens::EasyTweens.TweenAnimation
+  tweens:
+  - rid: 6297997621016396029
+  duration: 0.2
+  timeSpeedMultiplier: 1
+  playOnAwake: 1
+  restartOnEnable: 0
+  lootType: 0
+  ignoreTimeScale: 0
+  currentTime: 0.2
+  directionMultiplier: 1
+  muteNonSelectedTweens: 0
+  allowCustomAnimationDuration: 0
+  serializationVersion: 2
+  references:
+    version: 2
+    RefIds:
+    - rid: 6297997621016396029
+      type: {class: TweenLocalScale, ns: EasyTweens, asm: EasyTweens}
+      data:
+        delay: 0
+        duration: 0.2
+        curve:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 0
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 0.04897435
+            value: 1.0016695
+            inSlope: -0.34503606
+            outSlope: -0.34503606
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0.05137919
+          - serializedVersion: 3
+            time: 1
+            value: 0
+            inSlope: -0.77675426
+            outSlope: -0.77675426
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0.0572579
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        curveRepeats: 1
+        isSelected: 0
+        tweenGuid: 
+        LinkedTweenGuid: 
+        LinkedTweenDelay: 0
+        IsDirty: 0
+        NameOverride: 
+        isUnfolded: 1
+        isHidden: 0
+        target: {fileID: 1507757549}
+        startValue: {x: 1, y: 1, z: 1}
+        endValue: {x: 1.2, y: 1.2, z: 1}
+        skipX: 0
+        skipY: 0
+        skipZ: 0
+--- !u!224 &1206188620
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1206188618}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 997714995}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1442150123
 GameObject:
   m_ObjectHideFlags: 0
@@ -1715,6 +1851,173 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1507757548
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1507757549}
+  - component: {fileID: 1507757553}
+  - component: {fileID: 1507757552}
+  - component: {fileID: 1507757551}
+  m_Layer: 5
+  m_Name: Label (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1507757549
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1507757548}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 562717395}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0.81}
+  m_SizeDelta: {x: 1000, y: 500}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1507757551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1507757548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8ace8ced0e81c847968cdca0aeda757, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Febucci.TextAnimatorForUnity.TMP.Runtime::Febucci.TextAnimatorForUnity.TextMeshPro.TextAnimator_TMP
+  localSettings:
+    isResettingTimeOnNewText: 1
+    defaultEffectsMode: 1
+    timeScale: 0
+    defaultBehaviorTags:
+    - s_wiggle
+    defaultAppearanceTags: []
+    defaultDisappearanceTags: []
+    isAnimatingBehaviors: 1
+    isAnimatingAppearances: 1
+    isAnimatingDisappearances: 1
+    useDynamicScaling: 1
+    referenceFontSize: 12
+  sharedSettings: {fileID: 0}
+  animationLoop: 0
+  databaseEffects: {fileID: 0}
+  styleSheet: {fileID: 0}
+--- !u!114 &1507757552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1507757548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: 2026
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: b67f313b7871941e7819c061ad72293e, type: 2}
+  m_sharedMaterial: {fileID: 4624587503035698156, guid: b67f313b7871941e7819c061ad72293e, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 200
+  m_fontSizeBase: 200
+  m_fontWeight: 400
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 18
+  m_fontSizeMax: 200
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_characterHorizontalScale: 1
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1507757553
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1507757548}
+  m_CullTransparentMesh: 1
 --- !u!1 &1626376311
 GameObject:
   m_ObjectHideFlags: 0
@@ -1912,10 +2215,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 562717395}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -82.390015}
-  m_SizeDelta: {x: 0, y: -358.78}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 241}
+  m_SizeDelta: {x: 1000, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1981462645
 MonoBehaviour:
@@ -1984,7 +2287,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'GM<invert>TK</invert>
 
-    <color=white>2026'
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b67f313b7871941e7819c061ad72293e, type: 2}
   m_sharedMaterial: {fileID: 4624587503035698156, guid: b67f313b7871941e7819c061ad72293e, type: 2}
@@ -2019,7 +2322,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_characterHorizontalScale: 1
