@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+set -u
+
+hook_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
+repo_root="$(git rev-parse --show-toplevel 2>/dev/null)" || exit 1
+legacy_status=0
+
+"$hook_dir/run-legacy-hook" post-commit || legacy_status=$?
+
+commit_message="$(git -C "$repo_root" log -1 --pretty=%B)" || exit "$legacy_status"
+if [[ "$commit_message" == *'[build]'* ]]; then
+    commit_sha="$(git -C "$repo_root" rev-parse --verify HEAD^{commit})" || exit "$legacy_status"
+    if ! "$repo_root/Tools/ItchBuildAutomation/request-build.sh" --commit "$commit_sha"; then
+        printf 'warning: commit %s was created, but its automatic build could not be queued.\n' \
+            "$commit_sha" >&2
+    fi
+fi
+
+exit "$legacy_status"
