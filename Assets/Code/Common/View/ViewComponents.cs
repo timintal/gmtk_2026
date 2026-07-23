@@ -1,6 +1,7 @@
 using FFS.Libraries.StaticEcs;
 using FFS.Libraries.StaticEcs.Unity;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 namespace Code.Common.View
 {
@@ -9,6 +10,7 @@ namespace Code.Common.View
     public struct ViewLink : IComponent { public EntityView View; }
     
     public struct NeedInitializeView : ITag { }
+    public partial struct NeedBindView : ITag { }
     public struct NeedInitRigidbody : ITag { }
     
     [StaticEcsEditorGroup("Physics", "00FFFF")]
@@ -33,6 +35,6 @@ namespace Code.Common.View
         }
     }
     [StaticEcsEditorGroup("Physics", "00FFFF")]
-    public struct RigidbodyLink : IComponent { public Rigidbody2D Value; }
-    public struct SpriteLink : IComponent { public SpriteRenderer Value; }
+    public partial struct RigidbodyLink : IComponent { public Rigidbody2D Value; }
+    public partial struct SpriteLink : IComponent { public SpriteRenderer Value; }
 }

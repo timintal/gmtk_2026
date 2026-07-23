@@ -26,6 +26,10 @@ namespace Code.Features.DragAndDrop
         public void OnDelete<TW>(World<TW>.Entity self, EntityGID link, HookReason reason) where TW : struct, IWorldType
         {
             link.TryDeleteLinkItem<TW, DragContainerItems>(self);
+            if (link.TryUnpack<TW>(out var container))
+            {
+                container.Set<ContainerLayoutDirty>();
+            }
         }
     }
 
@@ -90,9 +94,6 @@ namespace Code.Features.DragAndDrop
         public EntityGID TargetContainer;
         public bool HasSourceContainer;
         public bool HasTargetContainer;
-        public int PointerId;
-        public Vector2 DropScreenPosition;
-        public Vector2 DropWorldPosition;
     }
 
     [Serializable]
@@ -127,5 +128,29 @@ namespace Code.Features.DragAndDrop
         public Vector2 CellSpacing;
         public Vector2 LocalOffset;
         public bool Centered;
+    }
+
+    /// <summary>
+    /// Free-form layout: draggables keep whatever position they were dropped at (clamped inside
+    /// the container). When the dropped item overlaps existing members beyond the allowed
+    /// tolerance, those members are pushed aside without leaving the container bounds.
+    /// </summary>
+    [Serializable]
+    public struct FreeContainerLayout : IComponent
+    {
+        /// <summary>Center offset of the layout area relative to the container hitbox center.</summary>
+        public Vector2 LocalOffset;
+
+        /// <summary>Explicit layout area size. Zero derives it from the container hitbox.</summary>
+        public Vector2 Bounds;
+
+        /// <summary>Explicit item size used when a draggable has no hitbox. Zero derives it per item.</summary>
+        public Vector2 ItemSize;
+
+        /// <summary>How much two items may overlap (in layout units) before they get pushed apart.</summary>
+        public float OverlapTolerance;
+
+        /// <summary>Number of separation passes used to resolve overlaps.</summary>
+        public int RelaxIterations;
     }
 }

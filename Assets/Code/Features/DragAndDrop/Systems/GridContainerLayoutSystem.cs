@@ -37,7 +37,7 @@ namespace Code.Features.DragAndDrop
                     continue;
                 }
 
-                if (draggable.Has<Dragging>())
+                if (draggable.Has<Dragging>() || draggable.Has<Destroyed>())
                 {
                     continue;
                 }

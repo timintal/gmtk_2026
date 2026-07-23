@@ -2,6 +2,7 @@ namespace Code.Features.DragAndDrop
 {
     public static class DragAndDropSystemOrder
     {
+        public const int ReleaseDestroyed = -310;
         public const int Input = -300;
         public const int Follow = -290;
         public const int CoreValidation = -270;

@@ -1,3 +1,6 @@
+using _Game.Features.Dice;
+using _Game.Features.Enemies;
+using _Game.Features.PlayerControls;
 using Code.Common;
 using Code.Common.Fx;
 using Code.Common.View;
@@ -50,19 +53,29 @@ public sealed class EcsBootstrap : MonoBehaviour
         if (!_initialized) return;
 
         _fsm.Tick();
-        
-        UpdateDeltaTime();
+
+        UpdateDeltaTime(Time.deltaTime, Time.unscaledDeltaTime);
 
         GameSys.Update();
         W.Tick();
     }
-    private static void UpdateDeltaTime()
+
+    private void FixedUpdate()
+    {
+        if (!_initialized) return;
+
+        UpdateDeltaTime(Time.fixedDeltaTime, Time.fixedUnscaledDeltaTime);
+
+        FixedSys.Update();
+    }
+
+    private static void UpdateDeltaTime(float deltaTime, float unscaledDeltaTime)
     {
         var paused = W.Query<All<Pause>>().EntitiesCount() > 0;
 
         ref var dt = ref W.GetResource<DeltaTime>();
-        dt.Value = paused ? 0 : Time.deltaTime;
-        dt.Unscaled = Time.unscaledDeltaTime;
+        dt.Value = paused ? 0 : deltaTime;
+        dt.Unscaled = unscaledDeltaTime;
     }
 
     private void OnDestroy()
@@ -83,6 +96,7 @@ public sealed class EcsBootstrap : MonoBehaviour
         UnityEventTypes.Register<WT>();
 
         GameSys.Create();
+        FixedSys.Create();
 
         CommonSystems.AddToWorld();
         
@@ -94,6 +108,9 @@ public sealed class EcsBootstrap : MonoBehaviour
         StatsFeature.AddToWorld();
         MovementFeature.AddToWorld();
         FxFeature.AddToWorld();
+        PlayerControlsFeature.AddToWorld();
+        DiceFeature.AddToWorld();
+        EnemiesFeature.AddToWorld();
 
         EcsDebug<WT>.AddWorld<GameSystems>();
 
@@ -102,6 +119,7 @@ public sealed class EcsBootstrap : MonoBehaviour
         SetUpResources();
 
         GameSys.Initialize();
+        FixedSys.Initialize();
     }
     private void SetUpResources()
     {
@@ -119,6 +137,7 @@ public sealed class EcsBootstrap : MonoBehaviour
         if (!_initialized) return;
         _initialized = false;
 
+        FixedSys.Destroy();
         GameSys.Destroy();
         EcsDebug<WT>.RemoveWorld();
         W.Destroy();

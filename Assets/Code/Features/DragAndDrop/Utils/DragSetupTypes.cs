@@ -11,6 +11,7 @@ namespace Code.Features.DragAndDrop
     {
         None,
         Line,
-        Grid
+        Grid,
+        Free
     }
 }

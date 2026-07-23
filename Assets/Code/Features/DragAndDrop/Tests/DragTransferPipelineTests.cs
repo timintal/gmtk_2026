@@ -56,9 +56,6 @@ namespace Code.Features.DragAndDrop.Tests
                 TargetContainer = default,
                 HasSourceContainer = true,
                 HasTargetContainer = false,
-                PointerId = 0,
-                DropScreenPosition = Vector2.zero,
-                DropWorldPosition = Vector2.zero
             });
 
             new DragTransferCoreValidationSystem().Update();
@@ -82,9 +79,6 @@ namespace Code.Features.DragAndDrop.Tests
                 TargetContainer = target.GID,
                 HasSourceContainer = true,
                 HasTargetContainer = true,
-                PointerId = 0,
-                DropScreenPosition = Vector2.zero,
-                DropWorldPosition = Vector2.zero
             });
 
             new DragTransferCoreValidationSystem().Update();
@@ -117,9 +111,6 @@ namespace Code.Features.DragAndDrop.Tests
                 TargetContainer = target.GID,
                 HasSourceContainer = true,
                 HasTargetContainer = true,
-                PointerId = 0,
-                DropScreenPosition = Vector2.zero,
-                DropWorldPosition = Vector2.zero
             });
             var requestGid = request.GID;
 
@@ -169,9 +160,6 @@ namespace Code.Features.DragAndDrop.Tests
                         TargetContainer = target.GID,
                         HasSourceContainer = true,
                         HasTargetContainer = true,
-                        PointerId = 0,
-                        DropScreenPosition = Vector2.zero,
-                        DropWorldPosition = Vector2.zero
                     },
                     new DragTransferRejected { Reason = DragTransferRejectReason.Custom });
 

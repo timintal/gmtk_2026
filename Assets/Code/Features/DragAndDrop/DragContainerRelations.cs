@@ -51,18 +51,20 @@ namespace Code.Features.DragAndDrop
             }
 
             ref readonly var items = ref containerEntity.Read<W.Links<DragContainerItems>>();
-            if (exclude.Raw == 0UL)
-            {
-                return items.Length;
-            }
-
             var count = 0;
             foreach (var item in items)
             {
-                if (item.Value != exclude)
+                if (exclude.Raw != 0UL && item.Value == exclude)
                 {
-                    count++;
+                    continue;
                 }
+
+                if (!item.Value.TryUnpack<WT>(out var draggable) || draggable.Has<Destroyed>())
+                {
+                    continue;
+                }
+
+                count++;
             }
 
             return count;

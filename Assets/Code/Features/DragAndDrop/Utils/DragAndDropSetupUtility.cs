@@ -74,6 +74,7 @@ namespace Code.Features.DragAndDrop.Utils
             DragContainerLayoutKind layoutKind,
             LineContainerLayout lineLayout,
             GridContainerLayout gridLayout,
+            FreeContainerLayout freeLayout,
             bool addColliderIfMissing)
         {
             var resolvedSpace = ResolveSpace(gameObject, space);
@@ -106,6 +107,7 @@ namespace Code.Features.DragAndDrop.Utils
 
             provider.OnDeleteProvider(typeof(LineContainerLayout));
             provider.OnDeleteProvider(typeof(GridContainerLayout));
+            provider.OnDeleteProvider(typeof(FreeContainerLayout));
 
             switch (layoutKind)
             {
@@ -118,6 +120,11 @@ namespace Code.Features.DragAndDrop.Utils
                     provider.OnChangeProvider(
                         new ComponentProvider { value = gridLayout },
                         typeof(GridContainerLayout));
+                    break;
+                case DragContainerLayoutKind.Free:
+                    provider.OnChangeProvider(
+                        new ComponentProvider { value = freeLayout },
+                        typeof(FreeContainerLayout));
                     break;
             }
         }

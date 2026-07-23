@@ -15,7 +15,7 @@ MonoBehaviour:
   worlds:
   - worldTypeFullName: WT
     main:
-      selectedTabName: 
+      selectedTabName: Entities
       drawRate: 0.5
       drawFrames: 2
     entities:
@@ -29,7 +29,8 @@ MonoBehaviour:
       filterActive: 1
       gidFilterActive: 0
       gidFilterValue: 0
-      filterAll: []
+      filterAll:
+      - Code/Features/DragAndDrop/LineContainerLayout
       filterAllOnlyDisabled: []
       filterAllWithDisabled: []
       filterNone: []
@@ -45,6 +46,7 @@ MonoBehaviour:
       - View
       - Economy
       - Health
+      - Transform
     events:
       latest: 1
       filterTypeNames: []

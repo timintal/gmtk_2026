@@ -111,9 +111,6 @@ namespace Code.Features.DragAndDrop
                     TargetContainer = targetContainer,
                     HasSourceContainer = dragging.HasSourceContainer,
                     HasTargetContainer = hasTarget,
-                    PointerId = pointerEvent.PointerId,
-                    DropScreenPosition = pointerEvent.ScreenPosition,
-                    DropWorldPosition = pointerEvent.WorldPosition
                 });
                 return;
             }

@@ -5,11 +5,11 @@ namespace Code.Common
         public const short Init = -10000;
         public const short PostInit = -9500;
 
-        public static readonly short Input = -9000;
+        public const short Input = -9000;
 
-        public const short PreUpdate = 1000;
+        public const short PreUpdate = -1000;
 
-        public const short Update = 2000;
+        public const short Update = 0;
 
         public const short LateUpdate = 3000;
 

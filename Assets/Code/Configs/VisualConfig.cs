@@ -10,6 +10,7 @@ namespace Code.Configs
     public class VisualConfig : ScriptableObject, IResource
     {
         public TooltipPrefabEntry[] TooltipPrefabs = Array.Empty<TooltipPrefabEntry>();
+        public WTEntityProvider DicePrefab;
 
         public TooltipView GetTooltipPrefab(TooltipType type)
         {

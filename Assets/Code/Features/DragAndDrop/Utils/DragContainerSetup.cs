@@ -42,6 +42,16 @@ public sealed class DragContainerSetup : MonoBehaviour
         Centered = true
     };
 
+    [ShowIf(nameof(Layout), DragContainerLayoutKind.Free)]
+    public FreeContainerLayout FreeLayout = new()
+    {
+        LocalOffset = Vector2.zero,
+        Bounds = Vector2.zero,
+        ItemSize = Vector2.zero,
+        OverlapTolerance = 0.25f,
+        RelaxIterations = 8
+    };
+
     [Button("Apply Container Setup")]
     public void ApplySetup()
     {
@@ -63,6 +73,7 @@ public sealed class DragContainerSetup : MonoBehaviour
             Layout,
             LineLayout,
             GridLayout,
+            FreeLayout,
             AddColliderIfMissing);
 
         EditorUtility.SetDirty(gameObject);

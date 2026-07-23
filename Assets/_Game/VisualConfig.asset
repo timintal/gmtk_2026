@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc57814c24c7441aa98e3c255e6516f6, type: 3}
   m_Name: VisualConfig
   m_EditorClassIdentifier: Game.Runtime::Code.Configs.VisualConfig
-  BasicBall: {fileID: 5484818089008388327, guid: 38f18fcf7231441749f0d378c44d4ab7, type: 3}
   TooltipPrefabs:
   - Type: 0
-    Prefab: {fileID: 8800278021059688000, guid: d124e0ebf123f4445a3a21f798e5c111, type: 3}
+    Prefab: {fileID: 4889574568982255947, guid: ac02c4d9fe3a447938da006818d4580f, type: 3}
+  DicePrefab: {fileID: 6572518505164573875, guid: 5b9f09fa7373a4e92a186f4a69a24a30, type: 3}

@@ -1,11 +1,10 @@
-using System;
 using FFS.Libraries.StaticEcs;
 using UnityEngine;
 
 namespace Code.Common.View.ChildViews
 {
 
-    public class Collider2DChildView : EntityChildView
+    public partial class Collider2DChildView : EntityChildView
     {
         [SerializeField] Collider2D _collider2D;
         

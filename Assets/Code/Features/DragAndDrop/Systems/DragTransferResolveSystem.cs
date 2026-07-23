@@ -59,7 +59,7 @@ namespace Code.Features.DragAndDrop
             }
 
             DragContainerRelations.PlaceInContainer(draggable, request.TargetContainer);
-            
+
             if (hasSource)
             {
                 DragContainerRelations.MarkLayoutDirty(source);
