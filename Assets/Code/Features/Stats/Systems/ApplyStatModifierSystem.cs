@@ -38,6 +38,20 @@ namespace Code.Features.Stats
                 ref var stat = ref entry.Target.Ref<T1>();
                 stat.CurrentValue += statModifier.Additive;
             }
+
+            // All modifiers are applied; CurrentValue now holds this frame's final value.
+            // Compare against the pre-reset snapshot and only mark stats whose value actually changed.
+            // Iterating every stat of this type (not just modified ones) also covers stats without
+            // modifiers, whose value changes when BaseValue changes.
+            var previous = StatChangeBuffer<T1>.Previous;
+            foreach (var e in W.Query<All<T1>>().Entities())
+            {
+                if (!previous.TryGetValue(e.ID, out var oldValue))
+                    continue;
+
+                if (oldValue != e.Read<T1>().CurrentValue)
+                    e.Mut<T1>();
+            }
         }
     }
 }

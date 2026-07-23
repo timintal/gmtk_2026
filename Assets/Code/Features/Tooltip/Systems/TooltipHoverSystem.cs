@@ -26,8 +26,7 @@ namespace Code.Features.Tooltip
                 return;
             }
 
-            ref readonly var settings = ref W.GetResource<TooltipSettings>();
-            if (!settings.Enabled)
+            if (!TooltipFeature.IsEnabled())
             {
                 CancelHoverTracking();
                 return;

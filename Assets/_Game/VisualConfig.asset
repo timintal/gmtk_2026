@@ -15,4 +15,6 @@ MonoBehaviour:
   TooltipPrefabs:
   - Type: 0
     Prefab: {fileID: 4889574568982255947, guid: ac02c4d9fe3a447938da006818d4580f, type: 3}
+  - Type: 1
+    Prefab: {fileID: 5428507864810771835, guid: be1ee9a0e84b2454abba58658d32ff4f, type: 3}
   DicePrefab: {fileID: 6572518505164573875, guid: 5b9f09fa7373a4e92a186f4a69a24a30, type: 3}

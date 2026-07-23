@@ -3,7 +3,7 @@ using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 
-namespace MakeSerializableGenerator
+namespace EcsGenerators
 {
     /// <summary>
     /// For every concrete class deriving from Code.Common.View.EntityChildView, generates a link

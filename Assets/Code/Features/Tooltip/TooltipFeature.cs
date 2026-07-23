@@ -1,4 +1,5 @@
 using Code.Common;
+using Code.Features.DragAndDrop;
 using FFS.Libraries.StaticEcs;
 
 namespace Code.Features.Tooltip
@@ -25,7 +26,8 @@ namespace Code.Features.Tooltip
         {
             return W.Status == WorldStatus.Initialized
                    && W.HasResource<TooltipSettings>()
-                   && W.GetResource<TooltipSettings>().Enabled;
+                   && W.GetResource<TooltipSettings>().Enabled &&
+                   W.Query<All<Dragging>>().EntitiesCount() == 0;
         }
     }
 }

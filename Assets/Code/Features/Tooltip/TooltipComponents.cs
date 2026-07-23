@@ -6,6 +6,8 @@ namespace Code.Features.Tooltip
     public enum TooltipType : byte
     {
         Text = 0,
+        Enemy = 1,
+        
     }
 
     [Serializable]

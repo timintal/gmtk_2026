@@ -1604,6 +1604,17 @@ MonoBehaviour:
   onMessage:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &859457684 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2804356435177813405, guid: ee5e023a2497944baa17062d55f813af, type: 3}
+  m_PrefabInstance: {fileID: 112440712037440308}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44cb58e3cc7c8491287110a703fa7f97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game.Runtime::WTEntityProvider
 --- !u!1 &952609269
 GameObject:
   m_ObjectHideFlags: 0
@@ -2940,6 +2951,82 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1794630952}
   m_CullTransparentMesh: 1
+--- !u!1 &1800826580
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1800826582}
+  - component: {fileID: 1800826581}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1800826581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1800826580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44cb58e3cc7c8491287110a703fa7f97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game.Runtime::WTEntityProvider
+  UsageType: 0
+  OnCreateType: 0
+  Scroll: {x: 0, y: 0}
+  onDestroyType: 0
+  disableEntityOnCreate: 0
+  onEnableAndDisable: 1
+  providers:
+  - rid: 6297997647674605956
+  - rid: 6297997647674605996
+  entityType: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 6297997647674605918
+      type: {class: AttackModifier, ns: _Game.Features.Enemies, asm: Game.Runtime}
+      data:
+        Additive: 10
+        Multiplicative: 0
+    - rid: 6297997647674605956
+      type: {class: ComponentProvider, ns: FFS.Libraries.StaticEcs.Unity, asm: FFS.StaticEcs.Unity}
+      data:
+        value:
+          rid: 6297997647674605918
+    - rid: 6297997647674605996
+      type: {class: LinkProvider, ns: FFS.Libraries.StaticEcs.Unity, asm: FFS.StaticEcs.Unity}
+      data:
+        value:
+          rid: 6297997647674605997
+        target: {fileID: 859457684}
+    - rid: 6297997647674605997
+      type: {class: 'World`1/Link`1[[WT, Game.Runtime],[Code.Common.Target, Game.Runtime]]', ns: FFS.Libraries.StaticEcs, asm: FFS.StaticEcs}
+      data: 
+--- !u!4 &1800826582
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1800826580}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 9.16984, y: 3.31504, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1936042936
 GameObject:
   m_ObjectHideFlags: 0
@@ -3614,6 +3701,154 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2804356435177813405, guid: ee5e023a2497944baa17062d55f813af, type: 3}
+      propertyPath: providers.Array.size
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2804356435177813405, guid: ee5e023a2497944baa17062d55f813af, type: 3}
+      propertyPath: 'providers.Array.data[14]'
+      value: 6297997647674605879
+      objectReference: {fileID: 0}
+    - target: {fileID: 2804356435177813405, guid: ee5e023a2497944baa17062d55f813af, type: 3}
+      propertyPath: 'managedReferences[6297997647674605675]'
+      value: FFS.StaticEcs.Unity FFS.Libraries.StaticEcs.Unity.ComponentProvider
+      objectReference: {fileID: 0}
+    - target: {fileID: 2804356435177813405, guid: ee5e023a2497944baa17062d55f813af, type: 3}
+      propertyPath: 'managedReferences[6297997647674605676]'
+      value: Game.Runtime _Game.Features.Enemies.Attack
+      objectReference: {fileID: 0}
+    - target: {fileID: 2804356435177813405, guid: ee5e023a2497944baa17062d55f813af, type: 3}
+      propertyPath: 'managedReferences[6297997647674605757]'
+      value: FFS.StaticEcs.Unity FFS.Libraries.StaticEcs.Unity.ComponentProvider
+      objectReference: {fileID: 0}
+    - target: {fileID: 2804356435177813405, guid: ee5e023a2497944baa17062d55f813af, type: 3}
+      propertyPath: 'managedReferences[6297997647674605763]'
+      value: FFS.StaticEcs.Unity FFS.Libraries.StaticEcs.Unity.ComponentProvider
+      objectReference: {fileID: 0}
+    - target: {fileID: 2804356435177813405, guid: ee5e023a2497944baa17062d55f813af, type: 3}
+      propertyPath: 'managedReferences[6297997647674605769]'
+      value: FFS.StaticEcs.Unity FFS.Libraries.StaticEcs.Unity.ComponentProvider
+      objectReference: {fileID: 0}
+    - target: {fileID: 2804356435177813405, guid: ee5e023a2497944baa17062d55f813af, type: 3}
+      propertyPath: 'managedReferences[6297997647674605775]'
+      value: FFS.StaticEcs.Unity FFS.Libraries.StaticEcs.Unity.ComponentProvider
+      objectReference: {fileID: 0}
+    - target: {fileID: 2804356435177813405, guid: ee5e023a2497944baa17062d55f813af, type: 3}
+      propertyPath: 'managedReferences[6297997647674605781]'
+      value: FFS.StaticEcs.Unity FFS.Libraries.StaticEcs.Unity.ComponentProvider
+      objectReference: {fileID: 0}
+    - target: {fileID: 2804356435177813405, guid: ee5e023a2497944baa17062d55f813af, type: 3}
+      propertyPath: 'managedReferences[6297997647674605787]'
+      value: FFS.StaticEcs.Unity FFS.Libraries.StaticEcs.Unity.ComponentProvider
+      objectReference: {fileID: 0}
+    - target: {fileID: 2804356435177813405, guid: ee5e023a2497944baa17062d55f813af, type: 3}
+      propertyPath: 'managedReferences[6297997647674605800]'
+      value: FFS.StaticEcs.Unity FFS.Libraries.StaticEcs.Unity.ComponentProvider
+      objectReference: {fileID: 0}
+    - target: {fileID: 2804356435177813405, guid: ee5e023a2497944baa17062d55f813af, type: 3}
+      propertyPath: 'managedReferences[6297997647674605806]'
+      value: FFS.StaticEcs.Unity FFS.Libraries.StaticEcs.Unity.ComponentProvider
+      objectReference: {fileID: 0}
+    - target: {fileID: 2804356435177813405, guid: ee5e023a2497944baa17062d55f813af, type: 3}
+      propertyPath: 'managedReferences[6297997647674605812]'
+      value: FFS.StaticEcs.Unity FFS.Libraries.StaticEcs.Unity.ComponentProvider
+      objectReference: {fileID: 0}
+    - target: {fileID: 2804356435177813405, guid: ee5e023a2497944baa17062d55f813af, type: 3}
+      propertyPath: 'managedReferences[6297997647674605818]'
+      value: FFS.StaticEcs.Unity FFS.Libraries.StaticEcs.Unity.ComponentProvider
+      objectReference: {fileID: 0}
+    - target: {fileID: 2804356435177813405, guid: ee5e023a2497944baa17062d55f813af, type: 3}
+      propertyPath: 'managedReferences[6297997647674605824]'
+      value: FFS.StaticEcs.Unity FFS.Libraries.StaticEcs.Unity.ComponentProvider
+      objectReference: {fileID: 0}
+    - target: {fileID: 2804356435177813405, guid: ee5e023a2497944baa17062d55f813af, type: 3}
+      propertyPath: 'managedReferences[6297997647674605830]'
+      value: FFS.StaticEcs.Unity FFS.Libraries.StaticEcs.Unity.ComponentProvider
+      objectReference: {fileID: 0}
+    - target: {fileID: 2804356435177813405, guid: ee5e023a2497944baa17062d55f813af, type: 3}
+      propertyPath: 'managedReferences[6297997647674605836]'
+      value: FFS.StaticEcs.Unity FFS.Libraries.StaticEcs.Unity.ComponentProvider
+      objectReference: {fileID: 0}
+    - target: {fileID: 2804356435177813405, guid: ee5e023a2497944baa17062d55f813af, type: 3}
+      propertyPath: 'managedReferences[6297997647674605842]'
+      value: FFS.StaticEcs.Unity FFS.Libraries.StaticEcs.Unity.ComponentProvider
+      objectReference: {fileID: 0}
+    - target: {fileID: 2804356435177813405, guid: ee5e023a2497944baa17062d55f813af, type: 3}
+      propertyPath: 'managedReferences[6297997647674605879]'
+      value: FFS.StaticEcs.Unity FFS.Libraries.StaticEcs.Unity.ComponentProvider
+      objectReference: {fileID: 0}
+    - target: {fileID: 2804356435177813405, guid: ee5e023a2497944baa17062d55f813af, type: 3}
+      propertyPath: managedReferences[6297997647674605675].value
+      value: 6297997647674605676
+      objectReference: {fileID: 0}
+    - target: {fileID: 2804356435177813405, guid: ee5e023a2497944baa17062d55f813af, type: 3}
+      propertyPath: managedReferences[6297997647674605757].value
+      value: 6297997647674605676
+      objectReference: {fileID: 0}
+    - target: {fileID: 2804356435177813405, guid: ee5e023a2497944baa17062d55f813af, type: 3}
+      propertyPath: managedReferences[6297997647674605763].value
+      value: 6297997647674605676
+      objectReference: {fileID: 0}
+    - target: {fileID: 2804356435177813405, guid: ee5e023a2497944baa17062d55f813af, type: 3}
+      propertyPath: managedReferences[6297997647674605769].value
+      value: 6297997647674605676
+      objectReference: {fileID: 0}
+    - target: {fileID: 2804356435177813405, guid: ee5e023a2497944baa17062d55f813af, type: 3}
+      propertyPath: managedReferences[6297997647674605775].value
+      value: 6297997647674605676
+      objectReference: {fileID: 0}
+    - target: {fileID: 2804356435177813405, guid: ee5e023a2497944baa17062d55f813af, type: 3}
+      propertyPath: managedReferences[6297997647674605781].value
+      value: 6297997647674605676
+      objectReference: {fileID: 0}
+    - target: {fileID: 2804356435177813405, guid: ee5e023a2497944baa17062d55f813af, type: 3}
+      propertyPath: managedReferences[6297997647674605787].value
+      value: 6297997647674605676
+      objectReference: {fileID: 0}
+    - target: {fileID: 2804356435177813405, guid: ee5e023a2497944baa17062d55f813af, type: 3}
+      propertyPath: managedReferences[6297997647674605800].value
+      value: 6297997647674605676
+      objectReference: {fileID: 0}
+    - target: {fileID: 2804356435177813405, guid: ee5e023a2497944baa17062d55f813af, type: 3}
+      propertyPath: managedReferences[6297997647674605806].value
+      value: 6297997647674605676
+      objectReference: {fileID: 0}
+    - target: {fileID: 2804356435177813405, guid: ee5e023a2497944baa17062d55f813af, type: 3}
+      propertyPath: managedReferences[6297997647674605812].value
+      value: 6297997647674605676
+      objectReference: {fileID: 0}
+    - target: {fileID: 2804356435177813405, guid: ee5e023a2497944baa17062d55f813af, type: 3}
+      propertyPath: managedReferences[6297997647674605818].value
+      value: 6297997647674605676
+      objectReference: {fileID: 0}
+    - target: {fileID: 2804356435177813405, guid: ee5e023a2497944baa17062d55f813af, type: 3}
+      propertyPath: managedReferences[6297997647674605824].value
+      value: 6297997647674605676
+      objectReference: {fileID: 0}
+    - target: {fileID: 2804356435177813405, guid: ee5e023a2497944baa17062d55f813af, type: 3}
+      propertyPath: managedReferences[6297997647674605830].value
+      value: 6297997647674605676
+      objectReference: {fileID: 0}
+    - target: {fileID: 2804356435177813405, guid: ee5e023a2497944baa17062d55f813af, type: 3}
+      propertyPath: managedReferences[6297997647674605836].value
+      value: 6297997647674605676
+      objectReference: {fileID: 0}
+    - target: {fileID: 2804356435177813405, guid: ee5e023a2497944baa17062d55f813af, type: 3}
+      propertyPath: managedReferences[6297997647674605842].value
+      value: 6297997647674605676
+      objectReference: {fileID: 0}
+    - target: {fileID: 2804356435177813405, guid: ee5e023a2497944baa17062d55f813af, type: 3}
+      propertyPath: managedReferences[6297997647674605879].value
+      value: 6297997647674605676
+      objectReference: {fileID: 0}
+    - target: {fileID: 2804356435177813405, guid: ee5e023a2497944baa17062d55f813af, type: 3}
+      propertyPath: managedReferences[6297997647674605676].<BaseValue>k__BackingField
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2804356435177813405, guid: ee5e023a2497944baa17062d55f813af, type: 3}
+      propertyPath: managedReferences[6297997647674605676].<CurrentValue>k__BackingField
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3084192053699965938, guid: ee5e023a2497944baa17062d55f813af, type: 3}
       propertyPath: m_Name
       value: Enemy
@@ -3665,6 +3900,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8934784414998919479, guid: ee5e023a2497944baa17062d55f813af, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 8617993936301263670, guid: ee5e023a2497944baa17062d55f813af, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: ee5e023a2497944baa17062d55f813af, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
@@ -3682,3 +3920,4 @@ SceneRoots:
   - {fileID: 2030804991}
   - {fileID: 1214705114}
   - {fileID: 112440712037440308}
+  - {fileID: 1800826582}

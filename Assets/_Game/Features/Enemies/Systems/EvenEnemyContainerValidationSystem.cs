@@ -4,7 +4,7 @@ using FFS.Libraries.StaticEcs;
 
 namespace _Game.Features.Enemies
 {
-    public class DiceToEnemyContainerValidationSystem : ISystem
+    public class EvenEnemyContainerValidationSystem : ISystem
     {
         public void Update()
         {
@@ -18,13 +18,14 @@ namespace _Game.Features.Enemies
                 var request = requestEntity.Read<DragTransferRequest>();
                 
                 if (request.TargetContainer.TryUnpack<WT>(out var targetContainer) && 
-                    targetContainer.Has<EnemyCountdownContainer>())
+                    targetContainer.Has<AcceptOnlyEven>())
                 {
-                   if (!request.Draggable.TryUnpack<WT>(out var draggable) || 
-                       !draggable.Has<DiceValue>())
-                   {
-                       requestEntity.Add<DragTransferRejected>();
-                   }
+                    if (!request.Draggable.TryUnpack<WT>(out var draggable) || 
+                        !draggable.Has<DiceValue>() ||
+                        draggable.Read<DiceValue>().Value % 2 != 0)
+                    {
+                        requestEntity.Add<DragTransferRejected>();
+                    }
                 }
             }
         }

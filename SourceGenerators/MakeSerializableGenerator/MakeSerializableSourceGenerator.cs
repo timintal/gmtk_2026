@@ -5,7 +5,7 @@ using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 
-namespace MakeSerializableGenerator
+namespace EcsGenerators
 {
     /// <summary>
     /// Adds [System.Serializable] to StaticEcs component/tag/event structs so StaticEcs-Unity

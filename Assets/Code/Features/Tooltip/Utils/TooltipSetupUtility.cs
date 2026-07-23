@@ -54,7 +54,7 @@ namespace Code.Features.Tooltip.Utils
 
         private static void ApplyWorldHitbox(GameObject gameObject, WTEntityProvider provider)
         {
-            var collider = gameObject.GetComponent<Collider2D>() ?? gameObject.GetComponentInChildren<Collider2D>();
+            var collider = gameObject.GetComponent<Collider2D>() ?? gameObject.GetComponentInChildren<Collider2D>(true);
             if (collider == null)
             {
                 throw new System.InvalidOperationException(
