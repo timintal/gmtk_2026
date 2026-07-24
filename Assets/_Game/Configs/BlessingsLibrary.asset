@@ -46,19 +46,19 @@ MonoBehaviour:
     AffectRules: 03000000
     Value: 2
   - BlessingId: roll2
-    Title: Dice
+    Title: Dice {0}
     Description: 'Rolls {0} dice '
     Type: 3
     AffectRules: 
     Value: 2
   - BlessingId: roll3
-    Title: Dice
+    Title: Dice {0}
     Description: 'Rolls {0} dice '
     Type: 3
     AffectRules: 
     Value: 3
   - BlessingId: reroll
-    Title: Dice
+    Title: Reroll
     Description: 'Reroll all current dice '
     Type: 3
     AffectRules: 04000000
