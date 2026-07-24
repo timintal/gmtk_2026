@@ -26,12 +26,23 @@ namespace _Game.Features.Blessings.Views
         [SerializeField] int _baseOrderInLayer = 0;
         
         BlessingView _hovered;
+        private bool _dirty;
 
         public Transform Root => _root;
 
-        void OnEnable() => Layout();
+        void OnEnable() => _dirty = true;
 
-        void Update() => UpdateHover();
+        void Update()
+        {
+            UpdateHover();
+            if (_dirty)
+            {
+                Layout();
+                _dirty = false;
+            }
+        }
+
+        private void OnTransformChildrenChanged() => _dirty = true;
 
         // Central hover resolution: when several cards overlap under the cursor, only the
         // top-most one (highest sibling index == drawn last == on top) is hovered.
@@ -89,8 +100,7 @@ namespace _Game.Features.Blessings.Views
                 _hovered.SetHovered(true);
             }
             
-            if (needRelayout)
-                Layout();
+            _dirty |= needRelayout;
         }
 
         static Vector2 ScreenToWorld2D(Camera camera, Vector2 screen)

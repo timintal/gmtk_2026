@@ -214,8 +214,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Piska supiska
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 807bc303619f542ab9a80f040ecc34c0, type: 2}
-  m_sharedMaterial: {fileID: 2692537981967717867, guid: 807bc303619f542ab9a80f040ecc34c0, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 4344aa941b300449592f71ad3649be31, type: 2}
+  m_sharedMaterial: {fileID: -6481126666274877231, guid: 4344aa941b300449592f71ad3649be31, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

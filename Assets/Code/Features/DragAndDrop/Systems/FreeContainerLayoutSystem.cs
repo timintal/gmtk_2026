@@ -77,12 +77,12 @@ namespace Code.Features.DragAndDrop
                 var maxStep = layout.AnimationSpeed * dt;
                 var epsilon = layout.SettleEpsilon > 0f ? layout.SettleEpsilon : DefaultSettleEpsilon;
 
-                var moved = FreeLayoutCalculator.Step(bounds, _items, layout.OverlapTolerance, stepScale, maxStep);
+                var moved = FreeLayoutCalculator.Step(bounds, _items, layout.OverlapTolerance, stepScale, maxStep, layout.Shape);
                 settled = moved <= epsilon;
             }
             else
             {
-                FreeLayoutCalculator.Resolve(bounds, _items, layout.OverlapTolerance, layout.RelaxIterations);
+                FreeLayoutCalculator.Resolve(bounds, _items, layout.OverlapTolerance, layout.RelaxIterations, layout.Shape);
                 settled = true;
             }
 

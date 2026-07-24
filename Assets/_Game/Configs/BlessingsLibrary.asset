@@ -15,45 +15,45 @@ MonoBehaviour:
   BlessingsConfigs:
   - BlessingId: +1
     Title: Spark
-    Description: Add +{0} to a selected <sprite name=dice>
+    Description: Add <b>+{0}</b>to a selected <sprite name=dice>
     Type: 1
     AffectRules: 
     Value: 1
   - BlessingId: x2
     Title: Shock
-    Description: x{0} to a selected <sprite name=dice>
+    Description: <b>x{0}</b>to a selected <sprite name=dice>
     Type: 2
     AffectRules: 
     Value: 2
   - BlessingId: +1 same
     Title: Spark siblings
-    Description: Add +{0} to a selected <sprite name=dice> and all others with the
-      same value
+    Description: Add <b>+{0}</b> to a selected <sprite name=dice> and all others
+      with the same value
     Type: 1
     AffectRules: 03000000
     Value: 1
   - BlessingId: +1 all
     Title: Spark All
-    Description: 'Add +{0} to all <sprite name=dice> '
+    Description: 'Add <b>+{0}</b>  to all <sprite name=dice> '
     Type: 1
     AffectRules: 04000000
     Value: 1
   - BlessingId: x2 same
     Title: Shok siblings
-    Description: x{0} to a selected <sprite name=dice> and all others with the same
-      value
+    Description: <b>x{0}</b> to a selected <sprite name=dice> and all others with
+      the same value
     Type: 2
     AffectRules: 03000000
     Value: 2
   - BlessingId: roll2
     Title: Dice {0}
-    Description: 'Rolls {0} dice '
+    Description: 'Rolls <b>{0}</b>  dice '
     Type: 3
     AffectRules: 
     Value: 2
   - BlessingId: roll3
     Title: Dice {0}
-    Description: 'Rolls {0} dice '
+    Description: 'Rolls <b>{0}</b> dice '
     Type: 3
     AffectRules: 
     Value: 3

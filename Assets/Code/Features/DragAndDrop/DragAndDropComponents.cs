@@ -130,6 +130,16 @@ namespace Code.Features.DragAndDrop
         public bool Centered;
     }
 
+    /// <summary>Collision shape used when the free layout separates overlapping items.</summary>
+    public enum FreeLayoutShape : byte
+    {
+        /// <summary>Axis-aligned boxes derived from each item's half size.</summary>
+        Rectangle = 0,
+
+        /// <summary>Circles whose radius is the larger of each item's half-size components.</summary>
+        Circle = 1
+    }
+
     /// <summary>
     /// Free-form layout: draggables keep whatever position they were dropped at (clamped inside
     /// the container). When the dropped item overlaps existing members beyond the allowed
@@ -138,6 +148,9 @@ namespace Code.Features.DragAndDrop
     [Serializable]
     public struct FreeContainerLayout : IComponent
     {
+        /// <summary>Whether items are separated as rectangles (default) or circles.</summary>
+        public FreeLayoutShape Shape;
+
         /// <summary>Center offset of the layout area relative to the container hitbox center.</summary>
         public Vector2 LocalOffset;
 

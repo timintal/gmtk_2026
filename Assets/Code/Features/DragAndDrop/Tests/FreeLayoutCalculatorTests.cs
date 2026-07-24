@@ -100,6 +100,42 @@ namespace Code.Features.DragAndDrop.Tests
             }
         }
 
+        [Test]
+        public void CircleShapeSeparatesAlongCenterLine()
+        {
+            var items = new[]
+            {
+                Item(5f, 5f),
+                Item(5.6f, 5.8f)
+            };
+
+            FreeLayoutCalculator.Resolve(Bounds, items, overlapTolerance: 0f, iterations: 16, shape: FreeLayoutShape.Circle);
+
+            var separation = (items[1].Center - items[0].Center).magnitude;
+            Assert.That(separation, Is.EqualTo(2f).Within(0.001f));
+
+            // Midpoint preserved (equal push shared along the center line).
+            var midpoint = (items[0].Center + items[1].Center) * 0.5f;
+            Assert.That(midpoint.x, Is.EqualTo(5.3f).Within(0.001f));
+            Assert.That(midpoint.y, Is.EqualTo(5.4f).Within(0.001f));
+        }
+
+        [Test]
+        public void CircleShapeIgnoresDiagonalCornerOverlap()
+        {
+            // Boxes overlap on both axes, but the circles (r = 1) do not touch (distance > 2).
+            var items = new[]
+            {
+                Item(5f, 5f),
+                Item(6.5f, 6.5f)
+            };
+
+            FreeLayoutCalculator.Resolve(Bounds, items, overlapTolerance: 0f, iterations: 8, shape: FreeLayoutShape.Circle);
+
+            Assert.That(items[0].Center, Is.EqualTo(new Vector2(5f, 5f)));
+            Assert.That(items[1].Center, Is.EqualTo(new Vector2(6.5f, 6.5f)));
+        }
+
         private static FreeLayoutItem Item(float x, float y)
         {
             return new FreeLayoutItem

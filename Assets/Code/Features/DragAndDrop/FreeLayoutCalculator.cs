@@ -21,7 +21,8 @@ namespace Code.Features.DragAndDrop
             Rect bounds,
             IList<FreeLayoutItem> items,
             float overlapTolerance,
-            int iterations)
+            int iterations,
+            FreeLayoutShape shape = FreeLayoutShape.Rectangle)
         {
             var count = items.Count;
             if (count == 0)
@@ -32,7 +33,7 @@ namespace Code.Features.DragAndDrop
             var passes = Mathf.Max(1, iterations);
             for (var pass = 0; pass < passes; pass++)
             {
-                if (Step(bounds, items, overlapTolerance, stepScale: 1f, maxStep: 0f) <= 0f)
+                if (Step(bounds, items, overlapTolerance, stepScale: 1f, maxStep: 0f, shape) <= 0f)
                 {
                     break;
                 }
@@ -51,7 +52,8 @@ namespace Code.Features.DragAndDrop
             IList<FreeLayoutItem> items,
             float overlapTolerance,
             float stepScale,
-            float maxStep)
+            float maxStep,
+            FreeLayoutShape shape = FreeLayoutShape.Rectangle)
         {
             var count = items.Count;
             if (count == 0)
@@ -65,14 +67,15 @@ namespace Code.Features.DragAndDrop
             {
                 for (var j = i + 1; j < count; j++)
                 {
-                    maxMoved = Mathf.Max(maxMoved, Separate(items, i, j, overlapTolerance, stepScale, maxStep));
+                    maxMoved = Mathf.Max(maxMoved, Separate(items, i, j, overlapTolerance, stepScale, maxStep, shape));
                 }
             }
 
             for (var i = 0; i < count; i++)
             {
                 var item = items[i];
-                var clamped = ClampInside(bounds, item.Center, item.HalfSize);
+                var clampHalf = ClampHalfSize(item, shape);
+                var clamped = ClampInside(bounds, item.Center, clampHalf);
                 var moved = (clamped - item.Center).magnitude;
                 if (moved > 0f)
                 {
@@ -85,7 +88,38 @@ namespace Code.Features.DragAndDrop
             return maxMoved;
         }
 
-        private static float Separate(IList<FreeLayoutItem> items, int i, int j, float overlapTolerance, float stepScale, float maxStep)
+        private static float Separate(IList<FreeLayoutItem> items, int i, int j, float overlapTolerance, float stepScale, float maxStep, FreeLayoutShape shape)
+        {
+            var push = shape == FreeLayoutShape.Circle
+                ? ResolveCirclePush(items, i, j, overlapTolerance)
+                : ResolveRectanglePush(items, i, j, overlapTolerance);
+
+            if (push == Vector2.zero)
+            {
+                return 0f;
+            }
+
+            var half = push * 0.5f * stepScale;
+            if (maxStep > 0f)
+            {
+                var magnitude = half.magnitude;
+                if (magnitude > maxStep)
+                {
+                    half *= maxStep / magnitude;
+                }
+            }
+
+            var a = items[i];
+            var b = items[j];
+            a.Center -= half;
+            b.Center += half;
+            items[i] = a;
+            items[j] = b;
+
+            return half.magnitude;
+        }
+
+        private static Vector2 ResolveRectanglePush(IList<FreeLayoutItem> items, int i, int j, float overlapTolerance)
         {
             var a = items[i];
             var b = items[j];
@@ -101,38 +135,52 @@ namespace Code.Features.DragAndDrop
             // AABBs must overlap on both axes (beyond tolerance) to count as "overlapping too much".
             if (penetrationX <= 0f || penetrationY <= 0f)
             {
-                return 0f;
+                return Vector2.zero;
             }
 
             var coincident = Mathf.Approximately(delta.x, 0f) && Mathf.Approximately(delta.y, 0f);
-            Vector2 push;
             if (penetrationX <= penetrationY)
             {
                 var dir = coincident ? DeterministicDir(i, j) : Mathf.Sign(delta.x == 0f ? 1f : delta.x);
-                push = new Vector2(penetrationX * dir, 0f);
+                return new Vector2(penetrationX * dir, 0f);
             }
-            else
+
+            var dirY = coincident ? DeterministicDir(i, j) : Mathf.Sign(delta.y == 0f ? 1f : delta.y);
+            return new Vector2(0f, penetrationY * dirY);
+        }
+
+        private static Vector2 ResolveCirclePush(IList<FreeLayoutItem> items, int i, int j, float overlapTolerance)
+        {
+            var a = items[i];
+            var b = items[j];
+
+            var delta = b.Center - a.Center;
+            var required = Mathf.Max(0f, Radius(a) + Radius(b) - overlapTolerance);
+            var distance = delta.magnitude;
+            var penetration = required - distance;
+            if (penetration <= 0f)
             {
-                var dir = coincident ? DeterministicDir(i, j) : Mathf.Sign(delta.y == 0f ? 1f : delta.y);
-                push = new Vector2(0f, penetrationY * dir);
+                return Vector2.zero;
             }
 
-            var half = push * 0.5f * stepScale;
-            if (maxStep > 0f)
+            var dir = distance > 1e-5f ? delta / distance : new Vector2(DeterministicDir(i, j), 0f);
+            return dir * penetration;
+        }
+
+        private static Vector2 ClampHalfSize(in FreeLayoutItem item, FreeLayoutShape shape)
+        {
+            if (shape != FreeLayoutShape.Circle)
             {
-                var magnitude = half.magnitude;
-                if (magnitude > maxStep)
-                {
-                    half *= maxStep / magnitude;
-                }
+                return item.HalfSize;
             }
 
-            a.Center -= half;
-            b.Center += half;
-            items[i] = a;
-            items[j] = b;
+            var radius = Radius(item);
+            return new Vector2(radius, radius);
+        }
 
-            return half.magnitude;
+        private static float Radius(in FreeLayoutItem item)
+        {
+            return Mathf.Max(item.HalfSize.x, item.HalfSize.y);
         }
 
         private static float DeterministicDir(int i, int j)

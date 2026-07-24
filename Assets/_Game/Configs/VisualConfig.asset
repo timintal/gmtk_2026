@@ -19,13 +19,13 @@ MonoBehaviour:
     Prefab: {fileID: 5428507864810771835, guid: be1ee9a0e84b2454abba58658d32ff4f, type: 3}
   CountdownModifiers:
   - Type: 1
-    Icon: {fileID: 5916937935541034916, guid: 744ae230d14d84238b640074810a6f13, type: 3}
-    Name: Even
+    Icon: {fileID: 0}
+    Name: EVEN
     Description: Accepts only\nEVEN
     ErrorMessage: Die is not EVEN
   - Type: 2
-    Icon: {fileID: -2623817647577492434, guid: 744ae230d14d84238b640074810a6f13, type: 3}
-    Name: Odd
+    Icon: {fileID: 0}
+    Name: ODD
     Description: Accpets only ODD
     ErrorMessage: Die is not ODD
   - Type: 3
