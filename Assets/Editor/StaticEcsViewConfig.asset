@@ -19,9 +19,11 @@ MonoBehaviour:
       drawRate: 0.5
       drawFrames: 2
     entities:
-      componentColumns:
-      - Code/Common/ParentTransform
-      tagColumns: []
+      componentColumns: []
+      tagColumns:
+      - _Game/Features/Blessings/Hand
+      - _Game/Features/Blessings/DiscardPile
+      - _Game/Features/Blessings/DrawPile
       showTableDataTypes: []
       sortByType: 
       maxEntityResult: 100
@@ -30,7 +32,7 @@ MonoBehaviour:
       gidFilterActive: 0
       gidFilterValue: 0
       filterAll:
-      - Code/Features/Tooltip/Tooltip
+      - _Game/Features/Blessings/Blessing
       filterAllOnlyDisabled: []
       filterAllWithDisabled: []
       filterNone: []

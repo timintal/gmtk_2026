@@ -12,6 +12,7 @@ namespace _Game.Features.Enemies
         {
             _dragAccepted = W.RegisterEventReceiver<DragAccepted>();
         }
+        
         public void Update()
         {
             foreach (var draggedEvent in _dragAccepted)
@@ -22,7 +23,13 @@ namespace _Game.Features.Enemies
                     dragAccepted.Draggable.TryUnpack<WT>(out var draggable) &&
                     draggable.Has<DiceValue>())
                 {
-                    targetContainer.Mut<EnemyCountdown>().Value -= draggable.Read<DiceValue>().Value;
+                    ref var enemyCountdown = ref targetContainer.Mut<EnemyCountdown>();
+                    enemyCountdown.Value -= draggable.Read<DiceValue>().Value;
+                    if (enemyCountdown.Value <= 0)
+                    {
+                        enemyCountdown.Value = 0;
+                        targetContainer.Set<Destroyed>();
+                    }
                     draggable.Set<Destroyed>();
                 }
             }

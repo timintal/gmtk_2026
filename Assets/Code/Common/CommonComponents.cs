@@ -30,6 +30,7 @@ namespace Code.Common
     public struct Activated : ITag { }
     
     public struct Target : ILinkType{}
+    public struct Targets : ILinksType{}
     
     public struct Owner : ILinkType {}
     public struct Children : ILinksType {}

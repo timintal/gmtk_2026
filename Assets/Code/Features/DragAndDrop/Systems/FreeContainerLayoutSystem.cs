@@ -8,6 +8,8 @@ namespace Code.Features.DragAndDrop
 {
     public sealed class FreeContainerLayoutSystem : ISystem
     {
+        private const float DefaultSettleEpsilon = 0.0005f;
+
         private readonly List<W.Entity> _members = new();
         private readonly List<FreeLayoutItem> _items = new();
 
@@ -17,19 +19,24 @@ namespace Code.Features.DragAndDrop
             {
                 ref readonly var position = ref container.Read<Position>();
                 ref readonly var layout = ref container.Read<FreeContainerLayout>();
-                ApplyLayout(container, position.Value, layout);
-                container.Delete<ContainerLayoutDirty>();
+                var settled = ApplyLayout(container, position.Value, layout);
+
+                // While animating we keep the container dirty so the spread continues next frame.
+                if (settled)
+                {
+                    container.Delete<ContainerLayoutDirty>();
+                }
             }
         }
 
-        private void ApplyLayout(W.Entity container, Vector2 containerPosition, in FreeContainerLayout layout)
+        private bool ApplyLayout(W.Entity container, Vector2 containerPosition, in FreeContainerLayout layout)
         {
             _members.Clear();
             _items.Clear();
 
             if (!container.Has<W.Links<DragContainerItems>>())
             {
-                return;
+                return true;
             }
 
             var usesLocalLayoutSpace = ContainerLayoutUtility.UsesLocalLayoutSpace(container);
@@ -57,16 +64,34 @@ namespace Code.Features.DragAndDrop
 
             if (_members.Count == 0)
             {
-                return;
+                return true;
             }
 
             var bounds = ResolveBounds(container, containerPosition, layout, usesLocalLayoutSpace);
-            FreeLayoutCalculator.Resolve(bounds, _items, layout.OverlapTolerance, layout.RelaxIterations);
+
+            bool settled;
+            if (layout.AnimationSpeed > 0f)
+            {
+                var dt = W.GetResource<DeltaTime>().Value;
+                var stepScale = layout.AnimationSmoothing > 0f ? Mathf.Clamp01(layout.AnimationSmoothing) : 1f;
+                var maxStep = layout.AnimationSpeed * dt;
+                var epsilon = layout.SettleEpsilon > 0f ? layout.SettleEpsilon : DefaultSettleEpsilon;
+
+                var moved = FreeLayoutCalculator.Step(bounds, _items, layout.OverlapTolerance, stepScale, maxStep);
+                settled = moved <= epsilon;
+            }
+            else
+            {
+                FreeLayoutCalculator.Resolve(bounds, _items, layout.OverlapTolerance, layout.RelaxIterations);
+                settled = true;
+            }
 
             for (var i = 0; i < _members.Count; i++)
             {
                 _members[i].Ref<Position>().Value = _items[i].Center;
             }
+
+            return settled;
         }
 
         private static Vector2 ResolveHalfSize(W.Entity draggable, in FreeContainerLayout layout)

@@ -1,7 +1,9 @@
 using _Game.Features.Audio;
+using _Game.Features.Blessings;
 using _Game.Features.Dice;
 using _Game.Features.Enemies;
 using _Game.Features.PlayerControls;
+using _Game.Features.Run;
 using Code.Common;
 using Code.Common.Fx;
 using Code.Common.View;
@@ -24,6 +26,7 @@ public sealed class EcsBootstrap : MonoBehaviour
 {
     private bool _initialized;
     [SerializeField] VisualConfig _visualConfig;
+    [SerializeField] BlessingsLibrary _blessingsLibrary;
     private GameFSM _fsm;
 
     private void Awake()
@@ -113,6 +116,8 @@ public sealed class EcsBootstrap : MonoBehaviour
         DiceFeature.AddToWorld();
         EnemiesFeature.AddToWorld();
         AudioFeature.AddToWorld();
+        BlessingsFeature.AddToWorld();
+        RunFeature.AddToWorld();
 
         EcsDebug<WT>.AddWorld<GameSystems>();
 
@@ -123,6 +128,7 @@ public sealed class EcsBootstrap : MonoBehaviour
         GameSys.Initialize();
         FixedSys.Initialize();
     }
+    
     private void SetUpResources()
     {
         W.SetResource(new DeltaTime());
@@ -131,6 +137,7 @@ public sealed class EcsBootstrap : MonoBehaviour
         W.SetResource(new TooltipPointerState());
         W.SetResource(new TooltipUiRaycastCache());
         W.SetResource(_visualConfig);
+        W.SetResource(_blessingsLibrary);
         W.SetResource(new PoolService());
     }
 

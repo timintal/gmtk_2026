@@ -24,6 +24,8 @@ namespace Code.UI
         [SerializeField] bool _disableOnComplete = true;
         [SerializeField] UnityEvent _onTriggered;
 
+        public UnityEvent OnTriggered => _onTriggered;
+
         IDisposable _subscription;
         bool _triggered;
         float _listenAfterTime;

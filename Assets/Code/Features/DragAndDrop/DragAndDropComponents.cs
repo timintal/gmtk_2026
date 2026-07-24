@@ -150,7 +150,23 @@ namespace Code.Features.DragAndDrop
         /// <summary>How much two items may overlap (in layout units) before they get pushed apart.</summary>
         public float OverlapTolerance;
 
-        /// <summary>Number of separation passes used to resolve overlaps.</summary>
+        /// <summary>Number of separation passes used to resolve overlaps when animation is disabled.</summary>
         public int RelaxIterations;
+
+        /// <summary>
+        /// Max distance (layout units per second) an item travels while spreading apart. When greater
+        /// than zero the layout animates over several frames instead of snapping in one; zero keeps the
+        /// original instant resolve.
+        /// </summary>
+        public float AnimationSpeed;
+
+        /// <summary>
+        /// Fraction (0..1) of each overlap resolved per frame while animating. Lower values ease the
+        /// spread out; values &lt;= 0 default to 1 (resolve fully, still capped by <see cref="AnimationSpeed"/>).
+        /// </summary>
+        public float AnimationSmoothing;
+
+        /// <summary>Per-frame movement below this threshold counts as settled and stops the animation.</summary>
+        public float SettleEpsilon;
     }
 }

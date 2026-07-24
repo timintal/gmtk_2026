@@ -7,7 +7,6 @@ namespace _Game.Features.Dice
     {
         public static void AddToWorld()
         {
-            GameSys.Add(new InitRunSystem(), Order.Init);
             GameSys.Add(new RefreshDieViewSystem());
             GameSys.Add(new PerformRerollSystem());
         }

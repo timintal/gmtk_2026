@@ -1137,6 +1137,7 @@ MonoBehaviour:
   - rid: 6297997644152438921
   - rid: 6297997644152439035
   - rid: 6297997657751421002
+  - rid: 6297997657751421414
   entityType: 0
   references:
     version: 2
@@ -1240,6 +1241,14 @@ MonoBehaviour:
       data:
         value:
           rid: 6297997657751420956
+    - rid: 6297997657751421414
+      type: {class: TagProvider, ns: FFS.Libraries.StaticEcs.Unity, asm: FFS.StaticEcs.Unity}
+      data:
+        value:
+          rid: 6297997657751421415
+    - rid: 6297997657751421415
+      type: {class: BlessingTarget, ns: _Game.Features.Blessings, asm: Game.Runtime}
+      data: 
 --- !u!61 &4797021008375168094
 BoxCollider2D:
   m_ObjectHideFlags: 0

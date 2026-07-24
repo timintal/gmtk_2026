@@ -39,3 +39,4 @@ MonoBehaviour:
     Description: Accepts only dice\nsmaller than {0}
     ErrorMessage: Die is bigger than {0}
   DicePrefab: {fileID: 6572518505164573875, guid: 5b9f09fa7373a4e92a186f4a69a24a30, type: 3}
+  BlessingCardPrefab: {fileID: 8135197225595196167, guid: a3a35de065f404f03bd5d10f15db784d, type: 3}

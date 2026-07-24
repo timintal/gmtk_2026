@@ -1,5 +1,6 @@
 using System;
 using _Game.Features.Enemies;
+using Code.Common.View;
 using Code.Common.View.UI;
 using Code.Features.Tooltip;
 using FFS.Libraries.StaticEcs;
@@ -15,6 +16,7 @@ namespace Code.Configs
         [ListDrawerSettings(ShowFoldout = true, ShowIndexLabels = true, ListElementLabelName = "Type")]
         public CountdownModifierInfo[] CountdownModifiers = Array.Empty<CountdownModifierInfo>();
         public WTEntityProvider DicePrefab;
+        public EntityView BlessingCardPrefab;
 
         public TooltipView GetTooltipPrefab(TooltipType type)
         {

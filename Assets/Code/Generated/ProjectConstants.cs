@@ -18,6 +18,10 @@ namespace Code.Generated
         public const int ForegroundId = unchecked((int)2174006029u);
         public const string UI = "UI";
         public const int UIId = unchecked((int)1627614059u);
+        public const string Popups = "Popups";
+        public const int PopupsId = unchecked((int)2374745291u);
+        public const string Overlay = "Overlay";
+        public const int OverlayId = unchecked((int)20693853u);
         public const string LoadingTransition = "LoadingTransition";
         public const int LoadingTransitionId = unchecked((int)901224753u);
     }

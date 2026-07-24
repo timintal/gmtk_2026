@@ -15,32 +15,14 @@ MonoBehaviour:
   pages:
   - items:
     - globalId:
-        globalObjectIdString: GlobalObjectId_V1-3-e9416785f814cf24894a27b548696793-11400000-0
-      _typeString: Paper2.Features.Party.Config.QuantumSnapshotService, Assembly-CSharp,
-        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      _obj: {fileID: 11400000, guid: e9416785f814cf24894a27b548696793, type: 2}
-      isSceneGameObject: 0
-      isFolder: 0
-      isAsset: 1
-      _id: 1051526873
-    - globalId:
-        globalObjectIdString: GlobalObjectId_V1-3-8000cd57eaa8e8247b9c1522d16e9ad6-11400000-0
-      _typeString: Paper2.Features.Party.Config.QuantumReplayService, Assembly-CSharp,
-        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      _obj: {fileID: 11400000, guid: 8000cd57eaa8e8247b9c1522d16e9ad6, type: 2}
-      isSceneGameObject: 0
-      isFolder: 0
-      isAsset: 1
-      _id: 1063945302
-    - globalId:
-        globalObjectIdString: GlobalObjectId_V1-1-3dfa724dadcc44707a970a5ee2054d31-102900000-0
-      _typeString: UnityEditor.DefaultAsset, UnityEditor.CoreModule, Version=0.0.0.0,
+        globalObjectIdString: GlobalObjectId_V1-3-a0241035b8b734d86a440cf276d6bd86-11400000-0
+      _typeString: _Game.Features.Blessings.BlessingsLibrary, Game.Runtime, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-      _obj: {fileID: 102900000, guid: 3dfa724dadcc44707a970a5ee2054d31, type: 3}
+      _obj: {fileID: 11400000, guid: a0241035b8b734d86a440cf276d6bd86, type: 2}
       isSceneGameObject: 0
-      isFolder: 1
-      isAsset: 0
-      _id: 1023096066
+      isFolder: 0
+      isAsset: 1
+      _id: 1064334010
     name: Shared
     _id: 1048807065
   - items: []

@@ -10,6 +10,8 @@ namespace Code.Common.View
     
     public struct NeedInitializeView : ITag { }
     public partial struct NeedBindView : ITag { }
+    public partial struct NeedCleanupView : ITag { }
+    
     public struct NeedInitRigidbody : ITag { }
     
     [StaticEcsEditorGroup("Physics", "00FFFF")]

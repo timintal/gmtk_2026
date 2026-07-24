@@ -58,7 +58,7 @@ namespace _Game.Features.Dice.Systems
 
         void PlayRerollSound()
         {
-            W.GetResource<SFXAudioSource>().PlayDiceRoll();
+            W.GetResource<SFXAudioSource>().Play(SoundType.DiceRoll);
         }
         
         private void RemoveCurrentDices()

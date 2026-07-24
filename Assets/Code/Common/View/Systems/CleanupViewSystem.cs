@@ -14,6 +14,19 @@ namespace Code.Common.View
                 Object.Destroy(view.gameObject);
                 entity.Delete<ViewLink>();
             });
+
+            foreach (var e in W.Query<All<ViewLink, NeedCleanupView>, None<Destroyed>>().Entities())
+            {
+                e.Read<ViewLink>().View.Unbind();
+                Object.Destroy(e.Read<ViewLink>().View.gameObject);
+                
+                e.Delete<NeedCleanupView>();
+                e.Delete<ViewLink>();
+                if (e.Has<ViewPrefab>())
+                {
+                    e.Delete<ViewPrefab>();
+                }
+            }
         }
     }
 }

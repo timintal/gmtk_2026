@@ -1,3 +1,4 @@
+using _Game.Features.Run;
 using FFS.Libraries.StaticEcs;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,11 +15,7 @@ namespace _Game.Features.Dice.View
         }
         private void OnRerollClicked()
         {
-            var playerState = W.GetResource<PlayerState>();
-            if (playerState.RerollsCount > 0)
-            {
-                W.NewEntity<Default>().Set(new RerollRequest { ClearCurrent = true, DiceCount = playerState.DicePerRoll });
-            }
+            W.NewEntity<Default>().Set<StartNewTurnRequest>();
         }
     }
 }
