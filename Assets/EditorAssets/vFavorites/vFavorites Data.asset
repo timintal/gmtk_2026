@@ -23,6 +23,15 @@ MonoBehaviour:
       isFolder: 0
       isAsset: 1
       _id: 1064334010
+    - globalId:
+        globalObjectIdString: GlobalObjectId_V1-3-37c9a114c0b1444f6b0f0d429ac8d8e5-11400000-0
+      _typeString: _Game.Features.Run.Configs.EncountersConfig, Game.Runtime, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      _obj: {fileID: 11400000, guid: 37c9a114c0b1444f6b0f0d429ac8d8e5, type: 2}
+      isSceneGameObject: 0
+      isFolder: 0
+      isAsset: 1
+      _id: 1048049658
     name: Shared
     _id: 1048807065
   - items: []

@@ -48,7 +48,6 @@ MonoBehaviour:
       - View
       - Economy
       - Health
-      - Transform
     events:
       latest: 1
       filterTypeNames: []

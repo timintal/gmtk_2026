@@ -18,18 +18,11 @@ namespace _Game.Features.Run
                 W.Query<All<Blessing>>().BatchSet(new Destroyed());
                 W.Query<All<Dice.Dice>>().BatchSet(new Destroyed());
 
+                
                 var playerState = new PlayerState()
                 {
                     RerollsCount = 999,
                     CurrentLevel = 0,
-                    AllBlessings = new List<string>()
-                    {
-                        "roll2",
-                        "roll2",
-                        "roll3",
-                        "reroll",
-                    },
-                    DrawPile = new List<string>()
                 };
                 
                 W.SetResource(playerState);
@@ -40,7 +33,7 @@ namespace _Game.Features.Run
                 blessingsLibrary.CreateBlessing("roll3").PutBlessingInDrawPile();
                 blessingsLibrary.CreateBlessing("reroll").PutBlessingInDrawPile();
                 
-                W.NewEntity<Default>().Set<StartNewTurnRequest>();
+                W.NewEntity<Default>().Set<StartNewLevelRequest>();
 
             }
             

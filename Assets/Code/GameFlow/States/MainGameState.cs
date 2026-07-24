@@ -12,6 +12,9 @@ namespace Code.GameFlow
         public override async UniTask OnEnter()
         {
             await SceneManager.LoadSceneAsync("main", LoadSceneMode.Additive);
+            
+            SceneManager.SetActiveScene(SceneManager.GetSceneByName("main"));
+
         }
         
         public override async UniTask OnExit()

@@ -8,7 +8,9 @@ namespace _Game.Features.Run
         public static void AddToWorld()
         {
             GameSys.Add(new InitRunSystem(), Order.Init);
-            GameSys.Add(new StartNewTurnSystem(), Order.Init + 1);
+            GameSys.Add(new StartNewLevelSystem(), Order.Init + 1);
+            GameSys.Add(new StartNewTurnSystem(), Order.Init + 2);
+            GameSys.Add(new LevelFinishedSystem(), Order.LateUpdate);
             GameSys.Add(new DrawCardSystem());
             
         }

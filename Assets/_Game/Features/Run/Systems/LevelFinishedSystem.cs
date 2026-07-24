@@ -7,9 +7,13 @@ namespace _Game.Features.Run
     {
         public void Update()
         {
+            if (W.Query<All<LevelStarted>>().EntitiesCount() == 0)
+                return;
+            
             if (W.Query<All<Enemy>>().EntitiesCount() == 0)
             {
-                
+                W.Query<All<LevelStarted>>().BatchDestroy();
+                W.NewEntity<Default>().Set<StartNewLevelRequest>();
             }
         }
     }

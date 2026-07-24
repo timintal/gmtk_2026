@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0f0630a346a4e55a9839061aa0b0381, type: 3}
+  m_Name: EncountersConfig
+  m_EditorClassIdentifier: Game.Runtime::_Game.Features.Run.Configs.EncountersConfig
+  BasicEncounters:
+  - Enemies:
+    - {fileID: 2568026820054692075, guid: 27a9e025ab16845069ed8075e2b264fa, type: 3}
+    - {fileID: 2568026820054692075, guid: 27a9e025ab16845069ed8075e2b264fa, type: 3}
+  AdvancedEncounters: []
+  AdvancedEncountersLevel: 100

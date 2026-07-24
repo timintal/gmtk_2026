@@ -4,6 +4,7 @@ using _Game.Features.Dice;
 using _Game.Features.Enemies;
 using _Game.Features.PlayerControls;
 using _Game.Features.Run;
+using _Game.Features.Run.Configs;
 using Code.Common;
 using Code.Common.Fx;
 using Code.Common.View;
@@ -27,6 +28,8 @@ public sealed class EcsBootstrap : MonoBehaviour
     private bool _initialized;
     [SerializeField] VisualConfig _visualConfig;
     [SerializeField] BlessingsLibrary _blessingsLibrary;
+    [SerializeField] EncountersConfig _encountersConfig;
+    
     private GameFSM _fsm;
 
     private void Awake()
@@ -138,6 +141,7 @@ public sealed class EcsBootstrap : MonoBehaviour
         W.SetResource(new TooltipUiRaycastCache());
         W.SetResource(_visualConfig);
         W.SetResource(_blessingsLibrary);
+        W.SetResource(_encountersConfig);
         W.SetResource(new PoolService());
     }
 

@@ -166,6 +166,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _visualConfig: {fileID: 11400000, guid: 044f3c189813f4dd49ab15df7132d6cf, type: 2}
   _blessingsLibrary: {fileID: 11400000, guid: a0241035b8b734d86a440cf276d6bd86, type: 2}
+  _encountersConfig: {fileID: 11400000, guid: 37c9a114c0b1444f6b0f0d429ac8d8e5, type: 2}
 --- !u!114 &1000000003
 MonoBehaviour:
   m_ObjectHideFlags: 0
