@@ -59,6 +59,11 @@ namespace Code.Features.DragAndDrop
                 return;
             }
 
+            if (!draggable.Has<Position>())
+            {
+                return;
+            }
+            
             ref readonly var originPosition = ref draggable.Read<Position>();
             if (!TryGetPointerPosition(draggable, pointerEvent, usesScreenSpace, out var pointerPosition))
             {
@@ -82,6 +87,8 @@ namespace Code.Features.DragAndDrop
                 UsesScreenSpace = usesScreenSpace
             });
             draggable.Set<SkipSyncViewPositionDamping>();
+
+            W.SendEvent(new DragStarted { Draggable = draggable.GID });
         }
 
         private static void TryEndDrag(in DragPointerUpEvent pointerEvent)
@@ -99,8 +106,7 @@ namespace Code.Features.DragAndDrop
                     continue;
                 }
 
-                var targetContainer = default(EntityGID);
-                var hasTarget = TryFindTopContainer(pointerEvent, dragging.UsesScreenSpace, out targetContainer);
+                var hasTarget = TryFindTopContainer(pointerEvent, dragging.UsesScreenSpace, out var targetContainer);
 
                 draggable.Delete<SkipSyncViewPositionDamping>();
 

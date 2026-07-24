@@ -5,11 +5,11 @@ using UnityEngine;
 namespace Code.Common
 {
     [StaticEcsEditorGroup("Transform", "00FFFF")]
-    public struct TransformLink : IComponent { public Transform Value; }
+    public partial struct TransformLink : IComponent { public Transform Value; }
     public struct ParentTransform : IComponent { public Transform Value; }
     
     [StaticEcsEditorGroup("Transform", "00FFFF")]
-    public struct InitPositionFromTransform  : ITag { }
+    public partial struct InitPositionFromTransform  : ITag { }
 
     [StaticEcsEditorGroup("Transform", "00FFFF")]
     public struct SyncViewPosition : IComponent { public float Damping; }

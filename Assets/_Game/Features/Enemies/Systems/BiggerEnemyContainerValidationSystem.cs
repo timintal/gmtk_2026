@@ -18,14 +18,17 @@ namespace _Game.Features.Enemies
                 var request = requestEntity.Read<DragTransferRequest>();
                 
                 if (request.TargetContainer.TryUnpack<WT>(out var targetContainer) && 
-                    targetContainer.Has<AcceptBigger>())
+                    targetContainer.HasModifier<AcceptBigger>())
                 {
-                    var value = targetContainer.Read<AcceptBigger>().Value;
-                    if (!request.Draggable.TryUnpack<WT>(out var draggable) || 
-                        !draggable.Has<DiceValue>() ||
-                        draggable.Read<DiceValue>().Value <= value)
+                    if (targetContainer.TryGetModifier<AcceptBigger>(out var acceptBigger))
                     {
-                        requestEntity.Add<DragTransferRejected>();
+                        var value = acceptBigger.Value;
+                        if (!request.Draggable.TryUnpack<WT>(out var draggable) ||
+                            !draggable.Has<DiceValue>() ||
+                            draggable.Read<DiceValue>().Value <= value)
+                        {
+                            requestEntity.Add<DragTransferRejected>();
+                        }
                     }
                 }
             }

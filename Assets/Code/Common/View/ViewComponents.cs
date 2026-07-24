@@ -1,13 +1,12 @@
 using FFS.Libraries.StaticEcs;
 using FFS.Libraries.StaticEcs.Unity;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 namespace Code.Common.View
 {
     public struct ViewPrefab : IComponent { public EntityView Prefab; }
     
-    public struct ViewLink : IComponent { public EntityView View; }
+    public partial struct ViewLink : IComponent { public EntityView View; }
     
     public struct NeedInitializeView : ITag { }
     public partial struct NeedBindView : ITag { }

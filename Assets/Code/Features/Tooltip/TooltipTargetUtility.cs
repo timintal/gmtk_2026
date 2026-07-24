@@ -61,7 +61,7 @@ namespace Code.Features.Tooltip
             hit = default;
             WorldColliderBuffer.Clear();
 
-            var count = Physics2D.OverlapPointNonAlloc(world, WorldOverlapBuffer);
+            var count = Physics2D.defaultPhysicsScene.OverlapPoint(world, WorldOverlapBuffer);
             if (count > WorldOverlapBuffer.Length)
             {
                 count = WorldOverlapBuffer.Length;

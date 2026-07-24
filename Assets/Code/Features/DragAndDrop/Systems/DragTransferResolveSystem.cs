@@ -44,6 +44,13 @@ namespace Code.Features.DragAndDrop
                 }
             }
 
+            W.SendEvent(new DragEnded
+            {
+                Draggable = request.Draggable,
+                TargetContainer = request.TargetContainer,
+                Accepted = !rejected && request.HasTargetContainer
+            });
+
             requestEntity.Destroy();
         }
 

@@ -34,7 +34,7 @@ namespace _Game.Features.Dice.View
                 _rollAnimation.Play();
         }
 
-        public override void PostBind()
+        protected override void PostBind()
         {
             var entity = Entity;
             

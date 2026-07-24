@@ -1,4 +1,5 @@
 using FFS.Libraries.StaticEcs;
+using UnityEngine;
 
 namespace Code.Features.Stats
 {
@@ -12,5 +13,11 @@ namespace Code.Features.Stats
     {
         float Additive { get; set; }
         float Multiplicative{ get; set; } 
+    }
+
+    public static class StatExtensions
+    {
+        public static int Rounded<T>(this T stat) where T : struct, IStat
+            => Mathf.RoundToInt(stat.CurrentValue);
     }
 }

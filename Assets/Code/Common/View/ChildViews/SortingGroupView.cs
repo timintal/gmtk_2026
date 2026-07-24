@@ -10,8 +10,8 @@ namespace Code.Common.View.ChildViews
         [SerializeField] private string _draggingLayer;
 
         string _originalSortingLayerName;
-        
-        void PostBind()
+
+        protected override void PostBind()
         {
             _originalSortingLayerName = _sortingGroup.sortingLayerName;
         }

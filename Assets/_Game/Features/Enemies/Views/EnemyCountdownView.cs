@@ -12,7 +12,7 @@ namespace _Game.Features.Enemies
         int _currentCountdown;
         private Tweener _countdownTween;
 
-        public override void PostBind()
+        protected override void PostBind()
         {
             if (Entity.Has<EnemyCountdown>())
             {

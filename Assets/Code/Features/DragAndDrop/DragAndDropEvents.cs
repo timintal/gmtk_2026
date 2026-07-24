@@ -41,4 +41,18 @@ namespace Code.Features.DragAndDrop
         public EntityGID Draggable;
         public EntityGID TargetContainer;
     }
+
+    [Serializable]
+    public struct DragStarted : IEvent
+    {
+        public EntityGID Draggable;
+    }
+
+    [Serializable]
+    public struct DragEnded : IEvent
+    {
+        public EntityGID Draggable;
+        public EntityGID TargetContainer;
+        public bool Accepted;
+    }
 }

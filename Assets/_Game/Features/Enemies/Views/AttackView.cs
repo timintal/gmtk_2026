@@ -1,4 +1,5 @@
 using Code.Common.View;
+using Code.Features.Stats;
 using TMPro;
 using UnityEngine;
 
@@ -8,11 +9,11 @@ namespace _Game.Features.Enemies
     {
         [SerializeField] private TMP_Text _attackLabel;
 
-        public override void PostBind()
+        protected override void PostBind()
         {
             if (Entity.Has<Attack>())
             {
-                var currentValue = Entity.Read<Attack>().CurrentValue;
+                var currentValue = Entity.Read<Attack>().Rounded();
                 SetAttack(currentValue, false);
             }
         }

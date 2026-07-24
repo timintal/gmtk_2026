@@ -1,3 +1,4 @@
+using _Game.Features.Audio;
 using _Game.Features.Dice;
 using _Game.Features.Enemies;
 using _Game.Features.PlayerControls;
@@ -111,6 +112,7 @@ public sealed class EcsBootstrap : MonoBehaviour
         PlayerControlsFeature.AddToWorld();
         DiceFeature.AddToWorld();
         EnemiesFeature.AddToWorld();
+        AudioFeature.AddToWorld();
 
         EcsDebug<WT>.AddWorld<GameSystems>();
 

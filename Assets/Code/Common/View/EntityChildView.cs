@@ -24,15 +24,17 @@ namespace Code.Common.View
         public virtual void Bind(W.Entity entity)
         {
             _entity = entity;
+            PostBind();
         }
         
         public virtual void Unbind()
         {
             _entity = default;
+            PostUnbind();
         }
         
-        public virtual void PostBind() { }
-        public virtual void PostUnbind() { }
+        protected virtual void PostBind() { }
+        protected virtual void PostUnbind() { }
 
         public bool TryGetBoundEntity(out W.Entity entity)
         {

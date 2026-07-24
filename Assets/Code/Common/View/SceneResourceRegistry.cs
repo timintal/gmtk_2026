@@ -35,7 +35,7 @@ namespace Code.Common.View
         void GatherAllResourcesOnScene()
         {
             _resources.Clear();
-            var allResources = FindObjectsOfType<ResourceMonoBehaviour>(true);
+            var allResources = FindObjectsByType<ResourceMonoBehaviour>(FindObjectsInactive.Include);
             foreach (var resource in allResources)
             {
                 if (!_resources.Contains(resource))

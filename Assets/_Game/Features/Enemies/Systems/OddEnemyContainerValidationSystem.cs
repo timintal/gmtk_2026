@@ -18,7 +18,7 @@ namespace _Game.Features.Enemies
                 var request = requestEntity.Read<DragTransferRequest>();
                 
                 if (request.TargetContainer.TryUnpack<WT>(out var targetContainer) && 
-                    targetContainer.Has<AcceptOnlyOdd>())
+                    targetContainer.HasModifier<AcceptOnlyOdd>())
                 {
                     if (!request.Draggable.TryUnpack<WT>(out var draggable) || 
                         !draggable.Has<DiceValue>() ||

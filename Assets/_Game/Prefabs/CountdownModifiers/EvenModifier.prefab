@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8144976868178412061
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4780477006495690893}
+  - component: {fileID: 5912289346227115811}
+  m_Layer: 0
+  m_Name: EvenModifier
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4780477006495690893
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8144976868178412061}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5912289346227115811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8144976868178412061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44cb58e3cc7c8491287110a703fa7f97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game.Runtime::WTEntityProvider
+  UsageType: 1
+  OnCreateType: 0
+  Scroll: {x: 0, y: 0}
+  onDestroyType: 0
+  disableEntityOnCreate: 0
+  onEnableAndDisable: 1
+  providers:
+  - rid: 6297997648383967279
+  - rid: 6297997648383967635
+  entityType: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 6297997648383967279
+      type: {class: TagProvider, ns: FFS.Libraries.StaticEcs.Unity, asm: FFS.StaticEcs.Unity}
+      data:
+        value:
+          rid: 6297997648383967280
+    - rid: 6297997648383967280
+      type: {class: AcceptOnlyEven, ns: _Game.Features.Enemies, asm: Game.Runtime}
+      data: 
+    - rid: 6297997648383967615
+      type: {class: CountdownModifier, ns: _Game.Features.Enemies, asm: Game.Runtime}
+      data:
+        Type: 1
+    - rid: 6297997648383967635
+      type: {class: ComponentProvider, ns: FFS.Libraries.StaticEcs.Unity, asm: FFS.StaticEcs.Unity}
+      data:
+        value:
+          rid: 6297997648383967615

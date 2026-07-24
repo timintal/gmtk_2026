@@ -17,4 +17,25 @@ MonoBehaviour:
     Prefab: {fileID: 4889574568982255947, guid: ac02c4d9fe3a447938da006818d4580f, type: 3}
   - Type: 1
     Prefab: {fileID: 5428507864810771835, guid: be1ee9a0e84b2454abba58658d32ff4f, type: 3}
+  CountdownModifiers:
+  - Type: 1
+    Icon: {fileID: 5916937935541034916, guid: 744ae230d14d84238b640074810a6f13, type: 3}
+    Name: Even
+    Description: Accepts only\nEVEN
+    ErrorMessage: Die is not EVEN
+  - Type: 2
+    Icon: {fileID: -2623817647577492434, guid: 744ae230d14d84238b640074810a6f13, type: 3}
+    Name: Odd
+    Description: Accpets only ODD
+    ErrorMessage: Die is not ODD
+  - Type: 3
+    Icon: {fileID: 0}
+    Name: '>{0}'
+    Description: Accepts only dice\nbigger than {0}
+    ErrorMessage: Die is smaller than {0}
+  - Type: 4
+    Icon: {fileID: 0}
+    Name: <{0}
+    Description: Accepts only dice\nsmaller than {0}
+    ErrorMessage: Die is bigger than {0}
   DicePrefab: {fileID: 6572518505164573875, guid: 5b9f09fa7373a4e92a186f4a69a24a30, type: 3}

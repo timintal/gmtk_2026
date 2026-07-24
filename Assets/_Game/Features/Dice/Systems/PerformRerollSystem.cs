@@ -1,4 +1,5 @@
 using Code.Common;
+using Code.Common.Audio;
 using Code.Common.Hitbox;
 using Code.Configs;
 using Code.Features.DragAndDrop;
@@ -27,6 +28,7 @@ namespace _Game.Features.Dice.Systems
                     RemoveCurrentDices();
                 }
                 
+                PlayRerollSound();
                 var diceCount = request.DiceCount;
                 W.Query<All<RolledDicesContainer, DragContainer, Position, Hitbox2D>>().One(out var container);
                 
@@ -53,6 +55,12 @@ namespace _Game.Features.Dice.Systems
                 }
             }
         }
+
+        void PlayRerollSound()
+        {
+            W.GetResource<SFXAudioSource>().PlayDiceRoll();
+        }
+        
         private void RemoveCurrentDices()
         {
             foreach (var e in W.Query<All<Dice, W.Link<InDragContainer>>>().Entities())
