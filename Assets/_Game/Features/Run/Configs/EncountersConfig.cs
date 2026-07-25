@@ -18,6 +18,7 @@ namespace _Game.Features.Run.Configs
             int attack = 0;
 
             if (Enemies == null) return "";
+            #if UNITY_EDITOR
             foreach (var p in Enemies)
             {
                 p.SerializedProviders.ForEach(sp =>
@@ -34,6 +35,7 @@ namespace _Game.Features.Run.Configs
                     }
                 });
             }
+            #endif
 
             return $"hp:{hp}, attack{attack}";
         }
