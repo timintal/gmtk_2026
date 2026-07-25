@@ -1,4 +1,4 @@
-using _Game.Features.Run;
+using _Game.Features.Dice;
 using Code.Common;
 using FFS.Libraries.StaticEcs;
 using UnityEngine;
@@ -12,11 +12,9 @@ namespace _Game.Features.Blessings
             foreach (var e in W.Query<All<Blessing, Activated, DrawBlessing, BlessingValue>>().Entities())
             {
                 e.Set<UsedBlessing>();
-                
-                W.NewEntity<Default>().Set(new DrawCardRequest()
-                {
-                    Value = Mathf.RoundToInt(e.Read<BlessingValue>().Value)
-                });
+
+                PlayerState playerState = W.GetResource<PlayerState>();
+                playerState.NextDrawCount += Mathf.RoundToInt(e.Read<BlessingValue>().Value);
             }
         }
     }

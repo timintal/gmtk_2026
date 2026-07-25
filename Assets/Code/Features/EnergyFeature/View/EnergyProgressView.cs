@@ -1,6 +1,7 @@
 using Code.Common.View;
 using DG.Tweening;
 using EasyTweens;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +11,7 @@ namespace Code.Features.EnergyFeature.View
     {
         [SerializeField] private Image _fill;
         [SerializeField] TweenAnimation _fillAnimation;
+        [SerializeField] private TMP_Text _label;
 
         protected override void PostBind()
         {
@@ -31,6 +33,7 @@ namespace Code.Features.EnergyFeature.View
             {
                 _fill.fillAmount = (float)energy / maxEnergy;
             }
+            _label.text = $"{energy}/{maxEnergy}";
         }
     }
 }

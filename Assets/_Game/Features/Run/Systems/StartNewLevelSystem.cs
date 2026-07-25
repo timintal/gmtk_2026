@@ -35,6 +35,7 @@ namespace _Game.Features.Run
             var encountersConfig = W.GetResource<EncountersConfig>();
             var randomEncounter = encountersConfig.GetRandomEncounter(playerState.CurrentLevel);
             var container = W.GetResource<EnemiesContainer>().Container;
+            
             foreach (var enemyPrefab in randomEncounter.Enemies)
             {
                 Object.Instantiate(enemyPrefab, container);

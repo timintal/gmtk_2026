@@ -47,15 +47,20 @@ namespace Code.UI
 
         void OnAnyButtonPress(InputControl _)
         {
-            if (_triggered || Time.unscaledTime < _listenAfterTime)
-                return;
-
             Trigger();
+        }
+
+        private void Update()
+        {
+            if (Input.touchCount > 0)
+            {
+                Trigger();
+            }
         }
 
         public void Trigger()
         {
-            if (_triggered)
+            if (_triggered || Time.unscaledTime < _listenAfterTime)
                 return;
 
             _triggered = true;

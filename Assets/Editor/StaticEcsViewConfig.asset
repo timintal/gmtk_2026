@@ -33,7 +33,7 @@ MonoBehaviour:
       gidFilterActive: 0
       gidFilterValue: 0
       filterAll:
-      - Code/Features/GameLoop/GameLost
+      - _Game/Features/Blessings/Blessing
       filterAllOnlyDisabled: []
       filterAllWithDisabled: []
       filterNone: []

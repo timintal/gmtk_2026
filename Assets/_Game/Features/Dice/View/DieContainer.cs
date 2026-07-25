@@ -16,10 +16,7 @@ namespace _Game.Features.Dice.View
             {
                 totalValue += e.Read<DiceValue>().Value;
             }
-            if (totalValue > 0)
-                _text.text = $"Dices({totalValue})";
-            else
-                _text.text = "Dices";
+            _text.text = $"{totalValue}";
         }
     }
 }

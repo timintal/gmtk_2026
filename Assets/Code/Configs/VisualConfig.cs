@@ -1,5 +1,6 @@
 using System;
 using _Game.Features.Enemies;
+using _Game.Features.Enemies.Configs;
 using Code.Common.View;
 using Code.Common.View.UI;
 using Code.Features.Tooltip;
@@ -13,10 +14,17 @@ namespace Code.Configs
     public class VisualConfig : ScriptableObject, IResource
     {
         public TooltipPrefabEntry[] TooltipPrefabs = Array.Empty<TooltipPrefabEntry>();
+        
         [ListDrawerSettings(ShowFoldout = true, ShowIndexLabels = true, ListElementLabelName = "Type")]
         public CountdownModifierInfo[] CountdownModifiers = Array.Empty<CountdownModifierInfo>();
+        
         public WTEntityProvider DicePrefab;
+        
         public EntityView BlessingCardPrefab;
+        
+        [ListDrawerSettings(ShowFoldout = true, ShowIndexLabels = true, ListElementLabelName = "Type")]
+        public EnemyEntry[] EnemyPrefabs = Array.Empty<EnemyEntry>();
+        
 
         public TooltipView GetTooltipPrefab(TooltipType type)
         {
@@ -44,6 +52,19 @@ namespace Code.Configs
             return null;
         }
         
+        public WTEntityProvider GetEnemyPrefab(EnemyType type)
+        {
+            for (var i = 0; i < EnemyPrefabs.Length; i++)
+            {
+                if (EnemyPrefabs[i].Type == type)
+                {
+                    return EnemyPrefabs[i].Prefab;
+                }
+            }
+
+            return null;
+        }
+        
 
         [Serializable]
         public struct TooltipPrefabEntry
@@ -61,5 +82,13 @@ namespace Code.Configs
             public string Description;
             public string ErrorMessage;
         }
+
+        [Serializable]
+        public class EnemyEntry
+        {
+            public EnemyType Type;
+            public WTEntityProvider Prefab;
+        }
+        
     }
 }

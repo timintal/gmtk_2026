@@ -14,7 +14,8 @@ namespace _Game.Features.Run
             requestQuery.BatchDestroy();
             
             PlayerState playerState = W.GetResource<PlayerState>();
-            W.NewEntity<Default>().Set(new DrawCardRequest(){Value = playerState.DrawPerTurn});
+            W.NewEntity<Default>().Set(new DrawCardRequest(){Value = playerState.NextDrawCount});
+            playerState.NextDrawCount = playerState.BaseDrawPerTurn;
             
             W.NewEntity<Default>().Set<ActiveTurn>();
         }

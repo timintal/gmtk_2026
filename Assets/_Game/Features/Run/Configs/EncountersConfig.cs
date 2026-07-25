@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using _Game.Features.Enemies;
 using FFS.Libraries.StaticEcs;
 using FFS.Libraries.StaticEcs.Unity;
@@ -21,6 +22,7 @@ namespace _Game.Features.Run.Configs
             #if UNITY_EDITOR
             foreach (var p in Enemies)
             {
+                if (p == null || p.SerializedProviders == null) continue;
                 p.SerializedProviders.ForEach(sp =>
                 {
                     if (sp.ComponentType == typeof(Attack))
@@ -71,6 +73,27 @@ namespace _Game.Features.Run.Configs
                 return AdvancedEncounters[UnityEngine.Random.Range(0, AdvancedEncounters.Length)];
             
             return AdvancedEncounters[UnityEngine.Random.Range(0, AdvancedEncounters.Length)];
+        }
+
+        [Button]
+        void CheckForMissingRefs()
+        {
+            if (firstEncounter == null || firstEncounter.Enemies.Any(e => e == null))
+            {
+                Debug.LogError("First encounter is missing");
+            }
+            if (BasicEncounters == null || BasicEncounters.Length == 0 || BasicEncounters.Any(e => e == null))
+            {
+                Debug.LogError("Basic encounters are missing");
+            }
+            if (MediumEncounters == null || MediumEncounters.Length == 0 || MediumEncounters.Any(e => e == null))
+            {
+                Debug.LogError("Medium encounters are missing");
+            }
+            if (AdvancedEncounters == null || AdvancedEncounters.Length == 0 || AdvancedEncounters.Any(e => e == null))
+            {
+                Debug.LogError("Advanced encounters are missing");
+            }
         }
     }
 }

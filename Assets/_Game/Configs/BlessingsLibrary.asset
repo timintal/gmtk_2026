@@ -89,19 +89,19 @@ MonoBehaviour:
     CardBackColor: {r: 0.8588235, g: 0.7882353, b: 0.7058824, a: 1}
   - BlessingId: draw2
     Title: Draw {0}
-    Description: Draw {0} cards
+    Description: Draw +{0} cards <b> next turn
     Type: 4
     AffectRules: 
     Value: 2
     LevelLock: 1
-    Probability: 0
+    Probability: 80
     CardBackColor: {r: 0.8679245, g: 0.7000712, b: 0.7737629, a: 1}
   - BlessingId: draw3
     Title: Draw {0}
-    Description: Draw {0} cards
+    Description: Draw +{0} cards <b> next turn
     Type: 4
     AffectRules: 
     Value: 3
     LevelLock: 1
-    Probability: 0
+    Probability: 60
     CardBackColor: {r: 0.8679245, g: 0.7000712, b: 0.7737629, a: 1}

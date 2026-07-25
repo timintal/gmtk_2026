@@ -1,4 +1,5 @@
 using _Game.Features.Blessings;
+using _Game.Features.Dice;
 using _Game.Features.Enemies;
 using Code.Common;
 using Code.Features.GameLoop;
@@ -23,6 +24,9 @@ namespace _Game.Features.Run
                 
                 BlessingUtils.DiscardHand();
                 BlessingUtils.ShuffleDiscardPileToDrawPile();
+                
+                var playerState = W.GetResource<PlayerState>();
+                playerState.NextDrawCount = playerState.BaseDrawPerTurn;
                 
                 var newLevelRequest = W.NewEntity<Default>();
                 newLevelRequest.Set<ShowRewardsRequest>();
