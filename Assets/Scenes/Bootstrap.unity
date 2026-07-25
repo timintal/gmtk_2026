@@ -179,6 +179,271 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7a17f25d1c14f288e91f50c92f58373, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Game.Runtime::Code.Features.DragAndDrop.DragPointerInputBridge
+--- !u!1001 &1351012209
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1785803825029194734, guid: bc0b377ef215f4210976a8dcebe94a43, type: 3}
+      propertyPath: m_Name
+      value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 1785803825029194734, guid: bc0b377ef215f4210976a8dcebe94a43, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3506350183718797250, guid: bc0b377ef215f4210976a8dcebe94a43, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8001072014480582727, guid: bc0b377ef215f4210976a8dcebe94a43, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8001072014480582727, guid: bc0b377ef215f4210976a8dcebe94a43, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8001072014480582727, guid: bc0b377ef215f4210976a8dcebe94a43, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8001072014480582727, guid: bc0b377ef215f4210976a8dcebe94a43, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8001072014480582727, guid: bc0b377ef215f4210976a8dcebe94a43, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8001072014480582727, guid: bc0b377ef215f4210976a8dcebe94a43, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8001072014480582727, guid: bc0b377ef215f4210976a8dcebe94a43, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8001072014480582727, guid: bc0b377ef215f4210976a8dcebe94a43, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8001072014480582727, guid: bc0b377ef215f4210976a8dcebe94a43, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8001072014480582727, guid: bc0b377ef215f4210976a8dcebe94a43, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8001072014480582727, guid: bc0b377ef215f4210976a8dcebe94a43, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8001072014480582727, guid: bc0b377ef215f4210976a8dcebe94a43, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8001072014480582727, guid: bc0b377ef215f4210976a8dcebe94a43, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8001072014480582727, guid: bc0b377ef215f4210976a8dcebe94a43, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8001072014480582727, guid: bc0b377ef215f4210976a8dcebe94a43, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8001072014480582727, guid: bc0b377ef215f4210976a8dcebe94a43, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8001072014480582727, guid: bc0b377ef215f4210976a8dcebe94a43, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8001072014480582727, guid: bc0b377ef215f4210976a8dcebe94a43, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8001072014480582727, guid: bc0b377ef215f4210976a8dcebe94a43, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8001072014480582727, guid: bc0b377ef215f4210976a8dcebe94a43, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1785803825029194734, guid: bc0b377ef215f4210976a8dcebe94a43, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1351012212}
+  m_SourcePrefab: {fileID: 100100000, guid: bc0b377ef215f4210976a8dcebe94a43, type: 3}
+--- !u!1 &1351012210 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1785803825029194734, guid: bc0b377ef215f4210976a8dcebe94a43, type: 3}
+  m_PrefabInstance: {fileID: 1351012209}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1351012211 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3506350183718797250, guid: bc0b377ef215f4210976a8dcebe94a43, type: 3}
+  m_PrefabInstance: {fileID: 1351012209}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+--- !u!114 &1351012212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1351012210}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec426247209554dd582d0e35cdd2c540, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: EasyTweens::EasyTweens.TweenAnimation
+  tweens:
+  - rid: 6297997691203879020
+  - rid: 6297997691203879021
+  duration: 1.9
+  timeSpeedMultiplier: 1
+  playOnAwake: 1
+  restartOnEnable: 0
+  lootType: 0
+  ignoreTimeScale: 0
+  currentTime: 0
+  directionMultiplier: -1
+  muteNonSelectedTweens: 0
+  allowCustomAnimationDuration: 0
+  serializationVersion: 2
+  references:
+    version: 2
+    RefIds:
+    - rid: 6297997691203879020
+      type: {class: TweenColorProperty, ns: EasyTweens, asm: EasyTweens}
+      data:
+        delay: 1.5
+        duration: 0.4
+        curve:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 0
+            inSlope: 0
+            outSlope: 1
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 1
+            value: 1
+            inSlope: 1
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        curveRepeats: 1
+        isSelected: 0
+        tweenGuid: d333dc1d-f7b4-4aaf-a8db-1455543f7d41
+        LinkedTweenGuid: 
+        LinkedTweenDelay: 0
+        IsDirty: 0
+        NameOverride: 
+        isUnfolded: 0
+        isHidden: 0
+        target: {fileID: 1351012211}
+        startValue: {r: 1, g: 1, b: 1, a: 1}
+        endValue: {r: 1, g: 1, b: 1, a: 0}
+        useGradient: 0
+        useHDRColor: 0
+        gradient:
+          serializedVersion: 2
+          key0: {r: 1, g: 1, b: 1, a: 1}
+          key1: {r: 1, g: 1, b: 1, a: 1}
+          key2: {r: 0, g: 0, b: 0, a: 0}
+          key3: {r: 0, g: 0, b: 0, a: 0}
+          key4: {r: 0, g: 0, b: 0, a: 0}
+          key5: {r: 0, g: 0, b: 0, a: 0}
+          key6: {r: 0, g: 0, b: 0, a: 0}
+          key7: {r: 0, g: 0, b: 0, a: 0}
+          ctime0: 0
+          ctime1: 65535
+          ctime2: 0
+          ctime3: 0
+          ctime4: 0
+          ctime5: 0
+          ctime6: 0
+          ctime7: 0
+          atime0: 0
+          atime1: 65535
+          atime2: 0
+          atime3: 0
+          atime4: 0
+          atime5: 0
+          atime6: 0
+          atime7: 0
+          m_Mode: 0
+          m_ColorSpace: -1
+          m_NumColorKeys: 2
+          m_NumAlphaKeys: 2
+    - rid: 6297997691203879021
+      type: {class: DeActivateGameObject, ns: EasyTweens, asm: EasyTweens}
+      data:
+        delay: 0
+        duration: 0
+        curve:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 0
+            inSlope: 0
+            outSlope: 1
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 1
+            value: 1
+            inSlope: 1
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        curveRepeats: 1
+        isSelected: 0
+        tweenGuid: 
+        LinkedTweenGuid: d333dc1d-f7b4-4aaf-a8db-1455543f7d41
+        LinkedTweenDelay: 1.9
+        IsDirty: 0
+        NameOverride: 
+        isUnfolded: 0
+        isHidden: 0
+        GameObject: {fileID: 1351012210}
 --- !u!1 &2068821449
 GameObject:
   m_ObjectHideFlags: 0
@@ -264,3 +529,4 @@ SceneRoots:
   m_Roots:
   - {fileID: 1000000001}
   - {fileID: 2068821452}
+  - {fileID: 1351012209}

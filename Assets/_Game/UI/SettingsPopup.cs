@@ -13,7 +13,7 @@ public class SettingsPopup : ResourceMonoBehaviour<SettingsPopup>
     
     void Start()
     {
-        _musicToggle.isOn = Mathf.Approximately(PlayerPrefs.GetFloat(MusicAudioSource.MusicVolume, 1), 1);
+        _musicToggle.isOn = Mathf.Approximately(PlayerPrefs.GetFloat(MusicAudioSource.MusicVolume, 0.2f), 0.2f);
         _sfxToggle.isOn = Mathf.Approximately(PlayerPrefs.GetFloat(SFXAudioSource.Sfxvolume, 1), 1);
     }
 
@@ -27,7 +27,7 @@ public class SettingsPopup : ResourceMonoBehaviour<SettingsPopup>
     
     private void OnMusicToggleChanged(bool isOn)
     {
-        float volume = isOn ? 1f : 0f;
+        float volume = isOn ? 0.2f : 0f;
         W.GetResource<MusicAudioSource>().SetVolume(volume);
     }
     
