@@ -32,6 +32,15 @@ MonoBehaviour:
       isFolder: 0
       isAsset: 1
       _id: 1048049658
+    - globalId:
+        globalObjectIdString: GlobalObjectId_V1-3-3f5b5dff67a942289a9defa416b206f3-11400000-0
+      _typeString: TMPro.TMP_Settings, Unity.TextMeshPro, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      _obj: {fileID: 11400000, guid: 3f5b5dff67a942289a9defa416b206f3, type: 2}
+      isSceneGameObject: 0
+      isFolder: 0
+      isAsset: 1
+      _id: 1045820226
     name: Shared
     _id: 1048807065
   - items: []

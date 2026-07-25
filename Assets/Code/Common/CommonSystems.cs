@@ -11,6 +11,8 @@ namespace Code.Common
             GameSys.Add(new InitPositionFromTransformSystem(), Order.Init);
             GameSys.Add(new PreProcessCollisionEventSystem(), Order.Init);
             
+            GameSys.Add(new TickDelaySystem());
+            
             GameSys.Add(new AutoDestroyTickSystem(), Order.PreCleanup);
             GameSys.Add(new CleanUpPhysicsEventsSystem(), Order.PreCleanup);
             

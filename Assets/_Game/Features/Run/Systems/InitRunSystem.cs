@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using _Game.Features.Blessings;
 using _Game.Features.Dice;
 using Code.Common;
+using Code.Features.EnergyFeature;
 using FFS.Libraries.StaticEcs;
 
 namespace _Game.Features.Run

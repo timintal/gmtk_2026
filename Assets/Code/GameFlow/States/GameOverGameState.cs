@@ -14,6 +14,8 @@ namespace Code.GameFlow
     {
         public override UniTask OnEnter()
         {
+            W.GetResource<GameOverScreen>().gameObject.SetActive(true);
+            W.DestroyAllLoadedEntities();
             return UniTask.CompletedTask;
         }
 

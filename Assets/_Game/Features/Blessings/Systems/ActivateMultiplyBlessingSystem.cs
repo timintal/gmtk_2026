@@ -12,6 +12,11 @@ namespace _Game.Features.Blessings
             foreach (var e in W.Query<All<Blessing, Activated, MultiplyValueBlessing, BlessingValue, W.Links<Targets>>>().Entities())
             {
                 ref var targets = ref e.Ref<W.Links<Targets>>();
+                if (targets.IsNotEmpty)
+                {
+                    e.Set<UsedBlessing>();
+                }
+                
                 foreach (var targetLink in targets)
                 {
                     if (targetLink.Value.TryUnpack<WT>(out var entity) && 
@@ -19,6 +24,7 @@ namespace _Game.Features.Blessings
                     {
                         ref var diceValue = ref entity.Mut<DiceValue>();
                         diceValue.Value = Mathf.RoundToInt(diceValue.Value * e.Read<BlessingValue>().Value);
+                        entity.IncreaseUpgradesCount();
                     }
                 }
             }

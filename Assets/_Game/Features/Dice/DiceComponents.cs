@@ -12,5 +12,7 @@ namespace _Game.Features.Dice
     public partial struct DieValueUpdated : IEvent { public int Value; }
     
     public partial struct RolledDicesContainer : IComponent {  }
+    
+    public partial struct UpgradesCount : IComponent { public int Value; }
         
 }

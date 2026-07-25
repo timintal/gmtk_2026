@@ -1,5 +1,5 @@
-using _Game.Features.Blessings;
 using _Game.Features.Dice;
+using Code.Common;
 using FFS.Libraries.StaticEcs;
 
 namespace _Game.Features.Run
@@ -8,17 +8,15 @@ namespace _Game.Features.Run
     {
         public void Update()
         {
-            var requestQuery = W.Query<All<StartNewTurnRequest>>();
+            var requestQuery = W.Query<All<StartNewTurnRequest>, None<Delay>>();
             if (requestQuery.EntitiesCount() == 0) return;
             
             requestQuery.BatchDestroy();
-
-            foreach (var e in W.Query<All<Blessing, Hand>>().Entities())
-            {
-                e.DiscardBlessing();
-            }
+            
             PlayerState playerState = W.GetResource<PlayerState>();
             W.NewEntity<Default>().Set(new DrawCardRequest(){Value = playerState.DrawPerTurn});
+            
+            W.NewEntity<Default>().Set<ActiveTurn>();
         }
     }
 }

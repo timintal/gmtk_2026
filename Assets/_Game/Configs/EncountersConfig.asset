@@ -12,9 +12,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0f0630a346a4e55a9839061aa0b0381, type: 3}
   m_Name: EncountersConfig
   m_EditorClassIdentifier: Game.Runtime::_Game.Features.Run.Configs.EncountersConfig
+  firstEncounter:
+    Enemies:
+    - {fileID: 2568026820054692075, guid: 27a9e025ab16845069ed8075e2b264fa, type: 3}
+    - {fileID: 2568026820054692075, guid: 27a9e025ab16845069ed8075e2b264fa, type: 3}
   BasicEncounters:
   - Enemies:
     - {fileID: 2568026820054692075, guid: 27a9e025ab16845069ed8075e2b264fa, type: 3}
+    - {fileID: 364737202330923012, guid: 49b31b7c64d564c5ca92cbe9a04392b6, type: 3}
+  - Enemies:
+    - {fileID: 5090953242069811516, guid: 44b11e37151e942f08b23d5a633f71b8, type: 3}
+    - {fileID: 364737202330923012, guid: 49b31b7c64d564c5ca92cbe9a04392b6, type: 3}
+  - Enemies:
+    - {fileID: 3870469197218237796, guid: 49780c41600894292938f3924be020e1, type: 3}
+  - Enemies:
     - {fileID: 2568026820054692075, guid: 27a9e025ab16845069ed8075e2b264fa, type: 3}
-  AdvancedEncounters: []
-  AdvancedEncountersLevel: 100
+    - {fileID: 364737202330923012, guid: 49b31b7c64d564c5ca92cbe9a04392b6, type: 3}
+    - {fileID: 364737202330923012, guid: 49b31b7c64d564c5ca92cbe9a04392b6, type: 3}
+  MediumEncounters:
+  - Enemies:
+    - {fileID: 3870469197218237796, guid: da5e46f096d8c45b285f033e2b84361c, type: 3}
+    - {fileID: 364737202330923012, guid: 49b31b7c64d564c5ca92cbe9a04392b6, type: 3}
+  - Enemies:
+    - {fileID: 5090953242069811516, guid: 44b11e37151e942f08b23d5a633f71b8, type: 3}
+    - {fileID: 5090953242069811516, guid: 44b11e37151e942f08b23d5a633f71b8, type: 3}
+  - Enemies:
+    - {fileID: 3870469197218237796, guid: 6962b664f1cdd4831b64801ffc87a2d5, type: 3}
+    - {fileID: 3870469197218237796, guid: 49780c41600894292938f3924be020e1, type: 3}
+    - {fileID: 364737202330923012, guid: 49b31b7c64d564c5ca92cbe9a04392b6, type: 3}
+  AdvancedEncounters:
+  - Enemies:
+    - {fileID: 3870469197218237796, guid: 99864e77210654d7fae212d3ec8be32f, type: 3}
+    - {fileID: 3870469197218237796, guid: 6962b664f1cdd4831b64801ffc87a2d5, type: 3}
+    - {fileID: 5090953242069811516, guid: 44b11e37151e942f08b23d5a633f71b8, type: 3}
+  - Enemies:
+    - {fileID: 3870469197218237796, guid: ffb240e2ee6d645d592e56add351e22d, type: 3}
+    - {fileID: 5090953242069811516, guid: 44b11e37151e942f08b23d5a633f71b8, type: 3}
+    - {fileID: 3870469197218237796, guid: 49780c41600894292938f3924be020e1, type: 3}
+  MediumEncountersLevel: 4
+  AdvancedEncountersLevel: 8

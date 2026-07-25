@@ -1,6 +1,9 @@
+using _Game.Features.Run;
 using Code.Common;
+using Code.Common.Utils;
 using Code.Common.View;
 using DG.Tweening;
+using FFS.Libraries.StaticEcs;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -27,6 +30,7 @@ namespace _Game.Features.Blessings.Views
         
         BlessingView _hovered;
         private bool _dirty;
+        private int _lastUpdateItemsCount;
 
         public Transform Root => _root;
 
@@ -34,7 +38,23 @@ namespace _Game.Features.Blessings.Views
 
         void Update()
         {
-            UpdateHover();
+            if (W.Query<All<ActiveTurn>>().EntitiesCount() > 0)
+            {
+                UpdateHover();
+            }
+            else if (_hovered != null)
+            {
+                _hovered.SetHovered(false);
+                _hovered = null;
+                _dirty = true;
+            }
+            
+            var currentItemsCount = W.Query<All<Blessing, Hand>>().EntitiesCount();
+            if (currentItemsCount != _lastUpdateItemsCount)
+            {
+                _dirty = true;
+            }
+
             if (_dirty)
             {
                 Layout();
@@ -44,8 +64,11 @@ namespace _Game.Features.Blessings.Views
 
         private void OnTransformChildrenChanged() => _dirty = true;
 
-        // Central hover resolution: when several cards overlap under the cursor, only the
-        // top-most one (highest sibling index == drawn last == on top) is hovered.
+        public void SetDirty()
+        {
+            _dirty = true;
+        }
+        
         void UpdateHover()
         {
             var mouse = Mouse.current;
@@ -55,19 +78,31 @@ namespace _Game.Features.Blessings.Views
 
             if (mouse.leftButton.isPressed)
             {
-                if (_hovered != null && mouse.leftButton.wasPressedThisFrame)
+                if (_hovered != null)
                 {
-                    _hovered.OnClick();
+                    if (mouse.leftButton.wasPressedThisFrame)
+                    {
+                        _hovered.OnClick();
+                    }
+                    if (mouse.rightButton.wasPressedThisFrame)
+                    {
+                        _hovered.SetHovered(false);
+                        _hovered.ResetDrag();
+                        _hovered = null;
+                        _dirty = true;
+                    }
+                    return;
                 }
-                return;
             }
 
             if (mouse.leftButton.wasReleasedThisFrame && _hovered != null)
             {
                 _hovered.OnRelease();
+                _hovered = null;
+                _dirty = true;
             }
             
-            var point = ScreenToWorld2D(cam, mouse.position.ReadValue());
+            var point = ScreenUtils.ScreenToWorld2D(cam, mouse.position.ReadValue());
 
             BlessingView best = null;
             var count = _root.childCount;
@@ -103,20 +138,6 @@ namespace _Game.Features.Blessings.Views
             _dirty |= needRelayout;
         }
 
-        static Vector2 ScreenToWorld2D(Camera camera, Vector2 screen)
-        {
-            if (camera.orthographic)
-            {
-                var world = camera.ScreenToWorldPoint(new Vector3(screen.x, screen.y, -camera.transform.position.z));
-                return new Vector2(world.x, world.y);
-            }
-
-            var ray = camera.ScreenPointToRay(screen);
-            var distance = Mathf.Abs(ray.direction.z) > 0.0001f ? -ray.origin.z / ray.direction.z : 0f;
-            var pointOnPlane = ray.GetPoint(distance);
-            return new Vector2(pointOnPlane.x, pointOnPlane.y);
-        }
-
 #if UNITY_EDITOR
         void OnValidate()
         {
@@ -130,6 +151,7 @@ namespace _Game.Features.Blessings.Views
         public void Layout()
         {
             var count = _root.childCount;
+            _lastUpdateItemsCount = count;
             if (count == 0)
                 return;
 

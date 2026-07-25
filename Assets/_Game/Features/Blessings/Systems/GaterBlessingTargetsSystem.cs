@@ -1,6 +1,7 @@
 using _Game.Features.Dice;
 using Code.Common;
 using Code.Common.Hitbox;
+using Code.Features.DragAndDrop;
 using FFS.Libraries.StaticEcs;
 
 namespace _Game.Features.Blessings
@@ -14,6 +15,22 @@ namespace _Game.Features.Blessings
                 var position = e.Read<Position>();
                 e.Set(new W.Links<Targets>());
                 ref var links = ref e.Ref<W.Links<Targets>>();
+                
+                if (e.Has<AffectAllBlessing>())
+                {
+                    foreach (var container in W.Query<All<RolledDicesContainer, DragContainerHitbox2D>>().Entities())
+                    {
+                        var collider2D = container.Read<DragContainerHitbox2D>().Value;
+                        if (collider2D.OverlapPoint(position.Value))
+                        {
+                            foreach (var diEntity in W.Query<All<Dice.Dice, DiceValue>>().Entities())
+                            {
+                                links.TryAdd(diEntity);
+                            }
+                            break;
+                        }
+                    }
+                }
 
                 foreach (var targetEntity in W.Query<All<BlessingTarget, Hitbox2D>>().Entities())
                 {
@@ -24,7 +41,7 @@ namespace _Game.Features.Blessings
                         {
                             bool isValidTarget = true;
                             var diceValue = targetEntity.Read<DiceValue>().Value;
-                            
+
                             if (isValidTarget)
                             {
                                 isValidTarget = !e.Has<EvenBlessing>() || diceValue % 2 == 0;
@@ -36,22 +53,14 @@ namespace _Game.Features.Blessings
 
                             if (isValidTarget)
                             {
-                                links.Add(targetEntity);
+                                links.TryAdd(targetEntity);
 
-                                if (e.Has<AffectAllBlessing>())
-                                {
-                                    foreach (var diEntity in W.Query<All<Dice.Dice, DiceValue>>().Entities())
-                                    {
-                                        links.TryAdd(diEntity);     
-                                    }
-                                }
-                                
                                 if (e.Has<AffectSameValueDicesBlessing>())
                                 {
                                     foreach (var diEntity in W.Query<All<Dice.Dice, DiceValue>>().Entities())
                                     {
-                                        if (diEntity.Read<DiceValue>().Value == diceValue)  
-                                            links.TryAdd(diEntity);         
+                                        if (diEntity.Read<DiceValue>().Value == diceValue)
+                                            links.TryAdd(diEntity);
                                     }
                                 }
                             }

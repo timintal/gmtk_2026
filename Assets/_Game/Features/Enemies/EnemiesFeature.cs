@@ -1,3 +1,4 @@
+using Code.Common;
 using Code.Features.DragAndDrop;
 
 namespace _Game.Features.Enemies
@@ -16,6 +17,8 @@ namespace _Game.Features.Enemies
             
             
             GameSys.Add(new DiceDragAcceptSystem(), DragAndDropSystemOrder.Resolve + 1);
+            
+            GameSys.Add(new CheckExactCountdownSystem(), Order.PreCleanup);
         }
     }
 }

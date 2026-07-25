@@ -24,7 +24,7 @@ namespace _Game.Features.Run
         bool DrawCard()
         {
             ListPool<W.Entity>.Get(out var cards);
-            foreach (var e in W.Query<All<Blessing, DrawPile>>().Entities())
+            foreach (var e in W.Query<All<Blessing, DrawPile>, None<UsedBlessing>>().Entities())
             {
                 cards.Add(e);
             }
@@ -35,9 +35,9 @@ namespace _Game.Features.Run
             }
             else
             {
-                foreach (var e in W.Query<All<Blessing, DiscardPile>>().Entities())
+                BlessingUtils.ShuffleDiscardPileToDrawPile();
+                foreach (var e in W.Query<All<Blessing, DrawPile>, None<UsedBlessing>>().Entities())
                 {
-                    e.PutBlessingInDrawPile();
                     cards.Add(e);
                 }
             }

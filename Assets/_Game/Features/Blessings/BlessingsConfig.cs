@@ -1,6 +1,7 @@
 using System;
 using FFS.Libraries.StaticEcs;
 using Sirenix.OdinInspector;
+using UnityEngine;
 
 namespace _Game.Features.Blessings
 {
@@ -13,7 +14,8 @@ namespace _Game.Features.Blessings
         None,
         AddValue,
         MultiplyValue,
-        RerollDice
+        RerollDice,
+        DrawCard
     }
 
     public enum BlessingAffectRule
@@ -34,6 +36,9 @@ namespace _Game.Features.Blessings
         public BlessingType Type;
         public BlessingAffectRule[] AffectRules;
         public float Value;
+        public int LevelLock = 1;
+        public float Probability = 100;
+        public Color CardBackColor;
         
         public Action<BlessingsConfig> OnDebugCreateBlessing;
         
@@ -58,6 +63,9 @@ namespace _Game.Features.Blessings
                     break;
                 case BlessingType.RerollDice:
                     entity.Set<RerollBlessing>();
+                    break;
+                case BlessingType.DrawCard:
+                    entity.Set<DrawBlessing>();
                     break;
             }
 

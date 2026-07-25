@@ -1,3 +1,4 @@
+using Code.Common.Cooldown;
 using FFS.Libraries.StaticEcs;
 using FFS.Libraries.StaticEcs.Unity;
 using UnityEngine;
@@ -34,4 +35,8 @@ namespace Code.Common
     
     public struct Owner : ILinkType {}
     public struct Children : ILinksType {}
+    
+    public struct Delay : ICooldown { public float Value { get; set; } }
+
+    public class TickDelaySystem : CooldownTickSystem<Delay> { }
 }

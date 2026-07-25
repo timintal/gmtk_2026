@@ -12,13 +12,17 @@ namespace _Game.Features.Blessings
     public partial struct Hand : ITag, ITrackableAdded, ITrackableDeleted {  }
     public partial struct DrawPile : ITag, ITrackableAdded, ITrackableDeleted {  }
     public partial struct DiscardPile : ITag, ITrackableAdded, ITrackableDeleted {  }
+    public partial struct RewardScreen : ITag { }
     
     public partial struct AddValueBlessing : ITag {  }
     public partial struct MultiplyValueBlessing : ITag {  }
     public partial struct RerollBlessing : ITag {  }
+    public partial struct DrawBlessing : ITag {  }
     
     public partial struct OddBlessing : ITag {  }
     public partial struct EvenBlessing : ITag {  }
+    
+    public partial struct UsedBlessing : ITag {  }
     
     public partial struct AffectSameValueDicesBlessing : ITag {  }
     public partial struct AffectAllBlessing : ITag {  }

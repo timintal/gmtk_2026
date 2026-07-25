@@ -1,0 +1,99 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &8291153552583756888
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5090953242069811516, guid: 44b11e37151e942f08b23d5a633f71b8, type: 3}
+      propertyPath: 'providers.Array.data[8]'
+      value: 6297997679405302728
+      objectReference: {fileID: 0}
+    - target: {fileID: 5090953242069811516, guid: 44b11e37151e942f08b23d5a633f71b8, type: 3}
+      propertyPath: 'providers.Array.data[11]'
+      value: 6297997679405302618
+      objectReference: {fileID: 0}
+    - target: {fileID: 5090953242069811516, guid: 44b11e37151e942f08b23d5a633f71b8, type: 3}
+      propertyPath: 'managedReferences[6297997679405302618]'
+      value: FFS.StaticEcs.Unity FFS.Libraries.StaticEcs.Unity.ComponentProvider
+      objectReference: {fileID: 0}
+    - target: {fileID: 5090953242069811516, guid: 44b11e37151e942f08b23d5a633f71b8, type: 3}
+      propertyPath: 'managedReferences[6297997679405302713]'
+      value: FFS.StaticEcs.Unity FFS.Libraries.StaticEcs.Unity.ComponentProvider
+      objectReference: {fileID: 0}
+    - target: {fileID: 5090953242069811516, guid: 44b11e37151e942f08b23d5a633f71b8, type: 3}
+      propertyPath: 'managedReferences[6297997679405302728]'
+      value: FFS.StaticEcs.Unity FFS.Libraries.StaticEcs.Unity.ComponentProvider
+      objectReference: {fileID: 0}
+    - target: {fileID: 5090953242069811516, guid: 44b11e37151e942f08b23d5a633f71b8, type: 3}
+      propertyPath: managedReferences[6297997644864160178].Value
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5090953242069811516, guid: 44b11e37151e942f08b23d5a633f71b8, type: 3}
+      propertyPath: managedReferences[6297997679405302618].value
+      value: 6297997647674605676
+      objectReference: {fileID: 0}
+    - target: {fileID: 5090953242069811516, guid: 44b11e37151e942f08b23d5a633f71b8, type: 3}
+      propertyPath: managedReferences[6297997679405302713].value
+      value: 6297997644864160178
+      objectReference: {fileID: 0}
+    - target: {fileID: 5090953242069811516, guid: 44b11e37151e942f08b23d5a633f71b8, type: 3}
+      propertyPath: managedReferences[6297997679405302728].value
+      value: 6297997644864160178
+      objectReference: {fileID: 0}
+    - target: {fileID: 5090953242069811516, guid: 44b11e37151e942f08b23d5a633f71b8, type: 3}
+      propertyPath: managedReferences[6297997647674605676].<BaseValue>k__BackingField
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6457237947489517052, guid: 44b11e37151e942f08b23d5a633f71b8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.53
+      objectReference: {fileID: 0}
+    - target: {fileID: 6457237947489517052, guid: 44b11e37151e942f08b23d5a633f71b8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.93
+      objectReference: {fileID: 0}
+    - target: {fileID: 6457237947489517052, guid: 44b11e37151e942f08b23d5a633f71b8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6457237947489517052, guid: 44b11e37151e942f08b23d5a633f71b8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6457237947489517052, guid: 44b11e37151e942f08b23d5a633f71b8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6457237947489517052, guid: 44b11e37151e942f08b23d5a633f71b8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6457237947489517052, guid: 44b11e37151e942f08b23d5a633f71b8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6457237947489517052, guid: 44b11e37151e942f08b23d5a633f71b8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6457237947489517052, guid: 44b11e37151e942f08b23d5a633f71b8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6457237947489517052, guid: 44b11e37151e942f08b23d5a633f71b8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8446847316186557969, guid: 44b11e37151e942f08b23d5a633f71b8, type: 3}
+      propertyPath: m_Name
+      value: EasyEnemy(15-5) Variant
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 44b11e37151e942f08b23d5a633f71b8, type: 3}

@@ -13,7 +13,8 @@ namespace _Game.Features.Blessings.Views
     {
         [SerializeField] private TMP_Text _Title;
         [SerializeField] private TMP_Text _Description;
-
+        [SerializeField] SpriteRenderer _background;
+ 
         [SerializeField] SortingGroup _sortingGroup;
         [SerializeField] Collider2D _collider;
         [SerializeField] string _hoverSortingLayer;
@@ -43,17 +44,27 @@ namespace _Game.Features.Blessings.Views
             _modifierTweenAnimation.PlayBackward(false);
         }
 
+        public void OverrideSortingLayers(string original, string hover)
+        {
+            _originalSortingLayer = original;
+            _hoverSortingLayer = hover;
+            _sortingGroup.sortingLayerName = _isHovered ? _hoverSortingLayer : _originalSortingLayer;
+        }
+
         protected override void PostBind()
+        {
+            UpdateVisuals(Entity);
+        }
+        private void UpdateVisuals(W.Entity entity)
         {
             CreateModifiers();
             var blessingsLibrary = W.GetResource<BlessingsLibrary>();
-            var blessingId = Entity.Read<BlessingId>();
-            var blessingValue = Entity.Read<BlessingValue>();
+            var blessingId = entity.Read<BlessingId>();
+            var blessingValue = entity.Read<BlessingValue>();
             var blessingsConfig = blessingsLibrary.GetBlessingConfig(blessingId.Value);
             _Title.text = string.Format(blessingsConfig.Title, blessingValue.Value.ToString("F0"));
             _Description.text = string.Format(blessingsConfig.Description, blessingValue.Value.ToString("F0"));
-
-            W.GetResource<BlessingsContainerView>().Layout();
+            _background.color = blessingsConfig.CardBackColor;
         }
         private void CreateModifiers()
         {
@@ -138,8 +149,15 @@ namespace _Game.Features.Blessings.Views
             _lineRenderer.SetPosition(1, tipPosition);
         }
 
+        public void ResetDrag()
+        {
+            _lineRenderer.gameObject.SetActive(false);
+            _topArrow.gameObject.SetActive(false);
+        }
+        
         public void OnRelease()
         {
+            SetHovered(false);
             _lineRenderer.gameObject.SetActive(false);
             _topArrow.gameObject.SetActive(false);
             Entity.Set(new Position

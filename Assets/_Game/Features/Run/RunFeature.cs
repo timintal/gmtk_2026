@@ -1,4 +1,3 @@
-using _Game.Features.Dice.Systems;
 using Code.Common;
 
 namespace _Game.Features.Run
@@ -11,7 +10,9 @@ namespace _Game.Features.Run
             GameSys.Add(new StartNewLevelSystem(), Order.Init + 1);
             GameSys.Add(new StartNewTurnSystem(), Order.Init + 2);
             GameSys.Add(new LevelFinishedSystem(), Order.LateUpdate);
-            GameSys.Add(new DrawCardSystem());
+            GameSys.Add(new EndTurnSystem(), Order.LateUpdate);
+            GameSys.Add(new ShowRewardsSystem(), Order.LateUpdate);
+            GameSys.Add(new DrawCardSystem(), Order.LateUpdate);
             
         }
     }

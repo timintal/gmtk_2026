@@ -17,9 +17,13 @@ namespace Code.Common.View
 
             foreach (var e in W.Query<All<ViewLink, NeedCleanupView>, None<Destroyed>>().Entities())
             {
-                e.Read<ViewLink>().View.Unbind();
-                Object.Destroy(e.Read<ViewLink>().View.gameObject);
-                
+                var entityView = e.Read<ViewLink>().View;
+                if (entityView != null)
+                {
+                    entityView.Unbind();
+                    Object.Destroy(entityView.gameObject);
+                }
+
                 e.Delete<NeedCleanupView>();
                 e.Delete<ViewLink>();
                 if (e.Has<ViewPrefab>())

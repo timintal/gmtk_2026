@@ -27,6 +27,10 @@ namespace _Game.Features.Enemies
                     enemyCountdown.Value -= draggable.Read<DiceValue>().Value;
                     if (enemyCountdown.Value <= 0)
                     {
+                        if (enemyCountdown.Value == 0)
+                        {
+                            targetContainer.Set<ExactCountdown>();
+                        }
                         enemyCountdown.Value = 0;
                         targetContainer.Set<Destroyed>();
                     }

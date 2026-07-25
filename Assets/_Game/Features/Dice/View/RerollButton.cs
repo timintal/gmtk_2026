@@ -15,7 +15,10 @@ namespace _Game.Features.Dice.View
         }
         private void OnRerollClicked()
         {
-            W.NewEntity<Default>().Set<StartNewTurnRequest>();
+            if (W.Query<All<ActiveTurn>>().EntitiesCount() > 0)
+            {
+                W.NewEntity<Default>().Set<EndTurnRequest>();
+            }
         }
     }
 }

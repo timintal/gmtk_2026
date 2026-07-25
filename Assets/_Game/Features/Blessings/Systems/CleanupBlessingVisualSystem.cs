@@ -7,7 +7,7 @@ namespace _Game.Features.Blessings
     {
         public void Update()
         {
-            foreach (var e in W.Query<All<Blessing>, Any<ViewLink, ViewPrefab>, None<Hand>>().Entities())
+            foreach (var e in W.Query<All<Blessing>, Any<ViewLink, ViewPrefab>, None<Hand, RewardScreen>>().Entities())
             {
                 e.Set<NeedCleanupView>();
             }

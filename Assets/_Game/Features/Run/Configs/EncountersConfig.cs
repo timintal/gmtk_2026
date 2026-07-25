@@ -1,5 +1,8 @@
 using System;
+using _Game.Features.Enemies;
 using FFS.Libraries.StaticEcs;
+using FFS.Libraries.StaticEcs.Unity;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace _Game.Features.Run.Configs
@@ -8,22 +11,64 @@ namespace _Game.Features.Run.Configs
     public class EncounterInfo
     {
         public WTEntityProvider[] Enemies;
+
+        public string Description()
+        {
+            int hp = 0;
+            int attack = 0;
+
+            if (Enemies == null) return "";
+            foreach (var p in Enemies)
+            {
+                p.SerializedProviders.ForEach(sp =>
+                {
+                    if (sp.ComponentType == typeof(Attack))
+                    {
+                        var component = ((ComponentProvider)sp).value;
+                        attack += (int)((Attack)component).BaseValue;
+                    }
+                    if (sp.ComponentType == typeof(EnemyCountdown))
+                    {
+                        var component = ((ComponentProvider)sp).value;
+                        hp += (int)((EnemyCountdown)component).Value;
+                    }
+                });
+            }
+
+            return $"hp:{hp}, attack{attack}";
+        }
     }
 
     [CreateAssetMenu(fileName = "EncountersConfig", menuName = "Run/EncountersConfig", order = 0)]
     public class EncountersConfig : ScriptableObject, IResource
     {
+        [SerializeField] EncounterInfo firstEncounter;
+        
+        [ListDrawerSettings(ShowFoldout = true, ShowIndexLabels = true, ListElementLabelName = "Description")]
         [SerializeField] EncounterInfo[] BasicEncounters;
+        [ListDrawerSettings(ShowFoldout = true, ShowIndexLabels = true, ListElementLabelName = "Description")]
+        [SerializeField] EncounterInfo[] MediumEncounters;
+        
+        [ListDrawerSettings(ShowFoldout = true, ShowIndexLabels = true, ListElementLabelName = "Description")]
         [SerializeField] EncounterInfo[] AdvancedEncounters;
+        [SerializeField] int MediumEncountersLevel;
         [SerializeField] int AdvancedEncountersLevel;
         
 
         public EncounterInfo GetRandomEncounter(int level)
         {
+            if (level == 1) return firstEncounter;
+            
+            if (level < MediumEncountersLevel)
+                return BasicEncounters[UnityEngine.Random.Range(0, BasicEncounters.Length)];
+            
+            if (level >= MediumEncountersLevel && level < AdvancedEncountersLevel)
+                return MediumEncounters[UnityEngine.Random.Range(0, MediumEncounters.Length)];
+            
             if (level >= AdvancedEncountersLevel)
                 return AdvancedEncounters[UnityEngine.Random.Range(0, AdvancedEncounters.Length)];
             
-            return BasicEncounters[UnityEngine.Random.Range(0, BasicEncounters.Length)];
+            return AdvancedEncounters[UnityEngine.Random.Range(0, AdvancedEncounters.Length)];
         }
     }
 }

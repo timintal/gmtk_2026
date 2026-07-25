@@ -10,10 +10,11 @@ namespace _Game.Features.Blessings
             foreach (var e in W.Query<All<Blessing, Activated, W.Links<Targets>>>().Entities())
             {
                 e.Delete<Activated>();
-                ref var links = ref e.Ref<W.Links<Targets>>();
-                if (links.IsNotEmpty)
+                
+                if (e.Has<UsedBlessing>())
                 {
                     e.DiscardBlessing();
+                    e.Delete<UsedBlessing>();
                 }
             }
         }

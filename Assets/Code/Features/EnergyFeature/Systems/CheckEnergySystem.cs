@@ -1,4 +1,6 @@
+using Code.Ecs;
 using Code.Features.GameLoop;
+using Code.GameFlow;
 using FFS.Libraries.StaticEcs;
 
 namespace Code.Features.EnergyFeature
@@ -16,6 +18,7 @@ namespace Code.Features.EnergyFeature
                 if (energy.Value <= 0)
                 {
                     W.NewEntity<Default>().Set<GameLost>();
+                    W.GetResource<FSM>().Value.Push<GameOverGameState>();
                 }
             });
         }

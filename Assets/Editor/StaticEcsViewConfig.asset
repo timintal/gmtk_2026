@@ -24,6 +24,7 @@ MonoBehaviour:
       - _Game/Features/Blessings/Hand
       - _Game/Features/Blessings/DiscardPile
       - _Game/Features/Blessings/DrawPile
+      - _Game/Features/Blessings/RewardScreen
       showTableDataTypes: []
       sortByType: 
       maxEntityResult: 100
@@ -32,7 +33,7 @@ MonoBehaviour:
       gidFilterActive: 0
       gidFilterValue: 0
       filterAll:
-      - _Game/Features/Blessings/Blessing
+      - Code/Features/GameLoop/GameLost
       filterAllOnlyDisabled: []
       filterAllWithDisabled: []
       filterNone: []

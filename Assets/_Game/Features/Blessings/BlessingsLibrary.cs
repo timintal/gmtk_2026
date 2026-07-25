@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using FFS.Libraries.StaticEcs;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -25,6 +26,35 @@ namespace _Game.Features.Blessings
             {
                 config.OnDebugCreateBlessing=null;
             }
+        }
+
+        public BlessingsConfig GetRandomBlessingConfig(int level, List<string> excludedBlessingIds = null)
+        {
+            float totalProbability = 0;
+            foreach (var config in BlessingsConfigs)
+            {
+                if (config.LevelLock <= level && 
+                    (excludedBlessingIds == null || !excludedBlessingIds.Contains(config.BlessingId)))
+                {
+                    totalProbability += config.Probability;
+                }
+            }
+            
+            float random = UnityEngine.Random.Range(0, totalProbability);
+            foreach (var config in BlessingsConfigs)
+            {
+                if (config.LevelLock <= level && 
+                    (excludedBlessingIds == null || !excludedBlessingIds.Contains(config.BlessingId)))
+                {
+                    if (random < config.Probability)
+                    {
+                        return config;
+                    }
+                    random -= config.Probability;
+                }
+            }
+            
+            return BlessingsConfigs[0];
         }
 
         public W.Entity CreateBlessing(BlessingsConfig config)

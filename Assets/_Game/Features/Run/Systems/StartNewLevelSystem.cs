@@ -12,12 +12,12 @@ namespace _Game.Features.Run
     {
         public void Update()
         {
-            var requestQuery = W.Query<All<StartNewLevelRequest>>();
+            var requestQuery = W.Query<All<StartNewLevelRequest>, None<Delay>>();
             if (requestQuery.EntitiesCount() == 0) return;
             
             requestQuery.BatchDestroy();
 
-            foreach (var e in W.Query<All<Blessing>>().Entities())
+            foreach (var e in W.Query<All<Blessing>, None<RewardScreen>>().Entities())
             {
                 e.PutBlessingInDrawPile();
             }
@@ -28,7 +28,9 @@ namespace _Game.Features.Run
             
             PlayerState playerState = W.GetResource<PlayerState>();
             playerState.CurrentLevel++;
-            W.NewEntity<Default>().Set<StartNewTurnRequest>();
+
+            var newLevelRequest = W.NewEntity<Default>();
+            newLevelRequest.Set<StartNewTurnRequest>();
 
             var encountersConfig = W.GetResource<EncountersConfig>();
             var randomEncounter = encountersConfig.GetRandomEncounter(playerState.CurrentLevel);

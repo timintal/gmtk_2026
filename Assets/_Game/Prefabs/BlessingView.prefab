@@ -1064,6 +1064,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Game.Runtime::_Game.Features.Blessings.Views.BlessingView
   _Title: {fileID: 1176426312883389966}
   _Description: {fileID: 6115429309005943934}
+  _background: {fileID: 6672872097791972928}
   _sortingGroup: {fileID: 5907527841746443109}
   _collider: {fileID: 5022637540129656289}
   _hoverSortingLayer: UI
@@ -1166,8 +1167,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -0.1447}
-  m_SizeDelta: {x: 5, y: 5.1737}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 5, y: 3.0196}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &3142967212756213247
 MeshRenderer:
@@ -1304,7 +1305,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0.4160509, y: 0.5460646, z: 0.4420519, w: -0.20802498}
+  m_margin: {x: 0.4160509, y: -0.017626047, z: 0.4420519, w: 0.013424873}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   _SortingLayer: 0

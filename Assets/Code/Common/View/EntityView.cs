@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using FFS.Libraries.StaticEcs;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Pool;
 
 namespace Code.Common.View
 {
@@ -67,8 +68,21 @@ namespace Code.Common.View
         [Button]
         public void GatherChildren()
         {
-            _children.Clear();
-            GetComponentsInChildren(_children);
+            ListPool<EntityChildView>.Get(out var newChilds);
+            GetComponentsInChildren(newChilds);
+            foreach (var child in newChilds)
+            {
+                if (!_children.Contains(child))
+                {
+                    _children.Add(child);
+                }
+            }
+            ListPool<EntityChildView>.Release(newChilds);
+            for (int i = _children.Count - 1; i >= 0; i--)  
+            {
+                if (_children[i] == null)
+                    _children.RemoveAt(i);
+            }
         }
     }
 }
