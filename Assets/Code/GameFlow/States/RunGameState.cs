@@ -1,4 +1,5 @@
 using _Game.Features.Run;
+using Code.Common.Audio;
 using Cysharp.Threading.Tasks;
 using FFS.Libraries.StaticEcs;
 using Libraries.GameFlow.FSM;
@@ -11,6 +12,7 @@ namespace Code.GameFlow
     {
         public override async UniTask OnEnter()
         {
+            W.GetResource<MusicAudioSource>().Play(SoundType.MainTheme);
             W.NewEntity<Default>().Set<StartNewRunRequest>();
         }
         

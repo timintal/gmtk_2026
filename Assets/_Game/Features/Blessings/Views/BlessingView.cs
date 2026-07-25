@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Code.Common;
+using Code.Common.Audio;
 using Code.Common.View;
 using EasyTweens;
 using TMPro;
@@ -103,6 +104,11 @@ namespace _Game.Features.Blessings.Views
             if (_isHovered == isHovered)
                 return;
 
+            if (isHovered)
+            {
+                W.GetResource<SFXAudioSource>().Play(SoundType.CardHover);
+            }
+            
             _isHovered = isHovered;
             _sortingGroup.sortingLayerName = isHovered ? _hoverSortingLayer : _originalSortingLayer;
             if (isHovered)

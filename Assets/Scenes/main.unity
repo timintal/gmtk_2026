@@ -4683,7 +4683,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Game.Runtime::Code.Common.Audio.MusicAudioSource
   AudioSource: {fileID: 1314984358}
-  _config: {fileID: 0}
+  _config: {fileID: 11400000, guid: 5e666964b7ada4f428f7d803b4deb75c, type: 2}
 --- !u!82 &1314984358
 AudioSource:
   m_ObjectHideFlags: 0

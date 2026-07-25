@@ -127,7 +127,7 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: attack_back
     originalName: 
-    pivot: {x: 0.49264705, y: 0.49760765}
+    pivot: {x: 0.49264702, y: 0.49760765}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -165,8 +165,8 @@ ScriptedImporter:
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 7
-        y: 4
+        x: 23
+        y: 13
         width: 136
         height: 209
       spriteId: 8089604c6c7634f0cad235eb224250d9
@@ -215,4 +215,4 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   previousTextureSize: {x: 256, y: 256}
-  canvasSize: {x: 148, y: 216}
+  canvasSize: {x: 180, y: 234}

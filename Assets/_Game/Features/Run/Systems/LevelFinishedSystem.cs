@@ -30,7 +30,7 @@ namespace _Game.Features.Run
                 
                 var newLevelRequest = W.NewEntity<Default>();
                 newLevelRequest.Set<ShowRewardsRequest>();
-                newLevelRequest.Set(new Delay() { Value = 1f });
+                newLevelRequest.Set(new Delay() { Value = 0.4f });
                 
             }
         }

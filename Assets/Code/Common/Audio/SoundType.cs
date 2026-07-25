@@ -7,5 +7,8 @@ namespace Code.Common.Audio
         DragPickup = 2,
         DragDrop = 3,
         DragReject = 4,
+        CardHover = 5,
+        Tick = 6,
+        MainTheme = 7,
     }
 }

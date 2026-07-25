@@ -28,6 +28,22 @@ namespace Code.Common.Audio
                 AudioSource.PlayOneShot(clip);
             }
         }
+
+        public void PlayLooped(SoundType type)
+        {
+            if (_config == null || type == SoundType.None)
+            {
+                return;
+            }
+
+            var clip = _config.GetClip(type);
+            if (clip != null)
+            {
+                AudioSource.clip = clip;
+                AudioSource.loop = true;
+                AudioSource.Play();
+            }
+        }
         
         public void SetVolume(float volume)
         {
