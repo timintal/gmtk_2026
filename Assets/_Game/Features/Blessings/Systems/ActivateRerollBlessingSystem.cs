@@ -43,10 +43,13 @@ namespace _Game.Features.Blessings
                 bool used = false;
                 if (e.Has<AffectAllBlessing>())
                 {
-                    foreach (var diceEntity in W.Query<All<Dice.Dice, DiceValue>, None<UpgradesCount>>().Entities())
+                    foreach (var diceEntity in W.Query<All<Dice.Dice, DiceValue>>().Entities())
                     {
-                        used = true;
-                        diceEntity.Mut<DiceValue>().Value = Random.Range(1, 7);
+                        if (diceEntity.Read<DiceValue>().Value <= 6)
+                        {
+                            used = true;
+                            diceEntity.Mut<DiceValue>().Value = Random.Range(1, 7);
+                        }
                     }
                 }
                 else

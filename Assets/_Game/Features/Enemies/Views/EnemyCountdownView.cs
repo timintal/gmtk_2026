@@ -9,6 +9,7 @@ namespace _Game.Features.Enemies
     public partial class EnemyCountdownView : EntityChildView
     {
         [SerializeField] private TMP_Text countdownText;
+        [SerializeField] private Transform _back;
 
         int _currentCountdown;
         private Tweener _countdownTween;
@@ -23,6 +24,9 @@ namespace _Game.Features.Enemies
 
         public void SetCountdown(int countdown, bool animated = true)
         {
+            if (_currentCountdown == countdown)
+                return;
+            
             _countdownTween?.Kill(true);
             if (!animated)
             {
@@ -36,6 +40,7 @@ namespace _Game.Features.Enemies
                     _currentCountdown = Mathf.RoundToInt(value);
                     countdownText.text = _currentCountdown.ToString();
                 });
+                _back.DOLocalRotate(new Vector3(0, 0, 180), 0.5f, RotateMode.FastBeyond360).SetEase(Ease.InOutQuad).SetRelative();
             }
         }
     }

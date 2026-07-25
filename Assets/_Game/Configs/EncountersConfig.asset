@@ -39,8 +39,9 @@ MonoBehaviour:
     - {fileID: 5090953242069811516, guid: 44b11e37151e942f08b23d5a633f71b8, type: 3}
   - Enemies:
     - {fileID: 3870469197218237796, guid: 6962b664f1cdd4831b64801ffc87a2d5, type: 3}
-    - {fileID: 3870469197218237796, guid: 49780c41600894292938f3924be020e1, type: 3}
     - {fileID: 364737202330923012, guid: 49b31b7c64d564c5ca92cbe9a04392b6, type: 3}
+  - Enemies:
+    - {fileID: 5090953242069811516, guid: c2fe069f565aa4446b344cbf5fe0b970, type: 3}
   AdvancedEncounters:
   - Enemies:
     - {fileID: 3870469197218237796, guid: 99864e77210654d7fae212d3ec8be32f, type: 3}
@@ -51,5 +52,5 @@ MonoBehaviour:
     - {fileID: 8851760959166777495, guid: 3deb792e8248045cd8ffa3734a1e1e45, type: 3}
   - Enemies:
     - {fileID: 8851760959166777495, guid: 3deb792e8248045cd8ffa3734a1e1e45, type: 3}
-  MediumEncountersLevel: 4
-  AdvancedEncountersLevel: 8
+  MediumEncountersLevel: 3
+  AdvancedEncountersLevel: 7

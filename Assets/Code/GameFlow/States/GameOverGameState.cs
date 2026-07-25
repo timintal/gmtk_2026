@@ -1,3 +1,4 @@
+using System;
 using Cysharp.Threading.Tasks;
 using Libraries.GameFlow.FSM;
 using UnityEngine.Scripting;
@@ -12,11 +13,11 @@ namespace Code.GameFlow
     
     public class GameOverGameState : FSMState<GameOverProperties>
     {
-        public override UniTask OnEnter()
+        public async override UniTask OnEnter()
         {
+            await UniTask.Delay(TimeSpan.FromSeconds(2));
             W.GetResource<GameOverScreen>().gameObject.SetActive(true);
             W.DestroyAllLoadedEntities();
-            return UniTask.CompletedTask;
         }
 
         public override UniTask OnExit()

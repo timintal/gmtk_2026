@@ -80,7 +80,7 @@ MonoBehaviour:
     CardBackColor: {r: 0.9215686, g: 0.7843137, b: 0.654902, a: 1}
   - BlessingId: reroll
     Title: Reroll
-    Description: 'Reroll all non-upgraded dice '
+    Description: 'Reroll all <b>basic</b> dice '
     Type: 3
     AffectRules: 04000000
     Value: 0

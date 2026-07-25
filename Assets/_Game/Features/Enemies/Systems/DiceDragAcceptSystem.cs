@@ -32,7 +32,7 @@ namespace _Game.Features.Enemies
                             targetContainer.Set<ExactCountdown>();
                         }
                         enemyCountdown.Value = 0;
-                        targetContainer.Set<Destroyed>();
+                        targetContainer.Set(new AutoDestroy(){ Delay = 0.5f });
                     }
                     draggable.Set<Destroyed>();
                 }

@@ -43,3 +43,4 @@ MonoBehaviour:
   EnemyPrefabs:
   - Type: 1
     Prefab: {fileID: 0}
+  LightningPrefab: {fileID: 1711444341755561277, guid: 30b0298749e6f4fb8b6b119af7a10d87, type: 3}

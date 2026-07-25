@@ -12,7 +12,7 @@ namespace Code.Features.EnergyFeature
                 var energy = e.Read<Energy>().Value;
                 var maxEnergy = e.Read<MaxEnergy>().Value;
                 var view = e.Read<EnergyProgressViewLink>().Value;
-                view.SetEnergy(energy, maxEnergy);
+                view.SetEnergy(energy, maxEnergy, true, 0.5f);
             }
         }
     }

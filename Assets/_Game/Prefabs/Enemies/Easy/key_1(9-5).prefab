@@ -181,7 +181,6 @@ GameObject:
   - component: {fileID: 1888637987306392772}
   - component: {fileID: 192324760143627954}
   - component: {fileID: 364737202330923012}
-  - component: {fileID: 5552082344987000959}
   m_Layer: 0
   m_Name: key_1(9-5)
   m_TagString: Untagged
@@ -224,9 +223,9 @@ MonoBehaviour:
   _syncWithEntityPosition: 0
   _syncDamping: 0
   _children:
-  - {fileID: 5552082344987000959}
   - {fileID: 4396607919334134076}
   - {fileID: 2764140128029570921}
+  - {fileID: 3338106595806545015}
 --- !u!114 &364737202330923012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -382,19 +381,6 @@ MonoBehaviour:
       data:
         value:
           rid: 6297997644864160178
---- !u!114 &5552082344987000959
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3931721007194103593}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 218f4a5b69f84b568162b190143340fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Game.Runtime::_Game.Features.Enemies.EnemyCountdownView
-  countdownText: {fileID: 1815660732771522192}
 --- !u!1 &4310080502613245056
 GameObject:
   m_ObjectHideFlags: 0
@@ -981,29 +967,37 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1888637987306392772}
     m_Modifications:
+    - target: {fileID: 1420412235983713088, guid: a3bce4271d5f142c3bd7535f227421c9, type: 3}
+      propertyPath: m_fontColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1420412235983713088, guid: a3bce4271d5f142c3bd7535f227421c9, type: 3}
+      propertyPath: m_fontColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1420412235983713088, guid: a3bce4271d5f142c3bd7535f227421c9, type: 3}
+      propertyPath: m_fontColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1420412235983713088, guid: a3bce4271d5f142c3bd7535f227421c9, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 7f805355d43fd4369b1e7ec91bf3b4be, type: 2}
+    - target: {fileID: 1420412235983713088, guid: a3bce4271d5f142c3bd7535f227421c9, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 1993204895165679697, guid: a3bce4271d5f142c3bd7535f227421c9, type: 3}
       propertyPath: m_Name
       value: AttackView
       objectReference: {fileID: 0}
     - target: {fileID: 4712252014517223837, guid: a3bce4271d5f142c3bd7535f227421c9, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4712252014517223837, guid: a3bce4271d5f142c3bd7535f227421c9, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4712252014517223837, guid: a3bce4271d5f142c3bd7535f227421c9, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4712252014517223837, guid: a3bce4271d5f142c3bd7535f227421c9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.18
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4712252014517223837, guid: a3bce4271d5f142c3bd7535f227421c9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.45
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4712252014517223837, guid: a3bce4271d5f142c3bd7535f227421c9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1037,10 +1031,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4712252014517223837, guid: a3bce4271d5f142c3bd7535f227421c9, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 0
-      objectReference: {fileID: 0}
+    - target: {fileID: 6389415457450182131, guid: a3bce4271d5f142c3bd7535f227421c9, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 7f805355d43fd4369b1e7ec91bf3b4be, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1137,20 +1131,12 @@ PrefabInstance:
       value: Countdown
       objectReference: {fileID: 0}
     - target: {fileID: 8167709171465089116, guid: f8a4c66ce800b4aa8959369ed11c34ed, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8167709171465089116, guid: f8a4c66ce800b4aa8959369ed11c34ed, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8167709171465089116, guid: f8a4c66ce800b4aa8959369ed11c34ed, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.58
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 8167709171465089116, guid: f8a4c66ce800b4aa8959369ed11c34ed, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.59
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8167709171465089116, guid: f8a4c66ce800b4aa8959369ed11c34ed, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1184,10 +1170,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8167709171465089116, guid: f8a4c66ce800b4aa8959369ed11c34ed, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1198,14 +1180,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8167709171465089116, guid: f8a4c66ce800b4aa8959369ed11c34ed, type: 3}
   m_PrefabInstance: {fileID: 8110315109928567460}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1815660732771522192 stripped
+--- !u!114 &3338106595806545015 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7619850112927159348, guid: f8a4c66ce800b4aa8959369ed11c34ed, type: 3}
+  m_CorrespondingSourceObject: {fileID: 6836172709395072723, guid: f8a4c66ce800b4aa8959369ed11c34ed, type: 3}
   m_PrefabInstance: {fileID: 8110315109928567460}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
+  m_Script: {fileID: 11500000, guid: 218f4a5b69f84b568162b190143340fb, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshPro
+  m_EditorClassIdentifier: Game.Runtime::_Game.Features.Enemies.EnemyCountdownView

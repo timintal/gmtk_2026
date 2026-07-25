@@ -1,6 +1,7 @@
 using System;
 using _Game.Features.Enemies;
 using _Game.Features.Enemies.Configs;
+using _Game.Features.Visuals;
 using Code.Common.View;
 using Code.Common.View.UI;
 using Code.Features.Tooltip;
@@ -25,6 +26,7 @@ namespace Code.Configs
         [ListDrawerSettings(ShowFoldout = true, ShowIndexLabels = true, ListElementLabelName = "Type")]
         public EnemyEntry[] EnemyPrefabs = Array.Empty<EnemyEntry>();
         
+        public Lightning LightningPrefab;
 
         public TooltipView GetTooltipPrefab(TooltipType type)
         {

@@ -22,18 +22,27 @@ namespace Code.Features.EnergyFeature.View
             }
         }
 
-        public void SetEnergy(int energy, int maxEnergy, bool animate = true)
+        public void SetEnergy(int energy, int maxEnergy, bool animate = true, float delay= 0)
         {
             if (animate)
             {
-                _fillAnimation.Play();
-                _fill.DOFillAmount((float)energy / maxEnergy, 0.5f).SetEase(Ease.InOutSine);
+                _fillAnimation.Play().SetDelay(delay);
+                DOVirtual.Float(_fill.fillAmount, (float)energy / maxEnergy, 0.5f, value =>
+                    {
+                        _fill.fillAmount = value;
+                        _label.text = $"{Mathf.RoundToInt(value * maxEnergy)}/{maxEnergy}";
+                    }).SetEase(Ease.InOutSine).SetDelay(delay)
+                    .onComplete += () =>
+                {
+                    _label.text = $"{energy}/{maxEnergy}";
+                };
             }
             else
             {
                 _fill.fillAmount = (float)energy / maxEnergy;
+                _label.text = $"{energy}/{maxEnergy}";
             }
-            _label.text = $"{energy}/{maxEnergy}";
+            
         }
     }
 }
