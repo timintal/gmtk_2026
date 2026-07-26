@@ -15,7 +15,7 @@ namespace _Game.Features.Enemies
 
                 foreach (var playerEntity in W.Query<All<Player, Energy>>().Entities())
                 {
-                    playerEntity.Mut<Energy>().Value += 1;
+                    playerEntity.Mut<Energy>().Value += 2;
                 }
             }
         }
