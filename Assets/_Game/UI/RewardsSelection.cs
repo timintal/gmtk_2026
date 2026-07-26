@@ -121,12 +121,13 @@ namespace _Game.UI
 
         private void Update()
         {
-            var mouse = Mouse.current;
+            // Pointer unifies mouse and touch: press == left button / primary touch.
+            var pointer = Pointer.current;
             var cam = W.GetResource<MainCamera>().Value;
-            if (mouse == null)
+            if (pointer == null)
                 return;
 
-            var point = ScreenUtils.ScreenToWorld2D(cam, mouse.position.ReadValue());
+            var point = ScreenUtils.ScreenToWorld2D(cam, pointer.position.ReadValue());
 
             BlessingView best = null;
             for (var i = 0; i < _blessingViews.Count; i++)
@@ -152,7 +153,7 @@ namespace _Game.UI
                 }
             }
         
-            if (mouse.leftButton.wasReleasedThisFrame && _hovered != null)
+            if (pointer.press.wasReleasedThisFrame && _hovered != null)
             {
                 SelectHovered();
             }

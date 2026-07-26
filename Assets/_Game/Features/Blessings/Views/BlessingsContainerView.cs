@@ -7,6 +7,7 @@ using FFS.Libraries.StaticEcs;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Controls;
 using UnityEngine.Rendering;
 
 namespace _Game.Features.Blessings.Views
@@ -71,20 +72,22 @@ namespace _Game.Features.Blessings.Views
         
         void UpdateHover()
         {
-            var mouse = Mouse.current;
+            // Pointer unifies mouse and touch: press == left button / primary touch.
+            var pointer = Pointer.current;
             var cam = W.GetResource<MainCamera>().Value;
-            if (mouse == null)
+            if (pointer == null)
                 return;
 
-            if (mouse.leftButton.isPressed)
+            if (pointer.press.isPressed)
             {
                 if (_hovered != null)
                 {
-                    if (mouse.leftButton.wasPressedThisFrame)
+                    if (pointer.press.wasPressedThisFrame)
                     {
                         _hovered.OnClick();
                     }
-                    if (mouse.rightButton.wasPressedThisFrame)
+                    // Cancel drag: right-click on desktop, or a second finger on touch.
+                    if (WasCancelPressedThisFrame())
                     {
                         _hovered.SetHovered(false);
                         _hovered.ResetDrag();
@@ -95,14 +98,14 @@ namespace _Game.Features.Blessings.Views
                 }
             }
 
-            if (mouse.leftButton.wasReleasedThisFrame && _hovered != null)
+            if (pointer.press.wasReleasedThisFrame && _hovered != null)
             {
                 _hovered.OnRelease();
                 _hovered = null;
                 _dirty = true;
             }
             
-            var point = ScreenUtils.ScreenToWorld2D(cam, mouse.position.ReadValue());
+            var point = ScreenUtils.ScreenToWorld2D(cam, pointer.position.ReadValue());
 
             BlessingView best = null;
             var count = _root.childCount;
@@ -136,6 +139,37 @@ namespace _Game.Features.Blessings.Views
             }
             
             _dirty |= needRelayout;
+        }
+
+        // Desktop: right mouse button. Touch: a second finger touching the screen.
+        static bool WasCancelPressedThisFrame()
+        {
+            if (Mouse.current != null && Mouse.current.rightButton.wasPressedThisFrame)
+                return true;
+
+            var touch = Touchscreen.current;
+            if (touch != null)
+            {
+                var touches = touch.touches;
+                for (var i = 0; i < touches.Count; i++)
+                {
+                    if (touches[i].press.wasPressedThisFrame && ActiveTouchCount(touches) >= 2)
+                        return true;
+                }
+            }
+
+            return false;
+        }
+
+        static int ActiveTouchCount(UnityEngine.InputSystem.Utilities.ReadOnlyArray<TouchControl> touches)
+        {
+            var active = 0;
+            for (var i = 0; i < touches.Count; i++)
+            {
+                if (touches[i].press.isPressed)
+                    active++;
+            }
+            return active;
         }
 
 #if UNITY_EDITOR
