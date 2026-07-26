@@ -48,7 +48,8 @@ namespace Code.Features.DragAndDrop
             {
                 Draggable = request.Draggable,
                 TargetContainer = request.TargetContainer,
-                Accepted = !rejected && request.HasTargetContainer
+                Accepted = !rejected && request.HasTargetContainer,
+                RejectReason = rejected ? requestEntity.Read<DragTransferRejected>().Message : string.Empty
             });
 
             requestEntity.Destroy();

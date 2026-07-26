@@ -23,37 +23,89 @@ namespace _Game.UI
     {
         [SerializeField] private SimpleLineLayout _root;
         [SerializeField] Button _skipButton;
+        [SerializeField] Button _backButton;
         [SerializeField] Button _removeButton;
+        [SerializeField] Button _previewDeckButton;
         [SerializeField] private GameObject _addTitle;
         [SerializeField] private GameObject _removeTitle;
+        [SerializeField] private GameObject _yourDeckTitle;
 
         private BlessingView _hovered;
 
         private List<BlessingView> _blessingViews = new();
         private List<W.Entity> _blessingEntities = new();
+        private List<BlessingsConfig> _generatedConfigs = new();
 
         private bool _isAddMode;
+        private bool _deckPreviewMode;
 
         private void OnEnable()
         {
             _skipButton.onClick.AddListener(SkipSelection);
             _removeButton.onClick.AddListener(RemoveMode);
+            _backButton.onClick.AddListener(BackToRewards);
+            _previewDeckButton.onClick.AddListener(PreviewDeck);
         }
-        
         private void OnDisable()
         {
             _skipButton.onClick.RemoveListener(SkipSelection);
             _removeButton.onClick.RemoveListener(RemoveMode);
+            _backButton.onClick.RemoveListener(BackToRewards);
+            _previewDeckButton.onClick.RemoveListener(PreviewDeck);
         }
+
+        private void PreviewDeck()
+        {
+            _deckPreviewMode = true;
+            _isAddMode = false;
+
+            _addTitle.SetActive(false);
+            _removeTitle.SetActive(false);
+            _yourDeckTitle.SetActive(true);
+
+            _backButton.gameObject.SetActive(true);
+            _removeButton.gameObject.SetActive(false);
+            _skipButton.gameObject.SetActive(false);
+            _previewDeckButton.gameObject.SetActive(false);
+
+            DestroyAllGeneratedBlessings();
+
+            //add views to active blessings
+            foreach (var e in W.Query<All<Blessing, DrawPile>>().Entities())
+            {
+                var visualConfig = W.GetResource<VisualConfig>();
+                CreateCardPreview(e, visualConfig);
+            }
+        }
+        private void BackToRewards()
+        {
+            _isAddMode = true;
+            _deckPreviewMode = false;
+
+            for (var i = 0; i < _blessingViews.Count; i++)
+            {
+                var viewEntity = _blessingEntities[i];
+                viewEntity.Delete<RewardScreen>();
+                viewEntity.Set<NeedCleanupView>();
+                viewEntity.PutBlessingInDrawPile();
+            }
+
+            ShowRewards(_generatedConfigs.Count, false);
+        }
+
         [Button]
-        public void ShowRewards(int count)
+        public void ShowRewards(int count, bool regenerate = true)
         {
             gameObject.SetActive(true);
             _removeButton.gameObject.SetActive(true);
             _skipButton.gameObject.SetActive(true);
+            _previewDeckButton.gameObject.SetActive(true);
+            _backButton.gameObject.SetActive(false);
+
             _addTitle.SetActive(true);
             _removeTitle.SetActive(false);
-            
+            _yourDeckTitle.SetActive(false);
+
             var blessingsLibrary = W.GetResource<BlessingsLibrary>();
             var visualConfig = W.GetResource<VisualConfig>();
             var playerState = W.GetResource<PlayerState>();
@@ -62,26 +114,45 @@ namespace _Game.UI
             _blessingEntities.Clear();
             _hovered = null;
             _isAddMode = true;
-        
-            List<string> excludeIds = new();
-            for (int i = 0; i < count; i++)
+            _deckPreviewMode = false;
+
+            if (regenerate)
             {
-                var blessingConfig = blessingsLibrary.GetRandomBlessingConfig(playerState.CurrentLevel, excludeIds);
-                var blessingEntity = blessingsLibrary.CreateBlessing(blessingConfig);
-                CreateCardPreview(blessingEntity, visualConfig);
-                excludeIds.Add(blessingConfig.BlessingId);
+                _generatedConfigs.Clear();
+                List<string> excludeIds = new();
+                for (int i = 0; i < count; i++)
+                {
+                    var blessingConfig = blessingsLibrary.GetRandomBlessingConfig(playerState.CurrentLevel, excludeIds);
+                    var blessingEntity = blessingsLibrary.CreateBlessing(blessingConfig);
+                    CreateCardPreview(blessingEntity, visualConfig);
+                    excludeIds.Add(blessingConfig.BlessingId);
+                    _generatedConfigs.Add(blessingConfig);
+                }
+            }
+            else
+            {
+                foreach (var blessingConfig in _generatedConfigs)
+                {
+                    var blessingEntity = blessingsLibrary.CreateBlessing(blessingConfig);
+                    CreateCardPreview(blessingEntity, visualConfig);
+                }
             }
         }
         private void RemoveMode()
         {
             _isAddMode = false;
-            
+
             _removeButton.gameObject.SetActive(false);
-            _skipButton.gameObject.SetActive(true);
+            _backButton.gameObject.SetActive(true);
+            _skipButton.gameObject.SetActive(false);
+            _previewDeckButton.gameObject.SetActive(false);
+
             _addTitle.SetActive(false);
             _removeTitle.SetActive(true);
-            RemoveAllCurrentBlessings();
-            
+            _yourDeckTitle.SetActive(false);
+
+            DestroyAllGeneratedBlessings();
+
             foreach (var e in W.Query<All<Blessing, DrawPile>>().Entities())
             {
                 var visualConfig = W.GetResource<VisualConfig>();
@@ -112,7 +183,10 @@ namespace _Game.UI
             blessingEntity.Set<RewardScreen>();
             var entityView = Instantiate(visualConfig.BlessingCardPrefab, _root.transform);
             entityView.Bind(blessingEntity);
-            blessingEntity.Set(new ViewLink() { View = entityView });
+            blessingEntity.Set(new ViewLink()
+            {
+                View = entityView
+            });
             var blessingView = entityView.GetComponent<BlessingView>();
             _blessingViews.Add(blessingView);
             _blessingEntities.Add(blessingEntity);
@@ -152,26 +226,31 @@ namespace _Game.UI
                     _hovered.SetHovered(true);
                 }
             }
-        
+
             if (pointer.press.wasReleasedThisFrame && _hovered != null)
             {
                 SelectHovered();
             }
         }
 
-        void RemoveAllCurrentBlessings()
+        void DestroyAllGeneratedBlessings()
         {
-            for (var i = 0; i < _blessingViews.Count; i++)
+            foreach (var e in W.Query<All<Blessing, RewardScreen>, None<DrawPile>>().Entities())
             {
-                var viewEntity = _blessingEntities[i];
-                viewEntity.Set<Destroyed>();
+                e.Set<Destroyed>();
             }
+
             _blessingViews.Clear();
             _blessingEntities.Clear();
         }
-        
+
         private void SelectHovered()
         {
+            if (_deckPreviewMode)
+            {
+                return;
+            }
+
             if (_hovered != null)
             {
                 for (var i = 0; i < _blessingViews.Count; i++)
@@ -179,25 +258,29 @@ namespace _Game.UI
                     var view = _blessingViews[i];
                     var viewEntity = _blessingEntities[i];
                     viewEntity.Delete<RewardScreen>();
-                    if (_hovered == view && _isAddMode)
+
+                    if (_isAddMode)
                     {
-                        viewEntity.PutBlessingInDrawPile();
-                        viewEntity.Delete<ViewLink>();
-                        
-                        view.transform.SetParent(null);
-                        view.transform.DOMove(new Vector3(0, -10, 0), 0.8f).OnComplete(() =>
+                        if (_hovered == view)
                         {
-                            Destroy(view.gameObject);
-                        }).SetEase(Ease.InOutElastic);
-                        view.transform.DOScale(Vector3.zero, 0.3f).SetDelay(0.4f);
+                            viewEntity.PutBlessingInDrawPile();
+                            viewEntity.Delete<ViewLink>();
+
+                            view.transform.SetParent(null);
+                            view.transform.DOMove(new Vector3(0, -10, 0), 0.8f).OnComplete(() =>
+                            {
+                                Destroy(view.gameObject);
+                            }).SetEase(Ease.InOutElastic);
+                            view.transform.DOScale(Vector3.zero, 0.3f).SetDelay(0.4f);
+                        }
+                        else
+                        {
+                            viewEntity.Set<Destroyed>();
+                        }
                     }
-                    else if (_hovered == view && !_isAddMode)
+                    else if (!_isAddMode)
                     {
-                        viewEntity.Set<Destroyed>();
-                    }
-                    else
-                    {
-                        if (_isAddMode)
+                        if (_hovered == view)
                         {
                             viewEntity.Set<Destroyed>();
                         }
@@ -213,13 +296,18 @@ namespace _Game.UI
         }
         private void CloseScreen()
         {
+            DestroyAllGeneratedBlessings();
             _blessingViews.Clear();
             _blessingEntities.Clear();
+            _generatedConfigs.Clear();
             gameObject.SetActive(false);
-            
+
             var newLevelRequest = W.NewEntity<Default>();
             newLevelRequest.Set<StartNewLevelRequest>();
-            newLevelRequest.Set(new Delay() { Value = 0.4f });
+            newLevelRequest.Set(new Delay()
+            {
+                Value = 0.4f
+            });
         }
 
 

@@ -2,47 +2,11 @@ using System;
 using System.Linq;
 using _Game.Features.Enemies;
 using FFS.Libraries.StaticEcs;
-using FFS.Libraries.StaticEcs.Unity;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace _Game.Features.Run.Configs
 {
-    [Serializable]
-    public class EncounterInfo
-    {
-        public WTEntityProvider[] Enemies;
-
-        public string Description()
-        {
-            int hp = 0;
-            int attack = 0;
-
-            if (Enemies == null) return "";
-            #if UNITY_EDITOR
-            foreach (var p in Enemies)
-            {
-                if (p == null || p.SerializedProviders == null) continue;
-                p.SerializedProviders.ForEach(sp =>
-                {
-                    if (sp.ComponentType == typeof(Attack))
-                    {
-                        var component = ((ComponentProvider)sp).value;
-                        attack += (int)((Attack)component).BaseValue;
-                    }
-                    if (sp.ComponentType == typeof(EnemyCountdown))
-                    {
-                        var component = ((ComponentProvider)sp).value;
-                        hp += (int)((EnemyCountdown)component).Value;
-                    }
-                });
-            }
-            #endif
-
-            return $"hp:{hp}, attack{attack}";
-        }
-    }
-
     [CreateAssetMenu(fileName = "EncountersConfig", menuName = "Run/EncountersConfig", order = 0)]
     public class EncountersConfig : ScriptableObject, IResource
     {
@@ -55,8 +19,12 @@ namespace _Game.Features.Run.Configs
         
         [ListDrawerSettings(ShowFoldout = true, ShowIndexLabels = true, ListElementLabelName = "Description")]
         [SerializeField] EncounterInfo[] AdvancedEncounters;
+        
+        [SerializeField] EncounterInfo bossEncounter;
+        
         [SerializeField] int MediumEncountersLevel;
         [SerializeField] int AdvancedEncountersLevel;
+        [SerializeField] public int BossLevel;
         
 
         public EncounterInfo GetRandomEncounter(int level)
@@ -69,8 +37,11 @@ namespace _Game.Features.Run.Configs
             if (level >= MediumEncountersLevel && level < AdvancedEncountersLevel)
                 return MediumEncounters[UnityEngine.Random.Range(0, MediumEncounters.Length)];
             
-            if (level >= AdvancedEncountersLevel)
+            if (level >= AdvancedEncountersLevel && level < BossLevel)
                 return AdvancedEncounters[UnityEngine.Random.Range(0, AdvancedEncounters.Length)];
+            
+            if (level >= BossLevel)
+                return bossEncounter;
             
             return AdvancedEncounters[UnityEngine.Random.Range(0, AdvancedEncounters.Length)];
         }
@@ -96,4 +67,47 @@ namespace _Game.Features.Run.Configs
             }
         }
     }
+    [Serializable]
+    public class CountdownModifierData
+    {
+        public CountdownModifierType Type;
+        public int Value;
+    }
+    [Serializable]
+    public class EnemySettings
+    {
+        public WTEntityProvider Prefab;
+        public CountdownModifierData[] CountdownModifiers;
+        
+        public int CurrentCountdown;
+        public int Attack;
+    }
+
+    [Serializable]
+    public class EncounterInfo
+    {
+        public EnemySettings[] Enemies;
+
+        public string Description()
+        {
+            int hp = 0;
+            int attack = 0;
+
+            if (Enemies == null) return "";
+            string result = "";
+            #if UNITY_EDITOR
+            foreach (var p in Enemies)
+            {
+                if (p == null || p.Prefab == null) continue;
+                var prefab = p.Prefab;
+                result += prefab.name + "/";
+                hp += p.CurrentCountdown;
+                attack += p.Attack;
+            }
+            #endif
+
+            return result + $" hp:{hp}, attack{attack}";
+        }
+    }
+
 }

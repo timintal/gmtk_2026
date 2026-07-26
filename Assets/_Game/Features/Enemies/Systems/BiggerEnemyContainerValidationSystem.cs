@@ -27,7 +27,11 @@ namespace _Game.Features.Enemies
                             !draggable.Has<DiceValue>() ||
                             draggable.Read<DiceValue>().Value <= value)
                         {
-                            requestEntity.Add<DragTransferRejected>();
+                            requestEntity.Set(new DragTransferRejected()
+                            {
+                                Reason = DragTransferRejectReason.Custom,
+                                Message = "Only dice bigger than " + value + " can be used to this creature"
+                            });
                         }
                     }
                 }

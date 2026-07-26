@@ -786,7 +786,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0686daf981bad4e52a0a462ba03d55d1, type: 2}
+  - {fileID: -1170241471507394158, guid: 0eb134ed698804f3c93f24f63d1ce094, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -832,8 +832,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: x{0} to a selected <sprite name=dice> and all others with the same value
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: cc7eeabfd449c424d8b4a83fec937bb4, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 0686daf981bad4e52a0a462ba03d55d1, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 0eb134ed698804f3c93f24f63d1ce094, type: 2}
+  m_sharedMaterial: {fileID: -1170241471507394158, guid: 0eb134ed698804f3c93f24f63d1ce094, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -857,7 +857,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 3.15
+  m_fontSize: 4.05
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1195,7 +1195,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6481126666274877231, guid: 4344aa941b300449592f71ad3649be31, type: 2}
+  - {fileID: 5083242339042228532, guid: 534e870d366d04d13ac792d138f8e792, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1241,15 +1241,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: +1 to <sprite name=dice> value
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 4344aa941b300449592f71ad3649be31, type: 2}
-  m_sharedMaterial: {fileID: -6481126666274877231, guid: 4344aa941b300449592f71ad3649be31, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 534e870d366d04d13ac792d138f8e792, type: 2}
+  m_sharedMaterial: {fileID: 5083242339042228532, guid: 534e870d366d04d13ac792d138f8e792, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281277997
-  m_fontColor: {r: 0.1764706, g: 0.1176471, b: 0.1843137, a: 1}
+    rgba: 4282722617
+  m_fontColor: {r: 0.2235294, g: 0.1607843, b: 0.2705882, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1524,8 +1524,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.1, y: 1.1, z: 1.1}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 833005850441826393}
   - {fileID: 222353747054128030}

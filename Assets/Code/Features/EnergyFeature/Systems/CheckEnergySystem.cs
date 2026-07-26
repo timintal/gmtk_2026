@@ -18,7 +18,7 @@ namespace Code.Features.EnergyFeature
                 if (energy.Value <= 0)
                 {
                     W.NewEntity<Default>().Set<GameLost>();
-                    W.GetResource<FSM>().Value.Push<GameOverGameState>();
+                    W.GetResource<FSM>().Value.Push<GameOverState>();
                 }
             });
         }

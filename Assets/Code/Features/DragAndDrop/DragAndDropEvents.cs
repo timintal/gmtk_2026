@@ -54,5 +54,6 @@ namespace Code.Features.DragAndDrop
         public EntityGID Draggable;
         public EntityGID TargetContainer;
         public bool Accepted;
+        public string RejectReason;
     }
 }

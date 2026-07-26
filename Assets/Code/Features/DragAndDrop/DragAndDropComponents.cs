@@ -100,6 +100,7 @@ namespace Code.Features.DragAndDrop
     public struct DragTransferRejected : IComponent
     {
         public DragTransferRejectReason Reason;
+        public string Message;
     }
 
     public struct ContainerLayoutDirty : ITag

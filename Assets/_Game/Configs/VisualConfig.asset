@@ -21,12 +21,12 @@ MonoBehaviour:
   - Type: 1
     Icon: {fileID: 0}
     Name: EVEN
-    Description: Accepts only\nEVEN
+    Description: Accepts only\nEVEN dice
     ErrorMessage: Die is not EVEN
   - Type: 2
     Icon: {fileID: 0}
     Name: ODD
-    Description: Accpets only ODD
+    Description: Accpets only\nODD dice
     ErrorMessage: Die is not ODD
   - Type: 3
     Icon: {fileID: 0}

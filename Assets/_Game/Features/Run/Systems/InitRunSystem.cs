@@ -18,7 +18,6 @@ namespace _Game.Features.Run
                 
                 W.Query<All<Blessing>>().BatchSet(new Destroyed());
                 W.Query<All<Dice.Dice>>().BatchSet(new Destroyed());
-
                 
                 var playerState = new PlayerState()
                 {

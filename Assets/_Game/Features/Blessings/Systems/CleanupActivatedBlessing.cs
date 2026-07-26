@@ -16,6 +16,10 @@ namespace _Game.Features.Blessings
                     e.DiscardBlessing();
                     e.Delete<UsedBlessing>();
                 }
+                else if (e.Read<W.Links<Targets>>().Length == 0)
+                {
+                    W.GetResource<ErrorMessage>().Show("No Targets");
+                }
             }
         }
     }

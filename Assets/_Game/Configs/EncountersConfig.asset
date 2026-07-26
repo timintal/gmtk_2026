@@ -14,43 +14,121 @@ MonoBehaviour:
   m_EditorClassIdentifier: Game.Runtime::_Game.Features.Run.Configs.EncountersConfig
   firstEncounter:
     Enemies:
-    - {fileID: 8339281111229910836, guid: d2f52319e2b0543ddad85480021dd33f, type: 3}
-    - {fileID: 7572672846227071044, guid: 5de19fbd682f1436a98bd5acab8504bb, type: 3}
+    - Prefab: {fileID: 364737202330923012, guid: 49b31b7c64d564c5ca92cbe9a04392b6, type: 3}
+      CountdownModifiers: []
+      CurrentCountdown: 4
+      Attack: 1
+    - Prefab: {fileID: 3870469197218237796, guid: 49780c41600894292938f3924be020e1, type: 3}
+      CountdownModifiers:
+      - Type: 2
+        Value: 0
+      CurrentCountdown: 3
+      Attack: 1
   BasicEncounters:
   - Enemies:
-    - {fileID: 3870469197218237796, guid: 49780c41600894292938f3924be020e1, type: 3}
-    - {fileID: 364737202330923012, guid: 49b31b7c64d564c5ca92cbe9a04392b6, type: 3}
+    - Prefab: {fileID: 364737202330923012, guid: 49b31b7c64d564c5ca92cbe9a04392b6, type: 3}
+      CountdownModifiers: []
+      CurrentCountdown: 6
+      Attack: 3
+    - Prefab: {fileID: 3870469197218237796, guid: 49780c41600894292938f3924be020e1, type: 3}
+      CountdownModifiers: []
+      CurrentCountdown: 6
+      Attack: 3
+    - Prefab: {fileID: 3870469197218237796, guid: 6bfeec31e129f4888968b2eebad88275, type: 3}
+      CountdownModifiers: []
+      CurrentCountdown: 6
+      Attack: 3
   - Enemies:
-    - {fileID: 5090953242069811516, guid: 44b11e37151e942f08b23d5a633f71b8, type: 3}
-    - {fileID: 364737202330923012, guid: 49b31b7c64d564c5ca92cbe9a04392b6, type: 3}
+    - Prefab: {fileID: 5090953242069811516, guid: 44b11e37151e942f08b23d5a633f71b8, type: 3}
+      CountdownModifiers: []
+      CurrentCountdown: 30
+      Attack: 2
   - Enemies:
-    - {fileID: 3870469197218237796, guid: 49780c41600894292938f3924be020e1, type: 3}
-    - {fileID: 3870469197218237796, guid: 6bfeec31e129f4888968b2eebad88275, type: 3}
-  - Enemies:
-    - {fileID: 3870469197218237796, guid: 49780c41600894292938f3924be020e1, type: 3}
-    - {fileID: 364737202330923012, guid: 49b31b7c64d564c5ca92cbe9a04392b6, type: 3}
-    - {fileID: 364737202330923012, guid: 49b31b7c64d564c5ca92cbe9a04392b6, type: 3}
+    - Prefab: {fileID: 5090953242069811516, guid: 44b11e37151e942f08b23d5a633f71b8, type: 3}
+      CountdownModifiers: []
+      CurrentCountdown: 20
+      Attack: 1
+    - Prefab: {fileID: 3870469197218237796, guid: 6bfeec31e129f4888968b2eebad88275, type: 3}
+      CountdownModifiers: []
+      CurrentCountdown: 6
+      Attack: 5
   MediumEncounters:
   - Enemies:
-    - {fileID: 3870469197218237796, guid: da5e46f096d8c45b285f033e2b84361c, type: 3}
-    - {fileID: 364737202330923012, guid: 49b31b7c64d564c5ca92cbe9a04392b6, type: 3}
+    - Prefab: {fileID: 3870469197218237796, guid: 99864e77210654d7fae212d3ec8be32f, type: 3}
+      CountdownModifiers:
+      - Type: 1
+        Value: 0
+      CurrentCountdown: 30
+      Attack: 5
+    - Prefab: {fileID: 5090953242069811516, guid: 44b11e37151e942f08b23d5a633f71b8, type: 3}
+      CountdownModifiers:
+      - Type: 1
+        Value: 0
+      CurrentCountdown: 20
+      Attack: 2
   - Enemies:
-    - {fileID: 5090953242069811516, guid: 44b11e37151e942f08b23d5a633f71b8, type: 3}
-    - {fileID: 5090953242069811516, guid: 44b11e37151e942f08b23d5a633f71b8, type: 3}
+    - Prefab: {fileID: 3870469197218237796, guid: 99864e77210654d7fae212d3ec8be32f, type: 3}
+      CountdownModifiers: []
+      CurrentCountdown: 45
+      Attack: 2
+    - Prefab: {fileID: 364737202330923012, guid: 49b31b7c64d564c5ca92cbe9a04392b6, type: 3}
+      CountdownModifiers: []
+      CurrentCountdown: 9
+      Attack: 5
+    - Prefab: {fileID: 3870469197218237796, guid: 49780c41600894292938f3924be020e1, type: 3}
+      CountdownModifiers: []
+      CurrentCountdown: 9
+      Attack: 5
   - Enemies:
-    - {fileID: 3870469197218237796, guid: 6962b664f1cdd4831b64801ffc87a2d5, type: 3}
-    - {fileID: 364737202330923012, guid: 49b31b7c64d564c5ca92cbe9a04392b6, type: 3}
-  - Enemies:
-    - {fileID: 5090953242069811516, guid: c2fe069f565aa4446b344cbf5fe0b970, type: 3}
+    - Prefab: {fileID: 3870469197218237796, guid: 99864e77210654d7fae212d3ec8be32f, type: 3}
+      CountdownModifiers: []
+      CurrentCountdown: 30
+      Attack: 5
+    - Prefab: {fileID: 364737202330923012, guid: 49b31b7c64d564c5ca92cbe9a04392b6, type: 3}
+      CountdownModifiers:
+      - Type: 1
+        Value: 0
+      CurrentCountdown: 9
+      Attack: 5
+    - Prefab: {fileID: 5090953242069811516, guid: 44b11e37151e942f08b23d5a633f71b8, type: 3}
+      CountdownModifiers: []
+      CurrentCountdown: 20
+      Attack: 2
   AdvancedEncounters:
   - Enemies:
-    - {fileID: 3870469197218237796, guid: 99864e77210654d7fae212d3ec8be32f, type: 3}
-    - {fileID: 3870469197218237796, guid: 6962b664f1cdd4831b64801ffc87a2d5, type: 3}
-    - {fileID: 5090953242069811516, guid: 44b11e37151e942f08b23d5a633f71b8, type: 3}
+    - Prefab: {fileID: 8851760959166777495, guid: c630dea8afc8e490bbf8aca88a9a605d, type: 3}
+      CountdownModifiers:
+      - Type: 1
+        Value: 0
+      CurrentCountdown: 40
+      Attack: 10
+    - Prefab: {fileID: 3870469197218237796, guid: 99864e77210654d7fae212d3ec8be32f, type: 3}
+      CountdownModifiers:
+      - Type: 3
+        Value: 5
+      CurrentCountdown: 30
+      Attack: 5
   - Enemies:
-    - {fileID: 3870469197218237796, guid: ffb240e2ee6d645d592e56add351e22d, type: 3}
-    - {fileID: 8851760959166777495, guid: 3deb792e8248045cd8ffa3734a1e1e45, type: 3}
-  - Enemies:
-    - {fileID: 8851760959166777495, guid: 3deb792e8248045cd8ffa3734a1e1e45, type: 3}
-  MediumEncountersLevel: 3
-  AdvancedEncountersLevel: 7
+    - Prefab: {fileID: 3870469197218237796, guid: 99864e77210654d7fae212d3ec8be32f, type: 3}
+      CountdownModifiers:
+      - Type: 1
+        Value: 0
+      CurrentCountdown: 30
+      Attack: 5
+    - Prefab: {fileID: 3870469197218237796, guid: 99864e77210654d7fae212d3ec8be32f, type: 3}
+      CountdownModifiers:
+      - Type: 2
+        Value: 0
+      CurrentCountdown: 30
+      Attack: 5
+  bossEncounter:
+    Enemies:
+    - Prefab: {fileID: 6817860734727793390, guid: a59c3252269b040e495bd2cde829c732, type: 3}
+      CountdownModifiers:
+      - Type: 2
+        Value: 0
+      CurrentCountdown: 100
+      Attack: 10
+  MediumEncountersLevel: 5
+  AdvancedEncountersLevel: 8
+  BossLevel: 10

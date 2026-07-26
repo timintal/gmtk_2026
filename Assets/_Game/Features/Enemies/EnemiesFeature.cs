@@ -16,7 +16,8 @@ namespace _Game.Features.Enemies
             GameSys.Add(new SmallerEnemyContainerValidationSystem(), DragAndDropSystemOrder.UserValidationStart + 4);
             
             
-            GameSys.Add(new DiceDragAcceptSystem(), DragAndDropSystemOrder.Resolve + 1);
+            GameSys.Add(new ShowDragRejectReasonSystem(), DragAndDropSystemOrder.Resolve + 1);
+            GameSys.Add(new DiceDragAcceptSystem(), DragAndDropSystemOrder.Resolve + 2);
             
             GameSys.Add(new CheckExactCountdownSystem(), Order.PreCleanup);
         }

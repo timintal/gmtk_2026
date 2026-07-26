@@ -24,7 +24,11 @@ namespace _Game.Features.Enemies
                         !draggable.Has<DiceValue>() ||
                         draggable.Read<DiceValue>().Value % 2 != 0)
                     {
-                        requestEntity.Add<DragTransferRejected>();
+                        requestEntity.Set(new DragTransferRejected()
+                        {
+                            Reason = DragTransferRejectReason.Custom,
+                            Message = "Only even dice can be used to this creature"
+                        });
                     }
                 }
             }

@@ -1,4 +1,5 @@
 using System;
+using Code.Common.Audio;
 using Cysharp.Threading.Tasks;
 using Libraries.GameFlow.FSM;
 using UnityEngine.Scripting;
@@ -6,18 +7,14 @@ using UnityEngine.Scripting;
 namespace Code.GameFlow
 {
     [Preserve]
-    public class GameOverProperties : IStateProperties
-    {
-        public string Reason;
-    }
-    
-    public class GameOverGameState : FSMState<GameOverProperties>
+    public class GameWonState : FSMState<GameOverProperties>
     {
         public async override UniTask OnEnter()
         {
-            await UniTask.Delay(TimeSpan.FromSeconds(2));
-            W.GetResource<GameOverScreen>().gameObject.SetActive(true);
+            await UniTask.Delay(TimeSpan.FromSeconds(1));
+            W.GetResource<GameWonScreen>().gameObject.SetActive(true);
             W.DestroyAllLoadedEntities();
+            W.GetResource<MusicAudioSource>().Stop();
         }
 
         public override UniTask OnExit()

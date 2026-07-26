@@ -1,5 +1,6 @@
 using _Game.Features.Blessings;
 using _Game.Features.Dice;
+using _Game.Features.Enemies;
 using _Game.Features.Run.Configs;
 using _Game.Features.Run.View;
 using Code.Common;
@@ -14,7 +15,7 @@ namespace _Game.Features.Run
         {
             var requestQuery = W.Query<All<StartNewLevelRequest>, None<Delay>>();
             if (requestQuery.EntitiesCount() == 0) return;
-            
+
             requestQuery.BatchDestroy();
 
             foreach (var e in W.Query<All<Blessing>, None<RewardScreen>>().Entities())
@@ -25,7 +26,7 @@ namespace _Game.Features.Run
             {
                 e.Set<Destroyed>();
             }
-            
+
             PlayerState playerState = W.GetResource<PlayerState>();
             playerState.CurrentLevel++;
 
@@ -35,13 +36,65 @@ namespace _Game.Features.Run
             var encountersConfig = W.GetResource<EncountersConfig>();
             var randomEncounter = encountersConfig.GetRandomEncounter(playerState.CurrentLevel);
             var container = W.GetResource<EnemiesContainer>().Container;
-            
-            foreach (var enemyPrefab in randomEncounter.Enemies)
+
+            foreach (var enemyData in randomEncounter.Enemies)
             {
-                Object.Instantiate(enemyPrefab, container);
+                var enemy = Object.Instantiate(enemyData.Prefab, container);
+                var enemyEntity = enemy.Entity;
+                if (enemyEntity.Has<W.Links<CountdownModifiers>>())
+                {
+                    AddModifiers(enemyEntity, enemyData);
+                    enemyEntity.Set(new Attack()
+                    {
+                        BaseValue = enemyData.Attack,
+                        CurrentValue = enemyData.Attack
+                    });
+                    enemyEntity.Set(new EnemyCountdown
+                    {
+                        Value = enemyData.CurrentCountdown
+                    });
+                }
             }
-            
+
             W.NewEntity<Default>().Set<LevelStarted>();
+        }
+        private static void AddModifiers(World<WT>.Entity enemyEntity, EnemySettings enemyData)
+        {
+            ref var modifiers = ref enemyEntity.Ref<W.Links<CountdownModifiers>>();
+            modifiers.Clear();
+            foreach (var modifier in enemyData.CountdownModifiers)
+            {
+                var modifierEntity = W.NewEntity<Default>();
+                modifierEntity.Set(new CountdownModifier()
+                {
+                    Type = modifier.Type,
+                });
+                if (modifier.Type == CountdownModifierType.Even)
+                {
+                    modifierEntity.Set<AcceptOnlyEven>();
+                    modifiers.Add(modifierEntity);
+                }
+                else if (modifier.Type == CountdownModifierType.Odd)
+                {
+                    modifierEntity.Set<AcceptOnlyOdd>();
+                }
+                else if (modifier.Type == CountdownModifierType.Smaller)
+                {
+                    modifierEntity.Set(new AcceptSmaller()
+                    {
+                        Value = modifier.Value
+                    });
+                    modifiers.Add(modifierEntity);
+                }
+                else if (modifier.Type == CountdownModifierType.Bigger)
+                {
+                    modifierEntity.Set(new AcceptBigger()
+                    {
+                        Value = modifier.Value
+                    });
+                    modifiers.Add(modifierEntity);
+                }
+            }
         }
     }
 }

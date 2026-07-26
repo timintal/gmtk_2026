@@ -51,7 +51,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3336991655265604500
 RectTransform:
   m_ObjectHideFlags: 0
@@ -68,9 +68,9 @@ RectTransform:
   - {fileID: 796104878207401670}
   m_Father: {fileID: 2254910505728587452}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 500, y: -142.9}
   m_SizeDelta: {x: 248, y: 249}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4780776899465789870
@@ -274,7 +274,7 @@ GameObject:
   - component: {fileID: 192324760143627954}
   - component: {fileID: 364737202330923012}
   m_Layer: 0
-  m_Name: key_1(9-5)
+  m_Name: key_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -539,10 +539,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: <1
+  m_text: even
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 7183050b037f840f28b4a910764ebbd9, type: 2}
-  m_sharedMaterial: {fileID: -7675346658313399086, guid: 7183050b037f840f28b4a910764ebbd9, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 534e870d366d04d13ac792d138f8e792, type: 2}
+  m_sharedMaterial: {fileID: 5083242339042228532, guid: 534e870d366d04d13ac792d138f8e792, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -566,7 +566,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 120
+  m_fontSize: 117.35
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1060,7 +1060,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -0.93}
+  m_AnchoredPosition: {x: 0, y: -0.49}
   m_SizeDelta: {x: 1000, y: 285.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &8922688446364072294
@@ -1163,7 +1163,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4712252014517223837, guid: a3bce4271d5f142c3bd7535f227421c9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2
+      value: 1.7
       objectReference: {fileID: 0}
     - target: {fileID: 4712252014517223837, guid: a3bce4271d5f142c3bd7535f227421c9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1304,9 +1304,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Countdown
       objectReference: {fileID: 0}
+    - target: {fileID: 2995327423587834793, guid: f8a4c66ce800b4aa8959369ed11c34ed, type: 3}
+      propertyPath: m_SortingLayer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2995327423587834793, guid: f8a4c66ce800b4aa8959369ed11c34ed, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -2120961267
+      objectReference: {fileID: 0}
     - target: {fileID: 8167709171465089116, guid: f8a4c66ce800b4aa8959369ed11c34ed, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2
+      value: -1.7
       objectReference: {fileID: 0}
     - target: {fileID: 8167709171465089116, guid: f8a4c66ce800b4aa8959369ed11c34ed, type: 3}
       propertyPath: m_LocalPosition.y

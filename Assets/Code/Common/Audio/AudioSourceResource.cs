@@ -62,5 +62,10 @@ namespace Code.Common.Audio
         {
             AudioSource.Play();
         }
+        
+        public void Stop()
+        {
+            AudioSource.Stop();
+        }
     }
 }
