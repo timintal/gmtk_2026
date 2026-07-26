@@ -10,5 +10,8 @@ namespace Code.Common.Audio
         CardHover = 5,
         Tick = 6,
         MainTheme = 7,
+        GameOver = 8,
+        GameWin = 9,
+        Zap = 10
     }
 }

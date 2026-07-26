@@ -15,6 +15,7 @@ namespace Code.GameFlow
             W.GetResource<GameWonScreen>().gameObject.SetActive(true);
             W.DestroyAllLoadedEntities();
             W.GetResource<MusicAudioSource>().Stop();
+            W.GetResource<SFXAudioSource>().Play(SoundType.GameWin);
         }
 
         public override UniTask OnExit()

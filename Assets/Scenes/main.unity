@@ -5850,7 +5850,7 @@ MonoBehaviour:
   onEnableAndDisable: 1
   providers:
   - rid: 6297997670200377453
-  - rid: 6297997705321906680
+  - rid: 6297997705321906959
   - rid: 6297997670200378120
   - rid: 6297997679021785692
   - rid: 6297997679021785852
@@ -5896,7 +5896,7 @@ MonoBehaviour:
     - rid: 6297997679021785853
       type: {class: NeedBindView, ns: Code.Common.View, asm: Game.Runtime}
       data: 
-    - rid: 6297997705321906680
+    - rid: 6297997705321906959
       type: {class: ComponentProvider, ns: FFS.Libraries.StaticEcs.Unity, asm: FFS.StaticEcs.Unity}
       data:
         value:
@@ -6713,7 +6713,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 200.45}
+  m_AnchoredPosition: {x: 0, y: 200.45001}
   m_SizeDelta: {x: 0, y: -400.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1194642064

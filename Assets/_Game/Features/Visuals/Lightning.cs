@@ -1,4 +1,5 @@
 using System.Collections;
+using Code.Common.Audio;
 using Sirenix.OdinInspector;
 using UnityEngine;
 namespace _Game.Features.Visuals
@@ -20,6 +21,7 @@ namespace _Game.Features.Visuals
         {
             yield return new WaitForSeconds(delay);
             _lightning.enabled = true;
+            W.GetResource<SFXAudioSource>().Play(SoundType.Zap);
             var signedAngle = Vector2.SignedAngle(Vector2.up, end - start);
             _lightning.transform.rotation = Quaternion.Euler(0, 0, signedAngle);
             _lightning.size = new Vector2(1, Vector2.Distance(start, end));

@@ -21,6 +21,7 @@ namespace Code.GameFlow
             W.GetResource<GameOverScreen>().gameObject.SetActive(true);
             W.DestroyAllLoadedEntities();
             W.GetResource<MusicAudioSource>().Stop();
+            W.GetResource<SFXAudioSource>().Play(SoundType.GameOver);
         }
 
         public override UniTask OnExit()
