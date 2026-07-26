@@ -26,6 +26,12 @@ namespace _Game.Features.Tutorial
         private void Awake()
         {
             _tutorialStep = PlayerPrefs.GetInt(TutorialStep, 0);
+
+            if (_tutorialStep >= 2)
+            {
+                gameObject.SetActive(false);
+                return;
+            }
             
             _blessingsTutorial.SetActive(false);
             _draggingTutorial.SetActive(false);
@@ -60,7 +66,7 @@ namespace _Game.Features.Tutorial
                     return;
                 }
                 
-                if (dicesCount > 0 && _dicesInitialCount == -1)
+                if (dicesCount > _dicesInitialCount)
                 {
                     _dicesInitialCount = dicesCount;
                 }
@@ -71,9 +77,9 @@ namespace _Game.Features.Tutorial
                     {
                         _tutorialStep = 2;
                         PlayerPrefs.SetInt(TutorialStep, _tutorialStep);
+                        PlayerPrefs.Save();
                         Hide();
                         _dragDiceToEnemyTutorial.SetActive(false);
-                        gameObject.SetActive(false);
                     }
                     else
                     {
@@ -84,15 +90,6 @@ namespace _Game.Features.Tutorial
                 }
 
                 return;
-            }
-
-            if (W.Query<All<Dragging, Blessing>>().EntitiesCount() > 0)
-            {
-                Show();
-            }
-            else
-            {
-                Hide();
             }
         }
         private void Hide(bool force = false)

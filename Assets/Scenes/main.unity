@@ -941,8 +941,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 8.04}
-  m_SizeDelta: {x: 900, y: 200}
+  m_AnchoredPosition: {x: 0, y: 8.37}
+  m_SizeDelta: {x: 900, y: 219.62}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &201587673
 MonoBehaviour:
@@ -964,7 +964,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Pick a card to add or remove one instead
+  m_text: 'Pick a card to <color=#AAD795>add</color>
+
+    or
+
+    <color=#D8725E>remove</color>
+    one instead'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 534e870d366d04d13ac792d138f8e792, type: 2}
   m_sharedMaterial: {fileID: 5083242339042228532, guid: 534e870d366d04d13ac792d138f8e792, type: 2}
@@ -1004,7 +1009,7 @@ MonoBehaviour:
   m_characterSpacing: 0
   m_characterHorizontalScale: 1
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: -40.2
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -3516,6 +3521,7 @@ MonoBehaviour:
   _onTriggered:
     m_PersistentCalls:
       m_Calls: []
+  _ignoreIfThisActive: {fileID: 1255319604}
 --- !u!1 &912232286
 GameObject:
   m_ObjectHideFlags: 0
@@ -4131,6 +4137,7 @@ MonoBehaviour:
   _onTriggered:
     m_PersistentCalls:
       m_Calls: []
+  _ignoreIfThisActive: {fileID: 0}
 --- !u!114 &997714998
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5022,7 +5029,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Drag dice on clockwork creature to countdown their service counter '
+  m_text: 'Drag dice on a clockwork creature to <color=yellow>countdown </color>their
+    service counter '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 534e870d366d04d13ac792d138f8e792, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 7f805355d43fd4369b1e7ec91bf3b4be, type: 2}
@@ -7003,7 +7011,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 375.2483, y: 0}
+  m_AnchoredPosition: {x: 356, y: 0}
   m_SizeDelta: {x: 168, y: 55}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1493190734
@@ -7026,7 +7034,7 @@ MonoBehaviour:
   restartOnEnable: 0
   lootType: 2
   ignoreTimeScale: 0
-  currentTime: 0.24520566
+  currentTime: -0.0040397644
   directionMultiplier: -1
   muteNonSelectedTweens: 0
   allowCustomAnimationDuration: 0
@@ -8992,13 +9000,14 @@ GameObject:
   - component: {fileID: 1971615464}
   - component: {fileID: 1971615463}
   - component: {fileID: 1971615462}
+  - component: {fileID: 1971615465}
   m_Layer: 5
   m_Name: Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1971615462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9028,7 +9037,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 16777215
+    rgba: 50331647
   m_fontColor: {r: 1, g: 1, b: 1, a: 0}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -9115,9 +9124,38 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 313}
+  m_AnchoredPosition: {x: 150, y: 500}
   m_SizeDelta: {x: -800, y: -800}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1971615465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1971615461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8ace8ced0e81c847968cdca0aeda757, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Febucci.TextAnimatorForUnity.TMP.Runtime::Febucci.TextAnimatorForUnity.TextMeshPro.TextAnimator_TMP
+  localSettings:
+    isResettingTimeOnNewText: 1
+    defaultEffectsMode: 1
+    timeScale: 0
+    defaultBehaviorTags:
+    - position
+    defaultAppearanceTags: []
+    defaultDisappearanceTags: []
+    isAnimatingBehaviors: 1
+    isAnimatingAppearances: 1
+    isAnimatingDisappearances: 1
+    useDynamicScaling: 1
+    referenceFontSize: 12
+  sharedSettings: {fileID: 0}
+  animationLoop: 0
+  databaseEffects: {fileID: 0}
+  styleSheet: {fileID: 0}
 --- !u!1 &1981462643
 GameObject:
   m_ObjectHideFlags: 0
@@ -9573,7 +9611,11 @@ MonoBehaviour:
   tweens:
   - rid: 6297997680038642288
   - rid: 6297997680038642289
+  - rid: 6297997691203879667
   - rid: 6297997680038642290
+  - rid: 6297997691203879668
+  - rid: 6297997691203879669
+  - rid: 6297997691203879670
   duration: 1
   timeSpeedMultiplier: 1
   playOnAwake: 0
@@ -9624,11 +9666,11 @@ MonoBehaviour:
         LinkedTweenDelay: 0
         IsDirty: 0
         NameOverride: 
-        isUnfolded: 1
+        isUnfolded: 0
         isHidden: 0
         target: {fileID: 1971615464}
-        startValue: {x: 0, y: 0}
-        endValue: {x: 0, y: 313}
+        startValue: {x: 150, y: 150}
+        endValue: {x: 150, y: 500}
         skipX: 0
         skipY: 0
     - rid: 6297997680038642289
@@ -9708,7 +9750,202 @@ MonoBehaviour:
       type: {class: TweenLocalScale, ns: EasyTweens, asm: EasyTweens}
       data:
         delay: 0
-        duration: 0.3
+        duration: 0.1
+        curve:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 0
+            inSlope: 1
+            outSlope: 1
+            tangentMode: 34
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 1
+            value: 1
+            inSlope: 1
+            outSlope: 1
+            tangentMode: 34
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        curveRepeats: 1
+        isSelected: 0
+        tweenGuid: 
+        LinkedTweenGuid: 
+        LinkedTweenDelay: 0
+        IsDirty: 0
+        NameOverride: 
+        isUnfolded: 0
+        isHidden: 0
+        target: {fileID: 1971615464}
+        startValue: {x: 2, y: 2, z: 2}
+        endValue: {x: 1, y: 1, z: 1}
+        skipX: 0
+        skipY: 0
+        skipZ: 0
+    - rid: 6297997691203879667
+      type: {class: TweenColorProperty, ns: EasyTweens, asm: EasyTweens}
+      data:
+        delay: 0
+        duration: 0.1
+        curve:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 0
+            inSlope: 0
+            outSlope: 1
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 1
+            value: 1
+            inSlope: 1
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        curveRepeats: 1
+        isSelected: 0
+        tweenGuid: 8df3df72-d42f-46d7-99ae-fe46c66a28d1
+        LinkedTweenGuid: 
+        LinkedTweenDelay: 0
+        IsDirty: 0
+        NameOverride: 
+        isUnfolded: 0
+        isHidden: 0
+        target: {fileID: 1971615462}
+        startValue: {r: 1, g: 1, b: 1, a: 0}
+        endValue: {r: 1, g: 1, b: 1, a: 1}
+        useGradient: 0
+        useHDRColor: 0
+        gradient:
+          serializedVersion: 2
+          key0: {r: 1, g: 1, b: 1, a: 1}
+          key1: {r: 1, g: 1, b: 1, a: 1}
+          key2: {r: 0, g: 0, b: 0, a: 0}
+          key3: {r: 0, g: 0, b: 0, a: 0}
+          key4: {r: 0, g: 0, b: 0, a: 0}
+          key5: {r: 0, g: 0, b: 0, a: 0}
+          key6: {r: 0, g: 0, b: 0, a: 0}
+          key7: {r: 0, g: 0, b: 0, a: 0}
+          ctime0: 0
+          ctime1: 65535
+          ctime2: 0
+          ctime3: 0
+          ctime4: 0
+          ctime5: 0
+          ctime6: 0
+          ctime7: 0
+          atime0: 0
+          atime1: 65535
+          atime2: 0
+          atime3: 0
+          atime4: 0
+          atime5: 0
+          atime6: 0
+          atime7: 0
+          m_Mode: 0
+          m_ColorSpace: -1
+          m_NumColorKeys: 2
+          m_NumAlphaKeys: 2
+    - rid: 6297997691203879668
+      type: {class: ActivateGameObject, ns: EasyTweens, asm: EasyTweens}
+      data:
+        delay: 0
+        duration: 0
+        curve:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 0
+            inSlope: 0
+            outSlope: 1
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 1
+            value: 1
+            inSlope: 1
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        curveRepeats: 1
+        isSelected: 0
+        tweenGuid: 
+        LinkedTweenGuid: 
+        LinkedTweenDelay: 0
+        IsDirty: 0
+        NameOverride: 
+        isUnfolded: 0
+        isHidden: 0
+        GameObject: {fileID: 1971615461}
+    - rid: 6297997691203879669
+      type: {class: DeActivateGameObject, ns: EasyTweens, asm: EasyTweens}
+      data:
+        delay: 0
+        duration: 0
+        curve:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 0
+            inSlope: 0
+            outSlope: 1
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 1
+            value: 1
+            inSlope: 1
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        curveRepeats: 1
+        isSelected: 0
+        tweenGuid: 
+        LinkedTweenGuid: ddca1636-7493-49d3-8707-59a703067ff6
+        LinkedTweenDelay: 1
+        IsDirty: 0
+        NameOverride: 
+        isUnfolded: 0
+        isHidden: 0
+        GameObject: {fileID: 1971615461}
+    - rid: 6297997691203879670
+      type: {class: TweenLocalRotation, ns: EasyTweens, asm: EasyTweens}
+      data:
+        delay: 0
+        duration: 0.2
         curve:
           serializedVersion: 2
           m_Curve:
@@ -9722,22 +9959,40 @@ MonoBehaviour:
             inWeight: 0
             outWeight: 0
           - serializedVersion: 3
-            time: 0.04897435
-            value: 1.0016695
-            inSlope: -0.34503606
-            outSlope: -0.34503606
+            time: 0.19999999
+            value: 1.0010061
+            inSlope: 0
+            outSlope: 0
             tangentMode: 0
             weightedMode: 0
             inWeight: 0.33333334
-            outWeight: 0.05137919
+            outWeight: 0.33333334
           - serializedVersion: 3
-            time: 1
-            value: 0
-            inSlope: -0.77675426
-            outSlope: -0.77675426
+            time: 0.46496582
+            value: -0.002728343
+            inSlope: 0
+            outSlope: 0
             tangentMode: 0
             weightedMode: 0
-            inWeight: 0.0572579
+            inWeight: 0.33333334
+            outWeight: 0.33333334
+          - serializedVersion: 3
+            time: 0.69926816
+            value: 0.9975127
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0.33333334
+          - serializedVersion: 3
+            time: 1
+            value: 0.5
+            inSlope: 0.0034759282
+            outSlope: 0.0034759282
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0.14725506
             outWeight: 0
           m_PreInfinity: 2
           m_PostInfinity: 2
@@ -9752,11 +10007,8 @@ MonoBehaviour:
         isUnfolded: 1
         isHidden: 0
         target: {fileID: 1971615464}
-        startValue: {x: 1, y: 1, z: 1}
-        endValue: {x: 1.5, y: 1.5, z: 1}
-        skipX: 0
-        skipY: 0
-        skipZ: 0
+        startValue: {x: 0, y: 0, z: -5}
+        endValue: {x: 0, y: 0, z: 5}
 --- !u!1 &2116462266
 GameObject:
   m_ObjectHideFlags: 0

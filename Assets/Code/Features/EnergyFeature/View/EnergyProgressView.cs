@@ -9,6 +9,8 @@ namespace Code.Features.EnergyFeature.View
 {
     public partial class EnergyProgressView : EntityChildView
     {
+        const string EnergyTutorialKey = "EnergyTutorial";
+        
         [SerializeField] private Image _fill;
         [SerializeField] TweenAnimation _fillAnimation;
         [SerializeField] private TMP_Text _label;
@@ -26,6 +28,8 @@ namespace Code.Features.EnergyFeature.View
         {
             if (animate)
             {
+                CheckTutorial(energy, maxEnergy);
+                
                 _fillAnimation.Play().SetDelay(delay);
                 DOVirtual.Float(_fill.fillAmount, (float)energy / maxEnergy, 0.5f, value =>
                     {
@@ -43,6 +47,16 @@ namespace Code.Features.EnergyFeature.View
                 _label.text = $"{energy}/{maxEnergy}";
             }
             
+        }
+        
+        private void CheckTutorial(int energy, int maxEnergy)
+        {
+            if (energy < maxEnergy && PlayerPrefs.GetInt(EnergyTutorialKey, 0) == 0)
+            {
+                PlayerPrefs.SetInt(EnergyTutorialKey, 1);
+                PlayerPrefs.Save();
+                
+            }
         }
     }
 }

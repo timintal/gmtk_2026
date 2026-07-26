@@ -24,6 +24,8 @@ namespace Code.UI
         [SerializeField] bool _disableOnComplete = true;
         [SerializeField] UnityEvent _onTriggered;
 
+        [SerializeField] private GameObject _ignoreIfThisActive;
+        
         public UnityEvent OnTriggered => _onTriggered;
 
         IDisposable _subscription;
@@ -61,6 +63,9 @@ namespace Code.UI
         public void Trigger()
         {
             if (_triggered || Time.unscaledTime < _listenAfterTime)
+                return;
+
+            if (_ignoreIfThisActive != null && _ignoreIfThisActive.activeInHierarchy)
                 return;
 
             _triggered = true;
