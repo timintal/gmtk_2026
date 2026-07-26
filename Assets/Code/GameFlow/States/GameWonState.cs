@@ -9,7 +9,7 @@ namespace Code.GameFlow
     [Preserve]
     public class GameWonState : FSMState<GameOverProperties>
     {
-        public async override UniTask OnEnter()
+        public override async UniTask OnEnter()
         {
             await UniTask.Delay(TimeSpan.FromSeconds(1));
             W.GetResource<GameWonScreen>().gameObject.SetActive(true);

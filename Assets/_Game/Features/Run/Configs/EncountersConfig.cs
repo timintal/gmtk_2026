@@ -11,39 +11,50 @@ namespace _Game.Features.Run.Configs
     public class EncountersConfig : ScriptableObject, IResource
     {
         [SerializeField] EncounterInfo firstEncounter;
-        
+
         [ListDrawerSettings(ShowFoldout = true, ShowIndexLabels = true, ListElementLabelName = "Description")]
         [SerializeField] EncounterInfo[] BasicEncounters;
         [ListDrawerSettings(ShowFoldout = true, ShowIndexLabels = true, ListElementLabelName = "Description")]
         [SerializeField] EncounterInfo[] MediumEncounters;
-        
+
         [ListDrawerSettings(ShowFoldout = true, ShowIndexLabels = true, ListElementLabelName = "Description")]
         [SerializeField] EncounterInfo[] AdvancedEncounters;
-        
+
         [SerializeField] EncounterInfo bossEncounter;
-        
+
         [SerializeField] int MediumEncountersLevel;
         [SerializeField] int AdvancedEncountersLevel;
         [SerializeField] public int BossLevel;
-        
+
+        EncounterInfo _previousEncounter;
 
         public EncounterInfo GetRandomEncounter(int level)
         {
-            if (level == 1) return firstEncounter;
-            
-            if (level < MediumEncountersLevel)
-                return BasicEncounters[UnityEngine.Random.Range(0, BasicEncounters.Length)];
-            
-            if (level >= MediumEncountersLevel && level < AdvancedEncountersLevel)
-                return MediumEncounters[UnityEngine.Random.Range(0, MediumEncounters.Length)];
-            
-            if (level >= AdvancedEncountersLevel && level < BossLevel)
-                return AdvancedEncounters[UnityEngine.Random.Range(0, AdvancedEncounters.Length)];
-            
-            if (level >= BossLevel)
-                return bossEncounter;
-            
-            return AdvancedEncounters[UnityEngine.Random.Range(0, AdvancedEncounters.Length)];
+            EncounterInfo encounter = null;
+            for (int i = 0; i < 5; i++)
+            {
+                if (level == 1) return firstEncounter;
+
+                if (level < MediumEncountersLevel)
+                    encounter = BasicEncounters[UnityEngine.Random.Range(0, BasicEncounters.Length)];
+
+                else if (level >= MediumEncountersLevel && level < AdvancedEncountersLevel)
+                    encounter = MediumEncounters[UnityEngine.Random.Range(0, MediumEncounters.Length)];
+
+                else if (level >= AdvancedEncountersLevel && level < BossLevel)
+                    encounter = AdvancedEncounters[UnityEngine.Random.Range(0, AdvancedEncounters.Length)];
+
+                else if (level >= BossLevel)
+                    encounter = bossEncounter;
+
+                if (encounter == null)
+                    Debug.LogError($"Encounter is null for level {level}");
+
+                if (encounter != null && encounter != _previousEncounter)
+                    break;
+            }
+            _previousEncounter = encounter;
+            return encounter;
         }
 
         [Button]
@@ -78,7 +89,7 @@ namespace _Game.Features.Run.Configs
     {
         public WTEntityProvider Prefab;
         public CountdownModifierData[] CountdownModifiers;
-        
+
         public int CurrentCountdown;
         public int Attack;
     }
@@ -95,7 +106,7 @@ namespace _Game.Features.Run.Configs
 
             if (Enemies == null) return "";
             string result = "";
-            #if UNITY_EDITOR
+#if UNITY_EDITOR
             foreach (var p in Enemies)
             {
                 if (p == null || p.Prefab == null) continue;
@@ -104,7 +115,7 @@ namespace _Game.Features.Run.Configs
                 hp += p.CurrentCountdown;
                 attack += p.Attack;
             }
-            #endif
+#endif
 
             return result + $" hp:{hp}, attack{attack}";
         }

@@ -26,6 +26,7 @@ namespace _Game.Features.Run
                 if (playerState.CurrentLevel >= W.GetResource<EncountersConfig>().BossLevel)
                 {
                     W.GetResource<FSM>().Value.Push<GameWonState>();
+                    W.NewEntity<Default>().Set<GameWon>();
                     return;
                 }
                 

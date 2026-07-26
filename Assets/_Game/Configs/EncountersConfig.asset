@@ -101,7 +101,7 @@ MonoBehaviour:
       - Type: 1
         Value: 0
       CurrentCountdown: 40
-      Attack: 10
+      Attack: 8
     - Prefab: {fileID: 3870469197218237796, guid: 99864e77210654d7fae212d3ec8be32f, type: 3}
       CountdownModifiers:
       - Type: 3
