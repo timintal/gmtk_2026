@@ -43,6 +43,11 @@ MonoBehaviour:
     m_GlyphIndex: 0
     m_Scale: 1
     m_Name: dice
+  - m_ElementType: 2
+    m_Unicode: 65534
+    m_GlyphIndex: 1
+    m_Scale: 1
+    m_Name: gear
   m_GlyphTable:
   - m_Index: 0
     m_Metrics:
@@ -60,6 +65,22 @@ MonoBehaviour:
     m_AtlasIndex: 0
     m_ClassDefinitionType: 0
     sprite: {fileID: -2978653956524333172, guid: 857ac2f77d6314d13997089d67be910f, type: 3}
+  - m_Index: 1
+    m_Metrics:
+      m_Width: 64
+      m_Height: 64
+      m_HorizontalBearingX: -8.4
+      m_HorizontalBearingY: 52.62
+      m_HorizontalAdvance: 64
+    m_GlyphRect:
+      m_X: 64
+      m_Y: 192
+      m_Width: 64
+      m_Height: 64
+    m_Scale: 1
+    m_AtlasIndex: 0
+    m_ClassDefinitionType: 0
+    sprite: {fileID: -2024341720, guid: 857ac2f77d6314d13997089d67be910f, type: 3}
   spriteInfoList: []
   fallbackSpriteAssets: []
 --- !u!21 &2223235830144358751

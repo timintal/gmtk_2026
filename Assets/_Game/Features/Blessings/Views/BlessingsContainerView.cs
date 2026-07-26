@@ -32,6 +32,8 @@ namespace _Game.Features.Blessings.Views
         BlessingView _hovered;
         private bool _dirty;
         private int _lastUpdateItemsCount;
+        
+        public BlessingView Hovered => _hovered;
 
         public Transform Root => _root;
 
