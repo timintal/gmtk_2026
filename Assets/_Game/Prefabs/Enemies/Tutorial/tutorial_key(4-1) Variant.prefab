@@ -40,6 +40,18 @@ PrefabInstance:
       propertyPath: managedReferences[6297997647674605676].<BaseValue>k__BackingField
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 439784906509270927, guid: 49b31b7c64d564c5ca92cbe9a04392b6, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 439784906509270927, guid: 49b31b7c64d564c5ca92cbe9a04392b6, type: 3}
+      propertyPath: currentTime
+      value: 0.34550968
+      objectReference: {fileID: 0}
+    - target: {fileID: 439784906509270927, guid: 49b31b7c64d564c5ca92cbe9a04392b6, type: 3}
+      propertyPath: directionMultiplier
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 1888637987306392772, guid: 49b31b7c64d564c5ca92cbe9a04392b6, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.78086
@@ -80,9 +92,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2251481610314722516, guid: 49b31b7c64d564c5ca92cbe9a04392b6, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.9754811
+      objectReference: {fileID: 0}
     - target: {fileID: 3931721007194103593, guid: 49b31b7c64d564c5ca92cbe9a04392b6, type: 3}
       propertyPath: m_Name
       value: tutorial_key(4-1) Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 4171946661830809651, guid: 49b31b7c64d564c5ca92cbe9a04392b6, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.0493585
+      objectReference: {fileID: 0}
+    - target: {fileID: 4171946661830809651, guid: 49b31b7c64d564c5ca92cbe9a04392b6, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.0493585
+      objectReference: {fileID: 0}
+    - target: {fileID: 4171946661830809651, guid: 49b31b7c64d564c5ca92cbe9a04392b6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.63
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

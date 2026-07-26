@@ -1,3 +1,4 @@
+using _Game.Features.Tutorial;
 using Code.Common;
 using Code.Common.Audio;
 using Code.Common.Hitbox;
@@ -42,7 +43,12 @@ namespace _Game.Features.Dice.Systems
                     position.y += Random.Range(-bounds.extents.y, bounds.extents.y);
                     var provider = Object.Instantiate(prefab, position, Quaternion.identity);
                     var diceEntity = provider.Entity;
-                    diceEntity.Set(new DiceValue() { Value = Random.Range(1, 7) });
+                    var randomValue = Random.Range(1, 7);
+                    if (PlayerPrefs.GetInt(Tutorial.Tutorial.TutorialStep, 0) == 0)
+                    {
+                        randomValue = 6;
+                    }
+                    diceEntity.Set(new DiceValue() { Value = randomValue });
                     diceEntity.Set(new Position() { Value = position });
                     W.NewEntity<Default>().Set(new DragTransferRequest
                     {

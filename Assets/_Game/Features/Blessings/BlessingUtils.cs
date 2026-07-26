@@ -29,6 +29,7 @@ namespace _Game.Features.Blessings
 
             e.Delete<Hand>();
             e.Delete<DrawPile>();
+            e.Delete<RewardScreen>();
             e.Set<DiscardPile>();
         }
         
@@ -38,6 +39,7 @@ namespace _Game.Features.Blessings
 
             e.Delete<DiscardPile>();
             e.Delete<DrawPile>();
+            e.Delete<RewardScreen>();
             e.Set<Hand>();
 
             if (e.Has<Position>())
@@ -52,6 +54,7 @@ namespace _Game.Features.Blessings
 
             e.Delete<Hand>();
             e.Delete<DiscardPile>();
+            e.Delete<RewardScreen>();
             e.Set<DrawPile>();
         }
 

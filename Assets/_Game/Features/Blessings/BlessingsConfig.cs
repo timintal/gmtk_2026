@@ -32,6 +32,7 @@ namespace _Game.Features.Blessings
     {
         public string BlessingId;
         public string Title;
+        [Multiline]
         public string Description;
         public BlessingType Type;
         public BlessingAffectRule[] AffectRules;

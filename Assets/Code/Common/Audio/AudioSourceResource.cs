@@ -7,12 +7,13 @@ namespace Code.Common.Audio
     {
         public AudioSource AudioSource;
         protected abstract string PrefsKey { get; }
+        protected abstract float DefaultVolume { get; }
         
         [SerializeField] private AudioConfig _config;
 
         void Awake()
         {
-            SetVolume(PlayerPrefs.GetFloat(PrefsKey, 1f));
+            SetVolume(PlayerPrefs.GetFloat(PrefsKey, DefaultVolume));
         }
         
         public void Play(SoundType type)

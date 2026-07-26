@@ -15,7 +15,7 @@ MonoBehaviour:
   worlds:
   - worldTypeFullName: WT
     main:
-      selectedTabName: 
+      selectedTabName: Entities
       drawRate: 0.5
       drawFrames: 2
     entities:

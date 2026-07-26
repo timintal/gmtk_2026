@@ -12,7 +12,7 @@ namespace Code.GameFlow
     {
         public override async UniTask OnEnter()
         {
-            W.GetResource<MusicAudioSource>().Play(SoundType.MainTheme);
+            W.GetResource<MusicAudioSource>().PlayLooped(SoundType.MainTheme);
             W.NewEntity<Default>().Set<StartNewRunRequest>();
         }
         
