@@ -1,15 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Threading;
-using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-namespace Libraries.GameFlow.FSM
+namespace GameFlow.FSM
 {
-    public interface IStateProperties
-    {
-    }
+    public interface IStateProperties { }
 
     public class GameFSM : IDisposable, IGameFSM
     {

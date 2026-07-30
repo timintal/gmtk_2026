@@ -1,7 +1,6 @@
 using _Game.Features.Run;
 using Code.Common;
 using Code.Common.Utils;
-using Code.Common.View;
 using DG.Tweening;
 using FFS.Libraries.StaticEcs;
 using Sirenix.OdinInspector;
@@ -9,10 +8,11 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
 using UnityEngine.Rendering;
+using VContainer;
 
 namespace _Game.Features.Blessings.Views
 {
-    public class BlessingsContainerView : ResourceMonoBehaviour<BlessingsContainerView>
+    public class BlessingsContainerView : MonoBehaviour
     {
         [SerializeField] Transform _root;
 
@@ -28,6 +28,8 @@ namespace _Game.Features.Blessings.Views
         [SerializeField] float _maxAngle = 10f;
         [Tooltip("Base sorting order; each card adds its index on top of this.")]
         [SerializeField] int _baseOrderInLayer = 0;
+        
+        [Inject] internal MainCamera _mainCamera;
         
         BlessingView _hovered;
         private bool _dirty;
@@ -76,7 +78,7 @@ namespace _Game.Features.Blessings.Views
         {
             // Pointer unifies mouse and touch: press == left button / primary touch.
             var pointer = Pointer.current;
-            var cam = W.GetResource<MainCamera>().Value;
+            var cam = _mainCamera.Value;
             if (pointer == null)
                 return;
 

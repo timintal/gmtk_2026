@@ -1,14 +1,22 @@
 using FFS.Libraries.StaticEcs;
 using UnityEngine;
+using VContainer;
+using VContainer.Unity;
 
 namespace Code.Common.View
 {
     
     public class CreateViewSystem : ISystem
     {
+        private readonly IObjectResolver _resolver;
+        public CreateViewSystem(IObjectResolver resolver)
+        {
+            _resolver = resolver;
+        }
+        
         public void Update()
         {
-            W.Query<All<ViewPrefab>,None<ViewLink>>().For(entity =>
+            foreach (var entity in W.Query<All<ViewPrefab>,None<ViewLink>>().Entities())
             {
                 var prefab = entity.Read<ViewPrefab>().Prefab;
                 Transform parent = null;
@@ -18,7 +26,7 @@ namespace Code.Common.View
                     entity.Delete<ParentTransform>();
                 }
                 
-                var view = Object.Instantiate(prefab, parent);
+                var view = _resolver.Instantiate(prefab, parent);
                 view.Bind(entity);
                 entity.Set(new ViewLink { View = view });
                 if (entity.Has<Position>())
@@ -29,7 +37,7 @@ namespace Code.Common.View
                         position,
                         ViewTransformUtility.ReadPreservedZ(view.transform));
                 }
-            });
+            }
         }
     }
 }

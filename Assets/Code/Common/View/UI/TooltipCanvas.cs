@@ -1,17 +1,19 @@
-using System;
 using Code.Configs;
 using Code.Features.Tooltip;
 using FFS.Libraries.StaticEcs;
 using UnityEngine;
 using UnityEngine.UI;
+using VContainer;
 
 namespace Code.Common.View.UI
 {
-    public sealed class TooltipCanvas : ResourceMonoBehaviour<TooltipCanvas>
+    public sealed class TooltipCanvas : MonoBehaviour
     {
         [SerializeField] private RectTransform _root;
         [SerializeField] private Vector2 _cursorOffset = new(16f, -16f);
         [SerializeField] private int _sortingOrder = 5000;
+        
+        [Inject] internal VisualConfig _visualConfig;
 
         private Canvas _canvas;
 
@@ -57,12 +59,12 @@ namespace Code.Common.View.UI
 
         public TooltipView SpawnTooltip(W.Entity target, TooltipType type, Vector2 screenPosition)
         {
-            if (W.Status != WorldStatus.Initialized || !W.HasResource<VisualConfig>())
+            if (_visualConfig == null)
             {
                 return null;
             }
 
-            var prefab = W.GetResource<VisualConfig>().GetTooltipPrefab(type);
+            var prefab = _visualConfig.GetTooltipPrefab(type);
             if (prefab == null)
             {
                 Debug.LogWarning($"Tooltip prefab is not configured for type '{type}'.", this);

@@ -1,4 +1,4 @@
-namespace Libraries.GameFlow.FSM
+namespace GameFlow.FSM
 {
     public interface IGameStateFactory
     {

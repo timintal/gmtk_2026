@@ -1,5 +1,5 @@
 using Cysharp.Threading.Tasks;
-using Libraries.GameFlow.FSM;
+using GameFlow.FSM;
 using UnityEngine.Scripting;
 
 namespace Code.GameFlow
@@ -7,14 +7,16 @@ namespace Code.GameFlow
     [Preserve]
     public class SettingsState : FSMState
     {
-        public override async UniTask OnEnter()
+        public override UniTask OnEnter()
         {
             W.GetResource<SettingsPopup>().gameObject.SetActive(true);
+            return UniTask.CompletedTask;
         }
         
-        public override async UniTask OnExit()
+        public override UniTask OnExit()
         {
             W.GetResource<SettingsPopup>().gameObject.SetActive(false);
+            return UniTask.CompletedTask;
         }
     }
 }

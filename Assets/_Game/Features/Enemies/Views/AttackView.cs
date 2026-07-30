@@ -13,16 +13,17 @@ namespace _Game.Features.Enemies
 
         protected override void PostBind()
         {
-            if (Entity.Has<Attack>())
+            var entity = Entity;
+            if (entity.Has<Attack>())
             {
-                var currentValue = Entity.Read<Attack>().Rounded();
+                var currentValue = entity.Read<Attack>().Rounded();
                 SetAttack(currentValue, false);
             }
         }
 
         public void SetAttack(float attack, bool animated = true)
         {
-            _attackLabel.text = attack.ToString();
+            _attackLabel.text = attack.ToString("F0");
         }
         
         public void PlayAttackAnimation(float delay)

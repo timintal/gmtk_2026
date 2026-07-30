@@ -1,24 +1,26 @@
+using _Game.Infrastructure.ECS;
 using Code.Common;
+using Code.Ecs;
 
 namespace _Game.Features.Blessings
 {
-    public static class BlessingsFeature
+    public class BlessingsFeature : IFeature
     {
-        public static void AddToWorld()
+        public BlessingsFeature(ISystemFactory systems)
         {
-            GameSys.Add(new RefreshBlessingsLayoutSystem(), Order.PreUpdate);
+            GameSys.Add(systems.Create<RefreshBlessingsLayoutSystem>(), Order.PreUpdate);
             
-            GameSys.Add(new GaterBlessingTargetsSystem());
+            GameSys.Add(systems.Create<GaterBlessingTargetsSystem>());
             
-            GameSys.Add(new ActivateAddBlessingSystem(), Order.Update + 1);
-            GameSys.Add(new ActivateMultiplyBlessingSystem(), Order.Update + 1);
-            GameSys.Add(new ActivateRerollBlessingSystem(), Order.Update + 1);
-            GameSys.Add(new ActivateDrawBlessingSystem(), Order.Update + 1);
+            GameSys.Add(systems.Create<ActivateAddBlessingSystem>(), Order.Update + 1);
+            GameSys.Add(systems.Create<ActivateMultiplyBlessingSystem>(), Order.Update + 1);
+            GameSys.Add(systems.Create<ActivateRerollBlessingSystem>(), Order.Update + 1);
+            GameSys.Add(systems.Create<ActivateDrawBlessingSystem>(), Order.Update + 1);
             
-            GameSys.Add(new AddBlessingsVisualSystem(), Order.Cleanup);
-            GameSys.Add(new CleanupBlessingVisualSystem(), Order.Cleanup);
+            GameSys.Add(systems.Create<AddBlessingsVisualSystem>(), Order.Cleanup);
+            GameSys.Add(systems.Create<CleanupBlessingVisualSystem>(), Order.Cleanup);
             
-            GameSys.Add(new CleanupActivatedBlessing(), Order.Cleanup);
+            GameSys.Add(systems.Create<CleanupActivatedBlessing>(), Order.Cleanup);
         }
     }
 }

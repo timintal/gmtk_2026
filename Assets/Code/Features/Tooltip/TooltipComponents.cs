@@ -16,9 +16,4 @@ namespace Code.Features.Tooltip
         public TooltipType Type;
         public string Text;
     }
-
-    public struct TooltipSettings : IResource
-    {
-        public bool Enabled;
-    }
 }

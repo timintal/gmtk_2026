@@ -13,7 +13,7 @@ namespace Code.Common
     public partial struct InitPositionFromTransform  : ITag { }
 
     [StaticEcsEditorGroup("Transform", "00FFFF")]
-    public struct SyncViewPosition : IComponent { public float Damping; }
+    public partial struct SyncViewPosition : IComponent { public float Damping; }
     [StaticEcsEditorGroup("Physics", "00FFFF")]
     public struct SyncPhysicsPosition : IComponent { public float Damping; }
     [StaticEcsEditorGroup("Transform", "00FFFF")]
@@ -21,7 +21,7 @@ namespace Code.Common
     
     public struct SkipSyncViewPositionDamping : ITag{}
 
-    public struct MainCamera : IResource { public Camera Value; }
+    public struct MainCamera { public Camera Value; }
     
     public struct Pause : ITag { }
     

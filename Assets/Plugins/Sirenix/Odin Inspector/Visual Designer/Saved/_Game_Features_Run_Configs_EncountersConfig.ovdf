@@ -1,0 +1,28 @@
+OVDF v1.1
+_Game.Features.Run.Configs.EncountersConfig, Game.Runtime
+MetaGuid:e0f0630a346a4e55a9839061aa0b0381
+
+# $5XB1xkc4w165qmXSc19CWa
+Position: $root:0
++ [Sirenix.OdinInspector.BoxGroupAttribute]
+	GroupName = "Encoutners"
+	ShowLabel = True
+	CenterLabel = True
+
+# firstEncounter
+Position: $5XB1xkc4w165qmXSc19CWa:0
+
+# BasicEncounters
+Position: $5XB1xkc4w165qmXSc19CWa:1
+
+# MediumEncounters
+Position: $5XB1xkc4w165qmXSc19CWa:2
+
+# AdvancedEncounters
+Position: $5XB1xkc4w165qmXSc19CWa:3
+
+# bossEncounter
+Position: $5XB1xkc4w165qmXSc19CWa:4
+
+# _previousEncounter
+Visibility: Hidden

@@ -1,20 +1,23 @@
 using Cysharp.Threading.Tasks;
-using Libraries.GameFlow.FSM;
+using GameFlow.FSM;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Scripting;
+using VContainer;
 
 namespace Code.GameFlow
 {
-    [Preserve]
+    [UnityEngine.Scripting.Preserve]
     public class MainGameState : FSMState
     {
+        [Inject] internal GameFSM _fsm;
+        
         public override async UniTask OnEnter()
         {
             await SceneManager.LoadSceneAsync("main", LoadSceneMode.Additive);
             
             SceneManager.SetActiveScene(SceneManager.GetSceneByName("main"));
-
+            
+            _fsm.Push<RunGameState>();
         }
         
         public override async UniTask OnExit()

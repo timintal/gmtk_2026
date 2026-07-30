@@ -7,7 +7,7 @@ using UnityEngine;
 namespace _Game.Features.Blessings
 {
     [CreateAssetMenu(fileName = "BlessingsLibrary", menuName = "Game/Blessings Library", order = 0)]
-    public class BlessingsLibrary : ScriptableObject, IResource
+    public class BlessingsLibrary : ScriptableObject
     {
         [ListDrawerSettings(ShowFoldout = true, ShowIndexLabels = true, ListElementLabelName = "BlessingId")]
         public BlessingsConfig[] BlessingsConfigs = Array.Empty<BlessingsConfig>();

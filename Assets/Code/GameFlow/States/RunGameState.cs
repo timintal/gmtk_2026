@@ -2,22 +2,21 @@ using _Game.Features.Run;
 using Code.Common.Audio;
 using Cysharp.Threading.Tasks;
 using FFS.Libraries.StaticEcs;
-using Libraries.GameFlow.FSM;
-using UnityEngine.Scripting;
+using GameFlow.FSM;
+using VContainer;
 
 namespace Code.GameFlow
 {
-    [Preserve]
+    [UnityEngine.Scripting.Preserve]
     public class RunGameState : FSMState
     {
-        public override async UniTask OnEnter()
-        {
-            W.GetResource<MusicAudioSource>().PlayLooped(SoundType.MainTheme);
-            W.NewEntity<Default>().Set<StartNewRunRequest>();
-        }
+        [Inject] internal MusicGenericAudioSource _musicGenericAudioSource;
         
-        public override async UniTask OnExit()
+        public override UniTask OnEnter()
         {
+            _musicGenericAudioSource.PlayLooped(SoundType.MainTheme);
+            W.NewEntity<Default>().Set<StartNewRunRequest>();
+            return UniTask.CompletedTask;
         }
     }
 }

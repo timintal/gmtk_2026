@@ -16,14 +16,14 @@ namespace Code.Features.HealthFeature.Systems
 
             foreach (var damageEntity in _damages)
             {
-                ref readonly var damage = ref damageEntity.Read<Damage>();
+                ref readonly var damage = ref damageEntity.Read<Damage>()!;
 
                 if (damage.Amount > 0
                     && damage.Target.TryUnpack<WT>(out var target)
                     && !target.Has<Destroyed>()
                     && target.Has<Health>())
                 {
-                    target.Ref<Health>().Value -= damage.Amount;
+                    target.Mut<Health>().Value -= damage.Amount;
                 }
 
                 damageEntity.Set<Destroyed>();

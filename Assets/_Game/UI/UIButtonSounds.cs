@@ -2,6 +2,7 @@ using Code.Common.Audio;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using VContainer;
 
 [RequireComponent(typeof(Selectable))]
 public sealed class UIButtonSounds : MonoBehaviour,
@@ -11,6 +12,8 @@ public sealed class UIButtonSounds : MonoBehaviour,
 {
     [SerializeField] private AudioClip highlightClip;
     [SerializeField] private AudioClip clickClip;
+    
+    [Inject] internal SfxGenericAudioSource _sfxGenericAudioSource;
 
     private Selectable _selectable;
     private bool _pointerInside;
@@ -54,7 +57,7 @@ public sealed class UIButtonSounds : MonoBehaviour,
     {
         if (clip != null)
         {
-            W.GetResource<SFXAudioSource>().PlayOneShot(clip);
+            _sfxGenericAudioSource.PlayOneShot(clip);
         }
     }
 }

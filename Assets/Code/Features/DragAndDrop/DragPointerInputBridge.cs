@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using Code.Common;
-using FFS.Libraries.StaticEcs;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using VContainer;
 
 namespace Code.Features.DragAndDrop
 {
@@ -14,6 +14,8 @@ namespace Code.Features.DragAndDrop
     {
         private const int PrimaryPointerId = 0;
 
+        [Inject] internal MainCamera _mainCamera;
+        
         private readonly List<RaycastResult> _uiRaycastResults = new();
 
         private EventSystem _eventSystem;
@@ -118,15 +120,11 @@ namespace Code.Features.DragAndDrop
             hasWorld = TryScreenToWorld(screen, out world);
         }
 
-        private static bool TryScreenToWorld(Vector2 screen, out Vector2 world)
+        private bool TryScreenToWorld(Vector2 screen, out Vector2 world)
         {
             world = default;
-            if (W.Status != WorldStatus.Initialized || !W.HasResource<MainCamera>())
-            {
-                return false;
-            }
 
-            var camera = W.GetResource<MainCamera>().Value;
+            var camera = _mainCamera.Value;
             if (camera == null)
             {
                 return false;

@@ -1,11 +1,14 @@
+using _Game.Infrastructure.ECS;
+using Code.Ecs;
+
 namespace Code.Features.EnergyFeature
 {
-    public static class EnergyFeature
+    public class EnergyFeature : IFeature
     {
-        public static void AddToWorld()
+        public EnergyFeature(ISystemFactory systems)
         {
-            GameSys.Add(new UpdateEnergyViewSystem());
-            GameSys.Add(new CheckEnergySystem());
+            GameSys.Add(systems.Create<UpdateEnergyViewSystem>());
+            GameSys.Add(systems.Create<CheckEnergySystem>());
         }
     }
 }

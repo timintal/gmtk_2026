@@ -1,3 +1,4 @@
+using System;
 using Code.Common.View;
 using DG.Tweening;
 using TMPro;
@@ -16,9 +17,10 @@ namespace _Game.Features.Enemies
 
         protected override void PostBind()
         {
-            if (Entity.Has<EnemyCountdown>())
+            var entity = Entity;
+            if (entity.Has<EnemyCountdown>())
             {
-                SetCountdown(Entity.Read<EnemyCountdown>().Value, false);
+                SetCountdown(entity.Read<EnemyCountdown>().Value, false);
             }
         }
 
@@ -42,6 +44,12 @@ namespace _Game.Features.Enemies
                 });
                 _back.DOLocalRotate(new Vector3(0, 0, 180), 0.5f, RotateMode.FastBeyond360).SetEase(Ease.InOutQuad).SetRelative();
             }
+        }
+
+        private void OnDestroy()
+        {
+            _back.DOKill();
+            _countdownTween?.Kill();
         }
     }
 }

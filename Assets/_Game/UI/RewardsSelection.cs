@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using _Game.Features.Blessings;
 using _Game.Features.Blessings.Views;
 using _Game.Features.Dice;
@@ -16,6 +15,7 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using VContainer;
 
 namespace _Game.UI
 {
@@ -30,6 +30,10 @@ namespace _Game.UI
         [SerializeField] private GameObject _removeTitle;
         [SerializeField] private GameObject _yourDeckTitle;
 
+        [Inject] internal MainCamera _mainCamera;
+        [Inject] internal BlessingsLibrary _blessingsLibrary;
+        [Inject] internal VisualConfig _visualConfig;
+        
         private BlessingView _hovered;
 
         private List<BlessingView> _blessingViews = new();
@@ -73,8 +77,7 @@ namespace _Game.UI
             //add views to active blessings
             foreach (var e in W.Query<All<Blessing, DrawPile>>().Entities())
             {
-                var visualConfig = W.GetResource<VisualConfig>();
-                CreateCardPreview(e, visualConfig);
+                CreateCardPreview(e, _visualConfig);
             }
         }
         private void BackToRewards()
@@ -106,8 +109,6 @@ namespace _Game.UI
             _removeTitle.SetActive(false);
             _yourDeckTitle.SetActive(false);
 
-            var blessingsLibrary = W.GetResource<BlessingsLibrary>();
-            var visualConfig = W.GetResource<VisualConfig>();
             var playerState = W.GetResource<PlayerState>();
 
             _blessingViews.Clear();
@@ -122,9 +123,9 @@ namespace _Game.UI
                 List<string> excludeIds = new();
                 for (int i = 0; i < count; i++)
                 {
-                    var blessingConfig = blessingsLibrary.GetRandomBlessingConfig(playerState.CurrentLevel, excludeIds);
-                    var blessingEntity = blessingsLibrary.CreateBlessing(blessingConfig);
-                    CreateCardPreview(blessingEntity, visualConfig);
+                    var blessingConfig = _blessingsLibrary.GetRandomBlessingConfig(playerState.CurrentLevel, excludeIds);
+                    var blessingEntity = _blessingsLibrary.CreateBlessing(blessingConfig);
+                    CreateCardPreview(blessingEntity, _visualConfig);
                     excludeIds.Add(blessingConfig.BlessingId);
                     _generatedConfigs.Add(blessingConfig);
                 }
@@ -133,8 +134,8 @@ namespace _Game.UI
             {
                 foreach (var blessingConfig in _generatedConfigs)
                 {
-                    var blessingEntity = blessingsLibrary.CreateBlessing(blessingConfig);
-                    CreateCardPreview(blessingEntity, visualConfig);
+                    var blessingEntity = _blessingsLibrary.CreateBlessing(blessingConfig);
+                    CreateCardPreview(blessingEntity, _visualConfig);
                 }
             }
         }
@@ -155,8 +156,7 @@ namespace _Game.UI
 
             foreach (var e in W.Query<All<Blessing, DrawPile>>().Entities())
             {
-                var visualConfig = W.GetResource<VisualConfig>();
-                CreateCardPreview(e, visualConfig);
+                CreateCardPreview(e, _visualConfig);
             }
         }
         private void SkipSelection()
@@ -197,7 +197,7 @@ namespace _Game.UI
         {
             // Pointer unifies mouse and touch: press == left button / primary touch.
             var pointer = Pointer.current;
-            var cam = W.GetResource<MainCamera>().Value;
+            var cam = _mainCamera.Value;
             if (pointer == null)
                 return;
 

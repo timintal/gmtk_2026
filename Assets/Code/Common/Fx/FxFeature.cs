@@ -1,10 +1,13 @@
+using _Game.Infrastructure.ECS;
+using Code.Ecs;
+
 namespace Code.Common.Fx
 {
-    public static class FxFeature
+    public  class FxFeature : IFeature
     {
-        public static void AddToWorld()
+        public  FxFeature(ISystemFactory systems)
         {
-            GameSys.Add(new PlayOneShotParticlesSystem(), Order.LateUpdate);
+            GameSys.Add(systems.Create<PlayOneShotParticlesSystem>(), Order.LateUpdate);
         }
         
     }

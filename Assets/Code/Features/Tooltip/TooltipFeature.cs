@@ -1,32 +1,22 @@
+using _Game.Infrastructure.ECS;
 using Code.Common;
+using Code.Ecs;
 using Code.Features.DragAndDrop;
 using FFS.Libraries.StaticEcs;
 
 namespace Code.Features.Tooltip
 {
-    public static class TooltipFeature
+    public class TooltipFeature : IFeature
     {
-        public static void AddToWorld()
+        public TooltipFeature(ISystemFactory systems)
         {
-            GameSys.Add(new TooltipHoverSystem(), (short)(Order.Input + 10));
+            GameSys.Add(systems.Create<TooltipHoverSystem>(), (short)(Order.Input + 10));
         }
-
-        public static void SetEnabled(bool enabled)
-        {
-            if (W.Status != WorldStatus.Initialized || !W.HasResource<TooltipSettings>())
-            {
-                return;
-            }
-
-            ref var settings = ref W.GetResource<TooltipSettings>();
-            settings.Enabled = enabled;
-        }
+        
 
         public static bool IsEnabled()
         {
-            return W.Status == WorldStatus.Initialized
-                   && W.HasResource<TooltipSettings>()
-                   && W.GetResource<TooltipSettings>().Enabled &&
+            return W.Status == WorldStatus.Initialized &&
                    W.Query<All<Dragging>>().EntitiesCount() == 0;
         }
     }

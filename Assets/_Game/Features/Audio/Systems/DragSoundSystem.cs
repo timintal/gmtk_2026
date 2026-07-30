@@ -9,6 +9,13 @@ namespace _Game.Features.Audio.Systems
         private EventReceiver<WT, DragStarted> _started;
         private EventReceiver<WT, DragEnded> _ended;
         private bool _initialized;
+        
+        private readonly SfxGenericAudioSource _sfxGenericAudioSource;
+
+        public DragSoundSystem(SfxGenericAudioSource sfxGenericAudioSource)
+        {
+            _sfxGenericAudioSource = sfxGenericAudioSource;
+        }
 
         public void Init()
         {
@@ -61,14 +68,14 @@ namespace _Game.Features.Audio.Systems
             return false;
         }
 
-        private static void Play(SoundType type)
+        private void Play(SoundType type)
         {
             if (type == SoundType.None)
             {
                 return;
             }
 
-            W.GetResource<SFXAudioSource>().Play(type);
+            _sfxGenericAudioSource.Play(type);
         }
     }
 }

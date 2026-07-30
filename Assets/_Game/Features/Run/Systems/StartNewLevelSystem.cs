@@ -6,11 +6,14 @@ using _Game.Features.Run.View;
 using Code.Common;
 using FFS.Libraries.StaticEcs;
 using UnityEngine;
+using VContainer;
 
 namespace _Game.Features.Run
 {
     public class StartNewLevelSystem : ISystem
     {
+        [Inject] internal EncountersConfig _encountersConfig;
+        
         public void Update()
         {
             var requestQuery = W.Query<All<StartNewLevelRequest>, None<Delay>>();
@@ -33,8 +36,7 @@ namespace _Game.Features.Run
             var newLevelRequest = W.NewEntity<Default>();
             newLevelRequest.Set<StartNewTurnRequest>();
 
-            var encountersConfig = W.GetResource<EncountersConfig>();
-            var randomEncounter = encountersConfig.GetRandomEncounter(playerState.CurrentLevel);
+            var randomEncounter = _encountersConfig.GetRandomEncounter(playerState.CurrentLevel);
             var container = W.GetResource<EnemiesContainer>().Container;
 
             foreach (var enemyData in randomEncounter.Enemies)
@@ -60,7 +62,7 @@ namespace _Game.Features.Run
         }
         private static void AddModifiers(World<WT>.Entity enemyEntity, EnemySettings enemyData)
         {
-            ref var modifiers = ref enemyEntity.Ref<W.Links<CountdownModifiers>>();
+            ref var modifiers = ref enemyEntity.Ref<W.Links<CountdownModifiers>>()!;
             modifiers.Clear();
             foreach (var modifier in enemyData.CountdownModifiers)
             {

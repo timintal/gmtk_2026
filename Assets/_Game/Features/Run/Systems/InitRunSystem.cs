@@ -1,14 +1,15 @@
-using System.Collections.Generic;
 using _Game.Features.Blessings;
 using _Game.Features.Dice;
 using Code.Common;
-using Code.Features.EnergyFeature;
 using FFS.Libraries.StaticEcs;
+using VContainer;
 
 namespace _Game.Features.Run
 {
     public class InitRunSystem : ISystem
     {
+        [Inject] internal BlessingsLibrary _blessingsLibrary;
+        
         public void Update()
         {
             var requestQuery = W.Query<All<StartNewRunRequest>>();
@@ -27,11 +28,10 @@ namespace _Game.Features.Run
                 
                 W.SetResource(playerState);
 
-                var blessingsLibrary = W.GetResource<BlessingsLibrary>();
-                blessingsLibrary.CreateBlessing("roll2").PutBlessingInDrawPile();
-                blessingsLibrary.CreateBlessing("roll2").PutBlessingInDrawPile();
-                blessingsLibrary.CreateBlessing("roll3").PutBlessingInDrawPile();
-                blessingsLibrary.CreateBlessing("reroll").PutBlessingInDrawPile();
+                _blessingsLibrary.CreateBlessing("roll2").PutBlessingInDrawPile();
+                _blessingsLibrary.CreateBlessing("roll2").PutBlessingInDrawPile();
+                _blessingsLibrary.CreateBlessing("roll3").PutBlessingInDrawPile();
+                _blessingsLibrary.CreateBlessing("reroll").PutBlessingInDrawPile();
                 
                 W.NewEntity<Default>().Set<StartNewLevelRequest>();
 

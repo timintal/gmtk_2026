@@ -7,11 +7,14 @@ using Code.Features.EnergyFeature;
 using Code.Features.EnergyFeature.View;
 using FFS.Libraries.StaticEcs;
 using UnityEngine;
+using VContainer;
 
 namespace _Game.Features.Run
 {
     public class EndTurnSystem : ISystem
     {
+        [Inject] internal VisualConfig _visualConfig;
+        
         public void Update()
         {
             if (W.Query<All<EndTurnRequest>>().EntitiesCount() == 0)
@@ -21,8 +24,6 @@ namespace _Game.Features.Run
             W.Query<All<ActiveTurn>>().BatchDestroy();
             
             BlessingUtils.DiscardHand();
-
-            var visualConfig = W.GetResource<VisualConfig>();
 
             Vector2 barPosition = Vector2.zero;
             foreach (var bar in W.Query<All<EnergyProgressViewLink, Player>>().Entities())
@@ -37,7 +38,7 @@ namespace _Game.Features.Run
             {
                 if (enemy.Has<AttackViewLink>())
                 {
-                    var lightning = Object.Instantiate(visualConfig.LightningPrefab);
+                    var lightning = Object.Instantiate(_visualConfig.LightningPrefab);
                     lightning.PlayLightning(barPosition, enemy.Read<AttackViewLink>().Value.transform.position, 0.2f, delay + 0.3f);
                     
                     enemy.Read<AttackViewLink>().Value.PlayAttackAnimation(delay);

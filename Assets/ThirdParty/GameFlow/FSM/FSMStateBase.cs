@@ -2,7 +2,7 @@ using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 
-namespace Libraries.GameFlow.FSM
+namespace GameFlow.FSM
 {
     public class FSMState : FSMState<IStateProperties> {}
     public class FSMState<TProperties> : FSMStateBase where TProperties : IStateProperties

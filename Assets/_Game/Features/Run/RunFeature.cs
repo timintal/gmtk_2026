@@ -1,18 +1,20 @@
+using _Game.Infrastructure.ECS;
 using Code.Common;
+using Code.Ecs;
 
 namespace _Game.Features.Run
 {
-    public class RunFeature
+    public class RunFeature : IFeature
     {
-        public static void AddToWorld()
+        public RunFeature(ISystemFactory systems)
         {
-            GameSys.Add(new InitRunSystem(), Order.Init);
-            GameSys.Add(new StartNewLevelSystem(), Order.Init + 1);
-            GameSys.Add(new StartNewTurnSystem(), Order.Init + 2);
-            GameSys.Add(new LevelFinishedSystem(), Order.LateUpdate);
-            GameSys.Add(new EndTurnSystem(), Order.LateUpdate);
-            GameSys.Add(new ShowRewardsSystem(), Order.LateUpdate);
-            GameSys.Add(new DrawCardSystem(), Order.LateUpdate);
+            GameSys.Add(systems.Create<InitRunSystem>(), Order.Init);
+            GameSys.Add(systems.Create<StartNewLevelSystem>(), Order.Init + 1);
+            GameSys.Add(systems.Create<StartNewTurnSystem>(), Order.Init + 2);
+            GameSys.Add(systems.Create<LevelFinishedSystem>(), Order.LateUpdate);
+            GameSys.Add(systems.Create<EndTurnSystem>(), Order.LateUpdate);
+            GameSys.Add(systems.Create<ShowRewardsSystem>(), Order.LateUpdate);
+            GameSys.Add(systems.Create<DrawCardSystem>(), Order.LateUpdate);
             
         }
     }

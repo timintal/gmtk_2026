@@ -107,7 +107,7 @@ namespace Code.Editor
         [MenuItem("Static Proto/Tooltip/Setup Tooltip Canvas In Active Scene")]
         public static void SetupTooltipCanvasInActiveScene()
         {
-            var existing = UnityEngine.Object.FindFirstObjectByType<TooltipCanvas>();
+            var existing = UnityEngine.Object.FindAnyObjectByType<TooltipCanvas>();
             if (existing != null)
             {
                 Selection.activeGameObject = existing.gameObject;
@@ -135,7 +135,7 @@ namespace Code.Editor
             Selection.activeGameObject = canvasGo;
             EditorSceneManager.MarkSceneDirty(canvasGo.scene);
 
-            var registry = UnityEngine.Object.FindFirstObjectByType<Code.Common.View.SceneResourceRegistry>();
+            var registry = UnityEngine.Object.FindAnyObjectByType<Code.Common.View.SceneResourceRegistry>();
             if (registry != null)
             {
                 var serializedRegistry = new SerializedObject(registry);

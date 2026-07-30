@@ -1,4 +1,3 @@
-using _Game.Features.Tutorial;
 using Code.Common;
 using Code.Common.Audio;
 using Code.Common.Hitbox;
@@ -6,11 +5,15 @@ using Code.Configs;
 using Code.Features.DragAndDrop;
 using FFS.Libraries.StaticEcs;
 using UnityEngine;
+using VContainer;
 
 namespace _Game.Features.Dice.Systems
 {
     public class PerformRerollSystem : ISystem
     {
+        [Inject] internal SfxGenericAudioSource _sfxGenericAudioSource;
+        [Inject] internal VisualConfig _visualConfig;
+
         public void Update()
         {
             foreach (var e in W.Query<All<RerollRequest>>().Entities())
@@ -28,15 +31,15 @@ namespace _Game.Features.Dice.Systems
                 {
                     RemoveCurrentDices();
                 }
-                
+
                 PlayRerollSound();
                 var diceCount = request.DiceCount;
                 W.Query<All<RolledDicesContainer, DragContainer, Position, Hitbox2D>>().One(out var container);
-                
+
                 for (int i = 0; i < diceCount; i++)
                 {
 
-                    var prefab = W.GetResource<VisualConfig>().DicePrefab;
+                    var prefab = _visualConfig.DicePrefab;
                     var position = container.Read<Position>().Value;
                     var bounds = container.Read<Hitbox2D>().Value.bounds;
                     position.x += Random.Range(-bounds.extents.x, bounds.extents.x);
@@ -48,8 +51,14 @@ namespace _Game.Features.Dice.Systems
                     {
                         randomValue = 6;
                     }
-                    diceEntity.Set(new DiceValue() { Value = randomValue });
-                    diceEntity.Set(new Position() { Value = position });
+                    diceEntity.Set(new DiceValue()
+                    {
+                        Value = randomValue
+                    });
+                    diceEntity.Set(new Position()
+                    {
+                        Value = position
+                    });
                     W.NewEntity<Default>().Set(new DragTransferRequest
                     {
                         Draggable = provider.entityGid,
@@ -64,9 +73,9 @@ namespace _Game.Features.Dice.Systems
 
         void PlayRerollSound()
         {
-            W.GetResource<SFXAudioSource>().Play(SoundType.DiceRoll);
+            _sfxGenericAudioSource.Play(SoundType.DiceRoll);
         }
-        
+
         private void RemoveCurrentDices()
         {
             foreach (var e in W.Query<All<Dice, W.Link<InDragContainer>>>().Entities())

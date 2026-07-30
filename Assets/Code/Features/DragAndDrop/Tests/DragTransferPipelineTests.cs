@@ -1,5 +1,4 @@
 using Code.Common;
-using Code.Features.DragAndDrop;
 using FFS.Libraries.StaticEcs;
 using NUnit.Framework;
 using UnityEngine;
@@ -38,10 +37,10 @@ namespace Code.Features.DragAndDrop.Tests
 
             DragContainerRelations.PlaceInContainer(draggable, container);
 
-            Assert.That(draggable.Read<W.Link<InDragContainer>>().Value, Is.EqualTo(container.GID));
+            Assert.That(draggable.Read<W.Link<InDragContainer>>()!.Value, Is.EqualTo(container.GID));
             Assert.That(container.Has<W.Links<DragContainerItems>>(), Is.True);
-            Assert.That(container.Read<W.Links<DragContainerItems>>().Length, Is.EqualTo(1));
-            Assert.That(container.Read<W.Links<DragContainerItems>>()[0].Value, Is.EqualTo(draggable.GID));
+            Assert.That(container.Read<W.Links<DragContainerItems>>()!.Length, Is.EqualTo(1));
+            Assert.That(container.Read<W.Links<DragContainerItems>>()![0].Value, Is.EqualTo(draggable.GID));
         }
 
         [Test]
@@ -61,7 +60,7 @@ namespace Code.Features.DragAndDrop.Tests
             new DragTransferCoreValidationSystem().Update();
 
             Assert.That(request.Has<DragTransferRejected>(), Is.True);
-            Assert.That(request.Read<DragTransferRejected>().Reason, Is.EqualTo(DragTransferRejectReason.NoTargetContainer));
+            Assert.That(request.Read<DragTransferRejected>()!.Reason, Is.EqualTo(DragTransferRejectReason.NoTargetContainer));
         }
 
         [Test]
@@ -84,7 +83,7 @@ namespace Code.Features.DragAndDrop.Tests
             new DragTransferCoreValidationSystem().Update();
 
             Assert.That(request.Has<DragTransferRejected>(), Is.True);
-            Assert.That(request.Read<DragTransferRejected>().Reason, Is.EqualTo(DragTransferRejectReason.ContainerFull));
+            Assert.That(request.Read<DragTransferRejected>()!.Reason, Is.EqualTo(DragTransferRejectReason.ContainerFull));
         }
 
         [Test]
@@ -116,9 +115,9 @@ namespace Code.Features.DragAndDrop.Tests
 
             new DragTransferResolveSystem().Update();
 
-            Assert.That(draggable.Read<W.Link<InDragContainer>>().Value, Is.EqualTo(target.GID));
+            Assert.That(draggable.Read<W.Link<InDragContainer>>()!.Value, Is.EqualTo(target.GID));
             Assert.That(target.Has<W.Links<DragContainerItems>>(), Is.True);
-            Assert.That(target.Read<W.Links<DragContainerItems>>().Length, Is.EqualTo(1));
+            Assert.That(target.Read<W.Links<DragContainerItems>>()!.Length, Is.EqualTo(1));
             Assert.That(draggable.Has<Dragging>(), Is.False);
             Assert.That(source.Has<ContainerLayoutDirty>(), Is.True);
             Assert.That(target.Has<ContainerLayoutDirty>(), Is.True);
@@ -165,8 +164,8 @@ namespace Code.Features.DragAndDrop.Tests
 
                 new DragTransferResolveSystem().Update();
 
-                Assert.That(draggable.Read<W.Link<InDragContainer>>().Value, Is.EqualTo(source.GID));
-                Assert.That(draggable.Read<Position>().Value, Is.EqualTo(originPosition));
+                Assert.That(draggable.Read<W.Link<InDragContainer>>()!.Value, Is.EqualTo(source.GID));
+                Assert.That(draggable.Read<Position>()!.Value, Is.EqualTo(originPosition));
                 Assert.That(draggable.Has<Dragging>(), Is.False);
                 Assert.That(view.transform.position, Is.EqualTo(untouchedTransformPosition));
                 Assert.That(view.transform.rotation, Is.EqualTo(untouchedTransformRotation));
@@ -206,8 +205,8 @@ namespace Code.Features.DragAndDrop.Tests
 
             new LineContainerLayoutSystem().Update();
 
-            Assert.That(earlier.Read<Position>().Value, Is.EqualTo(new Vector2(5f, 10f)));
-            Assert.That(later.Read<Position>().Value, Is.EqualTo(new Vector2(7f, 10f)));
+            Assert.That(earlier.Read<Position>()!.Value, Is.EqualTo(new Vector2(5f, 10f)));
+            Assert.That(later.Read<Position>()!.Value, Is.EqualTo(new Vector2(7f, 10f)));
             Assert.That(container.Has<ContainerLayoutDirty>(), Is.False);
         }
 
@@ -240,8 +239,8 @@ namespace Code.Features.DragAndDrop.Tests
 
             new LineContainerLayoutSystem().Update();
 
-            Assert.That(first.Read<Position>().Value, Is.EqualTo(new Vector2(-50f, 0f)));
-            Assert.That(second.Read<Position>().Value, Is.EqualTo(new Vector2(50f, 0f)));
+            Assert.That(first.Read<Position>()!.Value, Is.EqualTo(new Vector2(-50f, 0f)));
+            Assert.That(second.Read<Position>()!.Value, Is.EqualTo(new Vector2(50f, 0f)));
             Assert.That(container.Has<ContainerLayoutDirty>(), Is.False);
         }
 
@@ -272,8 +271,8 @@ namespace Code.Features.DragAndDrop.Tests
 
             new GridContainerLayoutSystem().Update();
 
-            Assert.That(first.Read<Position>().Value, Is.EqualTo(new Vector2(-50f, 0f)));
-            Assert.That(second.Read<Position>().Value, Is.EqualTo(new Vector2(50f, 0f)));
+            Assert.That(first.Read<Position>()!.Value, Is.EqualTo(new Vector2(-50f, 0f)));
+            Assert.That(second.Read<Position>()!.Value, Is.EqualTo(new Vector2(50f, 0f)));
             Assert.That(container.Has<ContainerLayoutDirty>(), Is.False);
         }
     }

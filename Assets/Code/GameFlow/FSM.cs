@@ -1,5 +1,5 @@
 using FFS.Libraries.StaticEcs;
-using Libraries.GameFlow.FSM;
+using GameFlow.FSM;
 
 namespace Code.Ecs
 {

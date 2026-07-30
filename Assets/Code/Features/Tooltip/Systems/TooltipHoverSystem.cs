@@ -1,8 +1,8 @@
-using Code.Common;
 using Code.Common.View.UI;
 using Code.Features.DragAndDrop;
 using FFS.Libraries.StaticEcs;
 using UnityEngine;
+using VContainer;
 
 namespace Code.Features.Tooltip
 {
@@ -18,10 +18,12 @@ namespace Code.Features.Tooltip
         private EntityGID _touchTarget;
         private float _touchTimer;
         private TooltipView _touchTooltip;
+        
+        [Inject] internal TooltipCanvas _tooltipCanvas;
 
         public void Update()
         {
-            if (!W.HasResource<TooltipPointerState>() || !W.HasResource<TooltipSettings>())
+            if (!W.HasResource<TooltipPointerState>())
             {
                 return;
             }
@@ -165,15 +167,15 @@ namespace Code.Features.Tooltip
             _touchTooltip = SpawnTooltip(touchTarget, pointer.ScreenPosition);
         }
 
-        private static TooltipView SpawnTooltip(W.Entity target, Vector2 screenPosition)
+        private TooltipView SpawnTooltip(W.Entity target, Vector2 screenPosition)
         {
-            if (!target.Has<Tooltip>() || !W.HasResource<TooltipCanvas>())
+            if (!target.Has<Tooltip>() || _tooltipCanvas == null)
             {
                 return null;
             }
 
             ref readonly var tooltip = ref target.Read<Tooltip>();
-            return W.GetResource<TooltipCanvas>().SpawnTooltip(target, tooltip.Type, screenPosition);
+            return _tooltipCanvas.SpawnTooltip(target, tooltip.Type, screenPosition);
         }
 
         private void CancelHoverTracking()

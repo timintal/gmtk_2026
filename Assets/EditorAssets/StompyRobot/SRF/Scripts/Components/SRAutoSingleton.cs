@@ -24,7 +24,7 @@
                 {
 #if UNITY_EDITOR
                     // Support reloading scripts after a recompile - static reference will be cleared, but we can find it again.
-                    T autoSingleton = FindFirstObjectByType<T>();
+                    T autoSingleton = FindAnyObjectByType<T>();
                     if (autoSingleton != null)
                     {
                         _instance = autoSingleton;

@@ -1,6 +1,6 @@
 using Cysharp.Threading.Tasks;
 
-namespace Libraries.GameFlow.FSM
+namespace GameFlow.FSM
 {
     public interface IGameFSM
     {

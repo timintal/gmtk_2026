@@ -2,11 +2,13 @@ using System.Collections.Generic;
 using Code.Common;
 using Code.Common.Audio;
 using Code.Common.View;
+using DG.Tweening;
 using EasyTweens;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
+using VContainer;
 
 namespace _Game.Features.Blessings.Views
 {
@@ -27,6 +29,10 @@ namespace _Game.Features.Blessings.Views
         [SerializeField] private BlessingsModifierView _blessingsModifierViewPrefab;
         [SerializeField] TweenAnimation _modifierTweenAnimation;
 
+        [Inject] internal MainCamera _mainCamera;
+        [Inject] internal SfxGenericAudioSource _sfxGenericAudioSource;
+        [Inject] internal BlessingsLibrary _blessingsLibrary;
+        
         List<BlessingsModifierView> _modifierViews = new();
 
         string _originalSortingLayer;
@@ -45,6 +51,11 @@ namespace _Game.Features.Blessings.Views
             _modifierTweenAnimation.PlayBackward(false);
         }
 
+        private void OnDestroy()
+        {
+            transform.DOKill();
+        }
+
         public void OverrideSortingLayers(string original, string hover)
         {
             _originalSortingLayer = original;
@@ -58,11 +69,14 @@ namespace _Game.Features.Blessings.Views
         }
         private void UpdateVisuals(W.Entity entity)
         {
+            if (!entity.Has<BlessingId>() || !entity.Has<BlessingValue>())
+                return;
+            
             CreateModifiers();
-            var blessingsLibrary = W.GetResource<BlessingsLibrary>();
+            
             var blessingId = entity.Read<BlessingId>();
             var blessingValue = entity.Read<BlessingValue>();
-            var blessingsConfig = blessingsLibrary.GetBlessingConfig(blessingId.Value);
+            var blessingsConfig = _blessingsLibrary.GetBlessingConfig(blessingId.Value);
             _Title.text = string.Format(blessingsConfig.Title, blessingValue.Value.ToString("F0"));
             _Description.text = string.Format(blessingsConfig.Description, blessingValue.Value.ToString("F0"));
             _background.color = blessingsConfig.CardBackColor;
@@ -106,7 +120,7 @@ namespace _Game.Features.Blessings.Views
 
             if (isHovered)
             {
-                W.GetResource<SFXAudioSource>().Play(SoundType.CardHover);
+                _sfxGenericAudioSource.Play(SoundType.CardHover);
             }
             
             _isHovered = isHovered;
@@ -127,7 +141,7 @@ namespace _Game.Features.Blessings.Views
         {
             if (_isHovered && Mouse.current.leftButton.isPressed)
             {
-                var camera = W.GetResource<MainCamera>().Value;
+                var camera = _mainCamera.Value;
                 var tipPosition = camera.ScreenToWorldPoint(Mouse.current.position.ReadValue());
                 tipPosition.z = transform.position.z;
                 _topArrow.position = tipPosition;
@@ -150,7 +164,7 @@ namespace _Game.Features.Blessings.Views
             _topArrow.gameObject.SetActive(true);
 
             _lineRenderer.SetPosition(0, transform.position);
-            var camera = W.GetResource<MainCamera>().Value;
+            var camera = _mainCamera.Value;
             var tipPosition = camera.ScreenToWorldPoint(Mouse.current.position.ReadValue());
             _lineRenderer.SetPosition(1, tipPosition);
         }

@@ -1,64 +1,39 @@
-using _Game.Features.Audio;
-using _Game.Features.Blessings;
-using _Game.Features.Dice;
-using _Game.Features.Enemies;
-using _Game.Features.PlayerControls;
-using _Game.Features.Run;
-using _Game.Features.Run.Configs;
+using System;
+using _Game.Infrastructure.ECS;
 using Code.Common;
-using Code.Common.Fx;
 using Code.Common.View;
-using Code.Configs;
-using Code.Ecs;
-using Code.Features.DragAndDrop;
-using Code.Features.Economy;
-using Code.Features.EnergyFeature;
-using Code.Features.HealthFeature;
-using Code.Features.Stats;
 using Code.Features.Tooltip;
-using Code.GameFlow;
 using FFS.Libraries.StaticEcs;
 using FFS.Libraries.StaticEcs.Unity;
-using Libraries.GameFlow.FSM;
+using GameFlow.FSM;
 using UnityEngine;
+using VContainer.Unity;
 
 [DefaultExecutionOrder(-10000)]
-public sealed class EcsBootstrap : MonoBehaviour
+public class EcsBootstrap : ITickable, IFixedTickable, IInitializable, IDisposable
 {
-    private bool _initialized;
-    [SerializeField] VisualConfig _visualConfig;
-    [SerializeField] BlessingsLibrary _blessingsLibrary;
-    [SerializeField] EncountersConfig _encountersConfig;
+    private readonly ISystemFactory _systems;
     
     private GameFSM _fsm;
 
-    private void Awake()
+    public EcsBootstrap(ISystemFactory systems, GameFSM fsm)
     {
-        if (GetComponent<TooltipPointerInputBridge>() == null)
-        {
-            gameObject.AddComponent<TooltipPointerInputBridge>();
-        }
-
-        BootstrapEcs();
-        BuildGameFSM();
-
-        _initialized = true;
-    }
-    private void BuildGameFSM()
-    {
-        _fsm = new GameFSM(new CustomGameStateFactory());
-        W.SetResource(new FSM()
-        {
-            Value = _fsm
-        });
-
-        _fsm.Push<MainGameState>();
+        _systems = systems;
+        _fsm = fsm;
     }
     
-    private void Update()
+    public void Initialize()
     {
-        if (!_initialized) return;
+        BootstrapEcs();
+    }
 
+    public void Dispose()
+    {
+        TeardownEcs();
+    }
+
+    public void Tick()
+    {
         _fsm.Tick();
 
         UpdateDeltaTime(Time.deltaTime, Time.unscaledDeltaTime);
@@ -67,10 +42,8 @@ public sealed class EcsBootstrap : MonoBehaviour
         W.Tick();
     }
 
-    private void FixedUpdate()
+    public void FixedTick()
     {
-        if (!_initialized) return;
-
         UpdateDeltaTime(Time.fixedDeltaTime, Time.fixedUnscaledDeltaTime);
 
         FixedSys.Update();
@@ -85,15 +58,6 @@ public sealed class EcsBootstrap : MonoBehaviour
         dt.Unscaled = unscaledDeltaTime;
     }
 
-    private void OnDestroy()
-    {
-        TeardownEcs();
-    }
-
-    private void OnApplicationQuit()
-    {
-        TeardownEcs();
-    }
 
 
     private void BootstrapEcs()
@@ -105,22 +69,7 @@ public sealed class EcsBootstrap : MonoBehaviour
         GameSys.Create();
         FixedSys.Create();
 
-        CommonSystems.AddToWorld();
-        
-        DragAndDropFeature.AddToWorld();
-        TooltipFeature.AddToWorld();
-        EconomyFeature.AddToWorld();
-        EnergyFeature.AddToWorld();
-        HealthFeature.AddToWorld();
-        StatsFeature.AddToWorld();
-        MovementFeature.AddToWorld();
-        FxFeature.AddToWorld();
-        PlayerControlsFeature.AddToWorld();
-        DiceFeature.AddToWorld();
-        EnemiesFeature.AddToWorld();
-        AudioFeature.AddToWorld();
-        BlessingsFeature.AddToWorld();
-        RunFeature.AddToWorld();
+        _systems.CreateFeature<GameplayFeature>();
 
         EcsDebug<WT>.AddWorld<GameSystems>();
 
@@ -131,28 +80,22 @@ public sealed class EcsBootstrap : MonoBehaviour
         GameSys.Initialize();
         FixedSys.Initialize();
     }
-    
+
     private void SetUpResources()
     {
         W.SetResource(new DeltaTime());
         W.SetResource(new ColliderRegistry(128));
-        W.SetResource(new TooltipSettings { Enabled = true });
         W.SetResource(new TooltipPointerState());
         W.SetResource(new TooltipUiRaycastCache());
-        W.SetResource(_visualConfig);
-        W.SetResource(_blessingsLibrary);
-        W.SetResource(_encountersConfig);
-        W.SetResource(new PoolService());
+        // W.SetResource(new PoolService());
     }
 
     private void TeardownEcs()
     {
-        if (!_initialized) return;
-        _initialized = false;
-
         FixedSys.Destroy();
         GameSys.Destroy();
         EcsDebug<WT>.RemoveWorld();
         W.Destroy();
     }
+
 }

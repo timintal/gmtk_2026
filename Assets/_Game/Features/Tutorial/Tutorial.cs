@@ -22,6 +22,7 @@ namespace _Game.Features.Tutorial
         [SerializeField] private RectTransform _dragOnEnemiesRect;
         [SerializeField] private RectTransform _diceBlessingAnchor;
         [SerializeField] private RectTransform _turnTutorialAnchor;
+        [SerializeField] private BlessingsContainerView _blessingsContainerView;
 
 
         bool _shown;
@@ -138,7 +139,7 @@ namespace _Game.Features.Tutorial
             {
                 var blessingsCount = W.Query<All<DiceBlessing, Hand>>().EntitiesCount();
 
-                var hoveredView = W.GetResource<BlessingsContainerView>().Hovered;
+                var hoveredView = _blessingsContainerView.Hovered;
                 if (hoveredView != null && hoveredView.Entity.Has<DiceBlessing>())
                 {
                     _blessingsInitialCount = blessingsCount;

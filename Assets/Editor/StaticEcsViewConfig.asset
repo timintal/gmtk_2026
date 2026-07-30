@@ -19,7 +19,9 @@ MonoBehaviour:
       drawRate: 0.5
       drawFrames: 2
     entities:
-      componentColumns: []
+      componentColumns:
+      - Code/Common/View/ViewPrefab
+      - Code/Common/View/ViewLink
       tagColumns:
       - _Game/Features/Blessings/Hand
       - _Game/Features/Blessings/DiscardPile

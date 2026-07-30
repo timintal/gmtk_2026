@@ -5,6 +5,7 @@ using FFS.Libraries.StaticEcs;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using VContainer;
 
 namespace _Game.UI
 {
@@ -13,11 +14,12 @@ namespace _Game.UI
         [SerializeField] private TMP_Text _modifierText;
         [SerializeField] private Image _modifierIcon;
         [SerializeField] WTEntityProvider _tooltipEntityProvider;
+        
+        [Inject] internal VisualConfig _visualConfig;
 
         public void SetModifier(CountdownModifierType type, W.Entity entity)
         {
-            var visualConfig = W.GetResource<VisualConfig>();
-            var info = visualConfig.GetModifierInfo(type);
+            var info = _visualConfig.GetModifierInfo(type);
             UpdateModifierText(info, entity);
             _modifierIcon.sprite = info.Icon;
 
@@ -36,7 +38,8 @@ namespace _Game.UI
         }
         private void SetTooltipDescription(VisualConfig.CountdownModifierInfo info, W.Entity modifierEntity)
         {
-            if (_tooltipEntityProvider.Entity.Has<Tooltip>())
+            var entity = _tooltipEntityProvider.Entity;
+            if (entity.Has<Tooltip>())
             {
                 string value = string.Empty;
                 if (info.Type == CountdownModifierType.Bigger && modifierEntity.Has<AcceptBigger>())
@@ -50,7 +53,7 @@ namespace _Game.UI
                     value = smallerThan.Value.ToString();
                 }
                 
-                ref var tooltip = ref _tooltipEntityProvider.Entity.Ref<Tooltip>();
+                ref var tooltip = ref entity.Ref<Tooltip>();
                 tooltip.Text = string.Format(info.Description, value);
             }
         }

@@ -1,13 +1,15 @@
 using _Game.Features.Audio.Systems;
+using _Game.Infrastructure.ECS;
+using Code.Ecs;
 using Code.Features.DragAndDrop;
 
 namespace _Game.Features.Audio
 {
-    public static class AudioFeature
+    public class AudioFeature : IFeature
     {
-        public static void AddToWorld()
+        public AudioFeature(ISystemFactory systems)
         {
-            GameSys.Add(new DragSoundSystem(), DragAndDropSystemOrder.Resolve + 2);
+            GameSys.Add(systems.Create<DragSoundSystem>(), DragAndDropSystemOrder.Resolve + 2);
         }
     }
 }

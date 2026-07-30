@@ -1,24 +1,25 @@
+using _Game.Infrastructure.ECS;
 using Code.Common.Cleanup;
 using Code.Common.Physics;
-using Code.Common.View;
+using Code.Ecs;
 
 namespace Code.Common
 {
-    public static class CommonSystems
+    public class CommonSystems : IFeature
     {
-        public static void AddToWorld()
+        public CommonSystems(ISystemFactory systems)
         {
-            GameSys.Add(new InitPositionFromTransformSystem(), Order.Init);
-            GameSys.Add(new PreProcessCollisionEventSystem(), Order.Init);
+            GameSys.Add(systems.Create<InitPositionFromTransformSystem>(), Order.Init);
+            GameSys.Add(systems.Create<PreProcessCollisionEventSystem>(), Order.Init);
             
-            GameSys.Add(new TickDelaySystem());
+            GameSys.Add(systems.Create<TickDelaySystem>());
             
-            GameSys.Add(new AutoDestroyTickSystem(), Order.PreCleanup);
-            GameSys.Add(new CleanUpPhysicsEventsSystem(), Order.PreCleanup);
+            GameSys.Add(systems.Create<AutoDestroyTickSystem>(), Order.PreCleanup);
+            GameSys.Add(systems.Create<CleanUpPhysicsEventsSystem>(), Order.PreCleanup);
             
-            GameSys.Add(new CleanupChildrenForDestroyedEntitySystem(), Order.Cleanup - 100);
-            GameSys.Add(new CleanupDestroyedEntitiesSystem(), Order.Cleanup);
-            ViewFeature.AddToWorld();
+            GameSys.Add(systems.Create<CleanupChildrenForDestroyedEntitySystem>(), Order.Cleanup - 100);
+            GameSys.Add(systems.Create<CleanupDestroyedEntitiesSystem>(), Order.Cleanup);
+            
         }   
     }
 }

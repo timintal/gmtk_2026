@@ -6,9 +6,16 @@ namespace Code.Common.View
 {
     public sealed class WorldSpaceUiFollowSystem : ISystem
     {
+        private readonly MainCamera _mainCamera;
+
+        public WorldSpaceUiFollowSystem(MainCamera mainCamera)
+        {
+            _mainCamera = mainCamera;
+        }
+        
         public void Update()
         {
-            var camera = W.GetResource<MainCamera>().Value;
+            var camera = _mainCamera.Value;
 
             foreach (var entity in W.Query<All<WorldSpaceUiFollowLink>>().Entities())
             {

@@ -11,7 +11,7 @@ namespace Code.Features.HealthFeature
     }
 
     [StaticEcsEditorGroup("Health", "00FF00")]
-    public struct Health : IComponent
+    public struct Health : IComponent, ITrackableChanged
     {
         public int Value;
     }

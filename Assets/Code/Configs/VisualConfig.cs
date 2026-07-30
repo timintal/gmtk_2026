@@ -12,7 +12,7 @@ using UnityEngine;
 namespace Code.Configs
 {
     [CreateAssetMenu(fileName = "VisualConfig", menuName = "Proto/VisualConfig", order = 0)]
-    public class VisualConfig : ScriptableObject, IResource
+    public class VisualConfig : ScriptableObject
     {
         public TooltipPrefabEntry[] TooltipPrefabs = Array.Empty<TooltipPrefabEntry>();
         

@@ -1,14 +1,15 @@
 using _Game.Features.Dice.Systems;
-using Code.Common;
+using _Game.Infrastructure.ECS;
+using Code.Ecs;
 
 namespace _Game.Features.Dice
 {
-    public static class DiceFeature
+    public  class DiceFeature : IFeature
     {
-        public static void AddToWorld()
+        public DiceFeature(ISystemFactory systems)
         {
-            GameSys.Add(new RefreshDieViewSystem());
-            GameSys.Add(new PerformRerollSystem());
+            GameSys.Add(systems.Create<RefreshDieViewSystem>());
+            GameSys.Add(systems.Create<PerformRerollSystem>());
         }
     }
 }

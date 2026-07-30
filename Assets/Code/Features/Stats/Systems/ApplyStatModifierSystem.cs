@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Code.Common;
 using FFS.Libraries.StaticEcs;
+using UnityEngine;
 
 namespace Code.Features.Stats
 {
@@ -34,8 +35,8 @@ namespace Code.Features.Stats
             for (var i = 0; i < _valid.Count; i++)
             {
                 var entry = _valid[i];
-                ref var statModifier = ref entry.Modifier.Ref<T2>();
-                ref var stat = ref entry.Target.Ref<T1>();
+                ref var statModifier = ref entry.Modifier.Ref<T2>()!;
+                ref var stat = ref entry.Target.Ref<T1>()!;
                 stat.CurrentValue += statModifier.Additive;
             }
 
@@ -49,7 +50,7 @@ namespace Code.Features.Stats
                 if (!previous.TryGetValue(e.ID, out var oldValue))
                     continue;
 
-                if (oldValue != e.Read<T1>().CurrentValue)
+                if (!Mathf.Approximately(oldValue, e.Read<T1>()!.CurrentValue))
                     e.Mut<T1>();
             }
         }

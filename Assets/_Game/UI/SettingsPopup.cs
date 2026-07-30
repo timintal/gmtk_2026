@@ -1,9 +1,9 @@
-using System;
 using Code.Common.Audio;
 using Code.Common.View;
-using Code.Ecs;
+using GameFlow.FSM;
 using UnityEngine;
 using UnityEngine.UI;
+using VContainer;
 
 public class SettingsPopup : ResourceMonoBehaviour<SettingsPopup>
 {
@@ -11,10 +11,14 @@ public class SettingsPopup : ResourceMonoBehaviour<SettingsPopup>
     [SerializeField] Toggle _sfxToggle;
     [SerializeField] Button _closeButton;
     
+    [Inject] internal MusicGenericAudioSource _musicGenericAudioSource;
+    [Inject] internal SfxGenericAudioSource _sfxGenericAudioSource;
+    [Inject] internal GameFSM _fsm;
+
     void Start()
     {
-        _musicToggle.isOn = Mathf.Approximately(PlayerPrefs.GetFloat(MusicAudioSource.MusicVolume, 0.2f), 0.2f);
-        _sfxToggle.isOn = Mathf.Approximately(PlayerPrefs.GetFloat(SFXAudioSource.Sfxvolume, 1), 1);
+        _musicToggle.isOn = Mathf.Approximately(PlayerPrefs.GetFloat(MusicGenericAudioSource.MusicVolume, 0.2f), 0.2f);
+        _sfxToggle.isOn = Mathf.Approximately(PlayerPrefs.GetFloat(SfxGenericAudioSource.Sfxvolume, 1), 1);
     }
 
     private void OnEnable()
@@ -28,18 +32,18 @@ public class SettingsPopup : ResourceMonoBehaviour<SettingsPopup>
     private void OnMusicToggleChanged(bool isOn)
     {
         float volume = isOn ? 0.2f : 0f;
-        W.GetResource<MusicAudioSource>().SetVolume(volume);
+        _musicGenericAudioSource.SetVolume(volume);
     }
     
     private void OnSfxToggleChanged(bool isOn)
     {
         float volume = isOn ? 1f : 0f;
-        W.GetResource<SFXAudioSource>().SetVolume(volume);
+        _sfxGenericAudioSource.SetVolume(volume);
     }
     
     private void ClosePopup()
     {
-        W.GetResource<FSM>().Value.PopState();
+        _fsm.PopState();
     }
     
     private void OnDisable()

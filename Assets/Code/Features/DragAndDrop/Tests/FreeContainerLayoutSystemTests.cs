@@ -57,8 +57,8 @@ namespace Code.Features.DragAndDrop.Tests
 
             new FreeContainerLayoutSystem().Update();
 
-            var a = first.Read<Position>().Value;
-            var b = second.Read<Position>().Value;
+            var a = first.Read<Position>()!.Value;
+            var b = second.Read<Position>()!.Value;
 
             Assert.That(Mathf.Abs(a.x - b.x), Is.EqualTo(2f).Within(0.0001f));
             Assert.That((a.x + b.x) * 0.5f, Is.EqualTo(0.25f).Within(0.0001f));
@@ -98,7 +98,7 @@ namespace Code.Features.DragAndDrop.Tests
 
             // A single frame must not fully separate the items (animation, not snap).
             system.Update();
-            var afterFirstFrame = Mathf.Abs(second.Read<Position>().Value.x - first.Read<Position>().Value.x);
+            var afterFirstFrame = Mathf.Abs(second.Read<Position>()!.Value.x - first.Read<Position>()!.Value.x);
             Assert.That(afterFirstFrame, Is.LessThan(2f));
             Assert.That(container.Has<ContainerLayoutDirty>(), Is.True);
 
@@ -112,8 +112,8 @@ namespace Code.Features.DragAndDrop.Tests
             Assert.That(frames, Is.GreaterThan(1));
             Assert.That(container.Has<ContainerLayoutDirty>(), Is.False);
 
-            var a = first.Read<Position>().Value;
-            var b = second.Read<Position>().Value;
+            var a = first.Read<Position>()!.Value;
+            var b = second.Read<Position>()!.Value;
             Assert.That(Mathf.Abs(a.x - b.x), Is.EqualTo(2f).Within(0.01f));
             Assert.That((a.x + b.x) * 0.5f, Is.EqualTo(0.25f).Within(0.01f));
         }
@@ -140,7 +140,7 @@ namespace Code.Features.DragAndDrop.Tests
 
             new FreeContainerLayoutSystem().Update();
 
-            Assert.That(outside.Read<Position>().Value, Is.EqualTo(new Vector2(4f, 0f)));
+            Assert.That(outside.Read<Position>()!.Value, Is.EqualTo(new Vector2(4f, 0f)));
             Assert.That(container.Has<ContainerLayoutDirty>(), Is.False);
         }
     }

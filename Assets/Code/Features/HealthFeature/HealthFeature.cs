@@ -1,17 +1,18 @@
+using _Game.Infrastructure.ECS;
 using Code.Common;
+using Code.Ecs;
 using Code.Features.HealthFeature.Systems;
 
 namespace Code.Features.HealthFeature
 {
-    public class HealthFeature
+    public class HealthFeature : IFeature
     {
-            public static void AddToWorld()
-            {
-                GameSys.Add(new InitHealthSystem(), Order.PostInit + 1);
-                
-                
-                GameSys.Add(new ApplyDamageToHealthSystem(), Order.PreCleanup - 1);
-                GameSys.Add(new KillZeroHealthEntities(), Order.PreCleanup);
-            }
+        public HealthFeature(ISystemFactory systems)
+        {
+            GameSys.Add(systems.Create<InitHealthSystem>(), Order.PostInit + 1);
+            
+            GameSys.Add(systems.Create<ApplyDamageToHealthSystem>(), Order.PreCleanup - 1);
+            GameSys.Add(systems.Create<KillZeroHealthEntities>(), Order.PreCleanup);
+        }
     }
 }

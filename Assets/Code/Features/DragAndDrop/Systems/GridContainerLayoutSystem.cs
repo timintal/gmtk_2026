@@ -58,7 +58,7 @@ namespace Code.Features.DragAndDrop
             for (var i = 0; i < _members.Count; i++)
             {
                 var localPosition = GridLayoutCalculator.GetLocalPosition(i, _members.Count, layout);
-                _members[i].Entity.Ref<Position>().Value = ContainerLayoutUtility.ResolveMemberPosition(
+                _members[i].Entity.Ref<Position>()!.Value = ContainerLayoutUtility.ResolveMemberPosition(
                     containerPosition,
                     new Vector2(localPosition.x, localPosition.y),
                     usesLocalLayoutSpace);

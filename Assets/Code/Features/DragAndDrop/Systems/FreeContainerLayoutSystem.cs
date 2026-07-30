@@ -88,7 +88,7 @@ namespace Code.Features.DragAndDrop
 
             for (var i = 0; i < _members.Count; i++)
             {
-                _members[i].Ref<Position>().Value = _items[i].Center;
+                _members[i].Ref<Position>()!.Value = _items[i].Center;
             }
 
             return settled;

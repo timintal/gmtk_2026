@@ -1,21 +1,24 @@
 using System;
 using Code.Common.Audio;
 using Cysharp.Threading.Tasks;
-using Libraries.GameFlow.FSM;
-using UnityEngine.Scripting;
+using GameFlow.FSM;
+using VContainer;
 
 namespace Code.GameFlow
 {
-    [Preserve]
+    [UnityEngine.Scripting.Preserve]
     public class GameWonState : FSMState<GameOverProperties>
     {
+        [Inject] internal MusicGenericAudioSource _musicGenericAudioSource;
+        [Inject] internal SfxGenericAudioSource _sfxGenericAudioSource;
+        
         public override async UniTask OnEnter()
         {
             await UniTask.Delay(TimeSpan.FromSeconds(1));
             W.GetResource<GameWonScreen>().gameObject.SetActive(true);
             W.DestroyAllLoadedEntities();
-            W.GetResource<MusicAudioSource>().Stop();
-            W.GetResource<SFXAudioSource>().Play(SoundType.GameWin);
+            _musicGenericAudioSource.Stop();
+            _sfxGenericAudioSource.Play(SoundType.GameWin);
         }
 
         public override UniTask OnExit()

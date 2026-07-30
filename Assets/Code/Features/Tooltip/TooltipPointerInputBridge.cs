@@ -13,6 +13,8 @@ namespace Code.Features.Tooltip
     public sealed class TooltipPointerInputBridge : MonoBehaviour
     {
         private const int PrimaryPointerId = 0;
+        
+        [SerializeField] private Camera _camera;
 
         private EventSystem _eventSystem;
         private InputAction _positionAction;
@@ -125,21 +127,16 @@ namespace Code.Features.Tooltip
             }
         }
 
-        private static bool TryScreenToWorld(Vector2 screen, out Vector2 world)
+        private bool TryScreenToWorld(Vector2 screen, out Vector2 world)
         {
             world = default;
-            if (!W.HasResource<MainCamera>())
+            
+            if (_camera == null)
             {
                 return false;
             }
 
-            var camera = W.GetResource<MainCamera>().Value;
-            if (camera == null)
-            {
-                return false;
-            }
-
-            world = ScreenToWorld2D(camera, screen);
+            world = ScreenToWorld2D(_camera, screen);
             return true;
         }
 

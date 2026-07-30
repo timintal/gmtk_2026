@@ -1,0 +1,4 @@
+﻿{
+	"name": "Xarbrough.SelectionUtility.Runtime",
+	"references":[ "UnityEditor.UI", "UnityEngine.UI" ]
+}

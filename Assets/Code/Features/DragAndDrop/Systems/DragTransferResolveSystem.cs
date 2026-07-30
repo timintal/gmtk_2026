@@ -24,7 +24,7 @@ namespace Code.Features.DragAndDrop
 
         private static void Resolve(W.Entity requestEntity)
         {
-            ref readonly var request = ref requestEntity.Read<DragTransferRequest>();
+            ref readonly var request = ref requestEntity.Read<DragTransferRequest>()!;
             var rejected = requestEntity.Has<DragTransferRejected>();
 
             if (request.Draggable.TryUnpack<WT>(out var draggable) && draggable.Has<Draggable>())
@@ -49,7 +49,7 @@ namespace Code.Features.DragAndDrop
                 Draggable = request.Draggable,
                 TargetContainer = request.TargetContainer,
                 Accepted = !rejected && request.HasTargetContainer,
-                RejectReason = rejected ? requestEntity.Read<DragTransferRejected>().Message : string.Empty
+                RejectReason = rejected ? requestEntity.Read<DragTransferRejected>()!.Message : string.Empty
             });
 
             requestEntity.Destroy();
