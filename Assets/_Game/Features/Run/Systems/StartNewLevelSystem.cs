@@ -3,6 +3,7 @@ using _Game.Features.Dice;
 using _Game.Features.Enemies;
 using _Game.Features.Run.Configs;
 using _Game.Features.Run.View;
+using _Game.Infrastructure.Factories;
 using Code.Common;
 using FFS.Libraries.StaticEcs;
 using UnityEngine;
@@ -13,6 +14,7 @@ namespace _Game.Features.Run
     public class StartNewLevelSystem : ISystem
     {
         [Inject] internal EncountersConfig _encountersConfig;
+        [Inject] internal EnemiesFactory _enemiesFactory;
         
         public void Update()
         {
@@ -41,7 +43,7 @@ namespace _Game.Features.Run
 
             foreach (var enemyData in randomEncounter.Enemies)
             {
-                var enemy = Object.Instantiate(enemyData.Prefab, container);
+                var enemy = _enemiesFactory.CreateEnemy(enemyData, container);
                 var enemyEntity = enemy.Entity;
                 if (enemyEntity.Has<W.Links<CountdownModifiers>>())
                 {

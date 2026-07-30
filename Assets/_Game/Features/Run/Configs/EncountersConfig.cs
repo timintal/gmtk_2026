@@ -8,7 +8,7 @@ using UnityEngine;
 namespace _Game.Features.Run.Configs
 {
     [CreateAssetMenu(fileName = "EncountersConfig", menuName = "Run/EncountersConfig", order = 0)]
-    public class EncountersConfig : ScriptableObject, IResource
+    public class EncountersConfig : ScriptableObject
     {
         [SerializeField] EncounterInfo firstEncounter;
 

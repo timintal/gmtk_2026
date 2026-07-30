@@ -15,7 +15,7 @@ namespace _Game.Infrastructure.LifetimeScopes
         [SerializeField] private GenericAudioSource[] _audioSources;
         protected override void Configure(IContainerBuilder builder)
         {
-            builder.Register<AutoInjectFactory>(Lifetime.Singleton).AsSelf();
+            builder.Register<AutoInjectFactory>(Lifetime.Scoped).AsSelf();
             builder.Register<PoolService>(Lifetime.Singleton).AsSelf();
 
             RegisterPersistentData(builder);

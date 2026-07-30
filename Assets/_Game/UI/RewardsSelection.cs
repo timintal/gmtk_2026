@@ -4,6 +4,7 @@ using _Game.Features.Blessings.Views;
 using _Game.Features.Dice;
 using _Game.Features.Run;
 using _Game.Features.Visuals;
+using _Game.Infrastructure.Factories;
 using Code.Common;
 using Code.Common.Utils;
 using Code.Common.View;
@@ -19,7 +20,7 @@ using VContainer;
 
 namespace _Game.UI
 {
-    public class RewardsSelection : ResourceMonoBehaviour<RewardsSelection>
+    public class RewardsSelection : MonoBehaviour
     {
         [SerializeField] private SimpleLineLayout _root;
         [SerializeField] Button _skipButton;
@@ -33,6 +34,7 @@ namespace _Game.UI
         [Inject] internal MainCamera _mainCamera;
         [Inject] internal BlessingsLibrary _blessingsLibrary;
         [Inject] internal VisualConfig _visualConfig;
+        [Inject] internal BlessingViewFactory _blessingViewFactory;
         
         private BlessingView _hovered;
 
@@ -181,7 +183,7 @@ namespace _Game.UI
         private void CreateCardPreview(World<WT>.Entity blessingEntity, VisualConfig visualConfig)
         {
             blessingEntity.Set<RewardScreen>();
-            var entityView = Instantiate(visualConfig.BlessingCardPrefab, _root.transform);
+            var entityView = _blessingViewFactory.Create(_root.transform);
             entityView.Bind(blessingEntity);
             blessingEntity.Set(new ViewLink()
             {

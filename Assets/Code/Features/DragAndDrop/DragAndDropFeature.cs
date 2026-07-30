@@ -5,7 +5,7 @@ namespace Code.Features.DragAndDrop
 {
     public  class DragAndDropFeature : IFeature
     {
-        public DragAndDropFeature( ISystemFactory systems)
+        public DragAndDropFeature(ISystemFactory systems)
         {
             GameSys.Add(systems.Create<ReleaseDestroyedContainerItemsSystem>(), DragAndDropSystemOrder.ReleaseDestroyed);
             GameSys.Add(systems.Create<DragInputSystem>(), DragAndDropSystemOrder.Input);

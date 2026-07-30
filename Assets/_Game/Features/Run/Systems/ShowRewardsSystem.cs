@@ -1,11 +1,13 @@
 using _Game.UI;
 using Code.Common;
 using FFS.Libraries.StaticEcs;
+using VContainer;
 
 namespace _Game.Features.Run
 {
     public class ShowRewardsSystem : ISystem
     {
+        [Inject] internal RewardsSelection _rewardsSelection;
         public void Update()
         {
             var requestQuery = W.Query<All<ShowRewardsRequest>, None<Delay>>();
@@ -13,7 +15,7 @@ namespace _Game.Features.Run
                 return;
             
             requestQuery.BatchDestroy();
-            W.GetResource<RewardsSelection>().ShowRewards(3);
+            _rewardsSelection.ShowRewards(3);
         }
     }
 }

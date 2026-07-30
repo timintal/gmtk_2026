@@ -1,6 +1,7 @@
 using _Game.Features.Blessings;
 using _Game.Features.Enemies;
 using _Game.Features.PlayerControls;
+using _Game.Infrastructure.Utils;
 using Code.Common;
 using Code.Configs;
 using Code.Features.EnergyFeature;
@@ -14,6 +15,7 @@ namespace _Game.Features.Run
     public class EndTurnSystem : ISystem
     {
         [Inject] internal VisualConfig _visualConfig;
+        [Inject] internal AutoInjectFactory _autoInjectFactory;
         
         public void Update()
         {
@@ -38,7 +40,7 @@ namespace _Game.Features.Run
             {
                 if (enemy.Has<AttackViewLink>())
                 {
-                    var lightning = Object.Instantiate(_visualConfig.LightningPrefab);
+                    var lightning = _autoInjectFactory.Spawn(_visualConfig.LightningPrefab);
                     lightning.PlayLightning(barPosition, enemy.Read<AttackViewLink>().Value.transform.position, 0.2f, delay + 0.3f);
                     
                     enemy.Read<AttackViewLink>().Value.PlayAttackAnimation(delay);

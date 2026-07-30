@@ -7,11 +7,14 @@ using Code.Ecs;
 using Code.Features.GameLoop;
 using Code.GameFlow;
 using FFS.Libraries.StaticEcs;
+using VContainer;
 
 namespace _Game.Features.Run
 {
     public class LevelFinishedSystem : ISystem
     {
+        [Inject] internal EncountersConfig _encountersConfig;
+
         public void Update()
         {
             if (W.Query<All<LevelStarted>>().EntitiesCount() == 0 ||
@@ -23,7 +26,7 @@ namespace _Game.Features.Run
             if (W.Query<All<Enemy>>().EntitiesCount() == 0)
             {
                 var playerState = W.GetResource<PlayerState>();
-                if (playerState.CurrentLevel >= W.GetResource<EncountersConfig>().BossLevel)
+                if (playerState.CurrentLevel >= _encountersConfig.BossLevel)
                 {
                     W.GetResource<FSM>().Value.Push<GameWonState>();
                     W.NewEntity<Default>().Set<GameWon>();
