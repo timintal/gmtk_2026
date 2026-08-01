@@ -1,10 +1,9 @@
 using TMPro.EditorUtilities;
 using UnityEditor;
-using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace EasyTweens
+namespace EasyTweens.Editor
 {
     [CustomEditor(typeof(ShearText))]
     public class ShearTextEditor : TMP_EditorPanelUI

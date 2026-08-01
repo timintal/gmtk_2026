@@ -5,14 +5,13 @@ using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace EasyTweens
+namespace EasyTweens.Editor
 {
     [CustomEditor(typeof(ShearImage))]
     public class ShearImageEditor : ImageEditor
     {
         public override VisualElement CreateInspectorGUI()
         {
-            
             var root = new VisualElement();
         
             var defaultInspector = new IMGUIContainer(() => { OnInspectorGUI(); });
@@ -24,6 +23,7 @@ namespace EasyTweens
             shearX.value = targetSprite.shear;
             shearX.RegisterValueChangedCallback(evt =>
             {
+                Undo.RecordObject(targetSprite, "Shear Change");    
                 targetSprite.shear = evt.newValue;
                 targetSprite.SetVerticesDirty();
                 EditorUtility.SetDirty(targetSprite);
@@ -39,6 +39,7 @@ namespace EasyTweens
             shearPivot.value = targetSprite.shearPivot;
             shearPivot.RegisterValueChangedCallback(evt =>
             {
+                Undo.RecordObject(targetSprite, "Shear Pivot Change");
                 targetSprite.shearPivot = evt.newValue;
                 targetSprite.SetVerticesDirty();
                 absolutePivot.value = new Vector2(imgSize.x * targetSprite.shearPivot.x, imgSize.y * targetSprite.shearPivot.y);

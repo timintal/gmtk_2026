@@ -282,6 +282,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -2592047109389392757, guid: 34397a26650f846deb35b970e5dd1337, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1146859543240940705, guid: 34397a26650f846deb35b970e5dd1337, type: 3}
     - target: {fileID: -2253911629886400664, guid: 34397a26650f846deb35b970e5dd1337, type: 3}
       propertyPath: m_Name
       value: toolbox
@@ -2445,7 +2449,7 @@ MonoBehaviour:
   lootType: 0
   ignoreTimeScale: 0
   currentTime: 0
-  directionMultiplier: 1
+  directionMultiplier: -1
   muteNonSelectedTweens: 0
   allowCustomAnimationDuration: 0
   serializationVersion: 2
@@ -3300,7 +3304,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -640.00006, y: 147}
+  m_AnchoredPosition: {x: -640, y: 147}
   m_SizeDelta: {x: -1273.05, y: -711.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &659513867
@@ -4412,7 +4416,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4287746039
+    rgba: 126996471
   m_fontColor: {r: 0.9686275, g: 0.8117647, b: 0.5686275, a: 0}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -7238,7 +7242,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9686275, g: 0.8117647, b: 0.5686275, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

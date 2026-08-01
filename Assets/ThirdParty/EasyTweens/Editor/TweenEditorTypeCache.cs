@@ -90,9 +90,10 @@ namespace EasyTweens
                 return _tweenTypes;
             }
 
-            _tweenTypes = typeof(TweenBase)
-                .Assembly.GetTypes()
-                .Where(t => t.IsSubclassOf(typeof(TweenBase)) && !t.IsAbstract)
+            // TypeCache spans every loaded assembly, so tweens written in game code show up
+            // in the add menu next to the ones shipped with the package.
+            _tweenTypes = TypeCache.GetTypesDerivedFrom<TweenBase>()
+                .Where(t => !t.IsAbstract)
                 .ToList();
 
             _availableTweenNames = new List<string>(_tweenTypes.Count);
